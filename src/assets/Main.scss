@@ -1,0 +1,15 @@
+@use "./Reset.scss" as *;
+@use "./Variables" as *;
+@use "./Home.scss" as *;
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media screen and (max-width: 390px) {
+  .title_txt1 h1 {
+    font-size: 25px !important;
+  }
+  .inquiry-btn >img{
+    width: 60px !important;
+  }
+}

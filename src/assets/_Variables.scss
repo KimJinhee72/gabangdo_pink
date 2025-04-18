@@ -1,0 +1,57 @@
+// 스타일 가이드
+// 컬러
+$main-color: #0066b3;
+$sub-color: #2aaae2;
+$imgsub-color: #00dce8;
+$notice-1stcolor: #f2f2f2;
+$point-color: #ffeb35;
+$font-color: #333;
+$background-maincolor: #ebeffa;
+
+
+// 폰트(패밀리, 크기 웨이트)
+$font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$title-font-size-L: 40px;
+$title-font-size-m: 30px;
+$title-font-size-s: 20px;
+$basic-font-size-L: 20px;
+$basic-font-size-m: 16px;
+$basic-font-size-s: 13px;
+$font-weight: normal; 
+$font-weight: bold;
+// 라디우스
+$border-radius-L: 30px;
+$border-radius-sL: 25px;
+$border-radius-m: 20px;
+$border-radius-sm: 15px;
+$border-radius-s: 10px;
+$border-radius-ss: 5px;
+
+// 패딩
+$padding-titletopbottom  : 150px;
+$padding-L: 100px;
+$padding-m: 50px;
+$padding-s: 30px;
+$padding-ss: 20px;
+$padding-sss: 10px;
+
+// 마진
+$margin-titletopbottom  : 150px;
+$margin-L: 100px;
+$margin-m: 50px;
+$margin-s: 30px;
+$margin-ss: 20px;
+$margin-sss: 10px;
+
+
+// 쉐도우
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+// 호버,엑티브
+$hover : #2aaae2;
+// 버튼, 모달, 카드,box css
+// 모달
+$backgroudcolor-color:rgba(0,0,0,.7);
+// 버튼
+$modal-txt:17px;
+

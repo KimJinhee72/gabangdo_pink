@@ -1,0 +1,13 @@
+<svg id="구성_요소_21_7" data-name="구성 요소 21 – 7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="56" height="56" viewBox="0 0 56 56">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_20698" data-name="사각형 20698" width="56" height="56" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="마스크_그룹_25715" data-name="마스크 그룹 25715" clip-path="url(#clip-path)">
+    <g id="그룹_17726" data-name="그룹 17726" transform="translate(16.8 16.8)">
+      <line id="선_2610" data-name="선 2610" x2="22.4" transform="translate(0 11.2)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-width="1.5"/>
+      <line id="선_2611" data-name="선 2611" y2="22.4" transform="translate(11.2)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>
