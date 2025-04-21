@@ -25,6 +25,7 @@
               택&nbsp;배&nbsp;주&nbsp;소 : 대구광역시 신천구 신천동로 888
               (우:45023)
             </p>
+            <p class="ftCopyright">Copyright 2025 gabangdo.co All rights reserved.</p>
           </div>
         </div>
         <!-- 풋터 상단 오른쪽 -->
@@ -112,7 +113,8 @@ const openReservation = () => {
   h2 {
     font-size: 24px;
     color: #0066b3;
-    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 17px;
     font-weight: 700;
   }
 
@@ -125,8 +127,7 @@ const openReservation = () => {
 }
 
 .ft_serviceInfo {
-  margin-bottom: 15px;
-
+  margin-bottom: 10px;
   a {
     color: #333;
     text-decoration: none;
@@ -146,6 +147,9 @@ const openReservation = () => {
     color: #666;
     line-height: 1.5;
     font-size: 13px;
+  }
+  .ftCopyright{
+    font-weight: normal !important;
   }
 }
 // 고정버튼들
@@ -235,14 +239,15 @@ const openReservation = () => {
 
   .inquiry-btn {
     padding: 8px 15px;
-    font-size: 12px;
-
-    i {
-      font-size: 12px;
-    }
+    font-size: 12px; 
+    &:hover span {
+      width: 80px;
+      line-height: 40px;
+      font-size: 15px;
+    }  
   }
   .fas{
-    width: 60px !important;
+    width: 50px !important;
   }
   .ft_contactUs {
     h1 {
