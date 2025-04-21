@@ -12,7 +12,7 @@ const paymentNames = {
   bank: "계좌이체",
   card: "카드결제",
   kakao: "카카오페이",
-  naver: "네이버페이"
+  naver: "네이버페이",
 };
 
 const confirmPayment = () => {
@@ -29,8 +29,8 @@ const confirmPayment = () => {
     router.push({
       path: "/yeyak5",
       query: {
-        payment: selectedPayment.value
-      }
+        payment: selectedPayment.value,
+      },
     });
   }, 3000); // 3초 후 이동
 };
@@ -48,35 +48,53 @@ const confirmPayment = () => {
       <table class="st_table">
         <tbody>
           <tr>
-            <th><span class="fix th-name"><span>이</span><span>름</span>:</span></th>
+            <th>
+              <span class="fix th-name"><span>이</span><span>름</span>:</span>
+            </th>
             <td>{{ reservationStore.name }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-phone"><span>전</span><span>화</span><span>번</span><span>호</span>:</span></th>
+            <th>
+              <span class="fix th-phone"
+                ><span>전</span><span>화</span><span>번</span
+                ><span>호</span>:</span
+              >
+            </th>
             <td>{{ reservationStore.phone }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-date"><span>날</span><span>짜</span>:</span></th>
+            <th>
+              <span class="fix th-date"><span>날</span><span>짜</span>:</span>
+            </th>
             <td>{{ reservationStore.selectedDate }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-time"><span>시</span><span>간</span>:</span></th>
+            <th>
+              <span class="fix th-time"><span>시</span><span>간</span>:</span>
+            </th>
             <td>
               {{ reservationStore.selectedHour }}시
               {{ reservationStore.selectedMinute }}분
             </td>
           </tr>
           <tr>
-            <th><span class="fix th-start"><span>출</span><span>발</span>:</span></th>
+            <th>
+              <span class="fix th-start"><span>출</span><span>발</span>:</span>
+            </th>
             <td>{{ reservationStore.selectedStart }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-stop"><span>도</span><span>착</span>:</span></th>
+            <th>
+              <span class="fix th-stop"><span>도</span><span>착</span>:</span>
+            </th>
             <td>{{ reservationStore.selectedStop }}</td>
           </tr>
           <tr>
             <th rowspan="{{ reservationStore.sizes.length }}" class="th-bag">
-              <span class="fix th-bag"><span>가</span><span>방</span><span>수</span><span>량</span>:</span>
+              <span class="fix th-bag"
+                ><span>가</span><span>방</span><span>수</span
+                ><span>량</span>:</span
+              >
             </th>
             <td>
               <p v-for="(item, i) in reservationStore.sizes" :key="i">
@@ -85,7 +103,11 @@ const confirmPayment = () => {
             </td>
           </tr>
           <tr>
-            <th><span class="fix th-total"><span>총</span><span>금</span><span>액</span>:</span></th>
+            <th>
+              <span class="fix th-total"
+                ><span>총</span><span>금</span><span>액</span>:</span
+              >
+            </th>
             <td>{{ reservationStore.totalPrice.toLocaleString() }}원</td>
           </tr>
         </tbody>
@@ -129,16 +151,15 @@ const confirmPayment = () => {
       <h4>네이버페이결제</h4>
       <img src="/images/cr/yy_naver.jpg" />
     </div>
-    <button class="st_button st_reser" @click="confirmPayment">
-  결제하기
-</button>
+    <button class="st_button st_reser" @click="confirmPayment">결제하기</button>
   </div>
-<!-- 모달창 -->
-<div v-if="showModal" class="modal-overlay">
-  <div class="modal-box">
-    선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong>로 결제가 되었습니다.
+  <!-- 모달창 -->
+  <div v-if="showModal" class="modal-overlay">
+    <div class="modal-box">
+      선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong
+      >로 결제가 되었습니다.
+    </div>
   </div>
-</div>
 </template>
 <style lang="scss" scoped>
 @use "@/assets/Main.scss" as *;
@@ -147,7 +168,11 @@ const confirmPayment = () => {
 .st_wrap {
   width: 100%;
   max-width: 700px;
-  margin: 100px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,8 +203,8 @@ const confirmPayment = () => {
 }
 .st_table {
   width: 50%;
-  margin: 0 auto;         /* 수평 가운데 정렬 */
-  display: flex;         /* block으로 강제 전환 */
+  margin: 0 auto; /* 수평 가운데 정렬 */
+  display: flex; /* block으로 강제 전환 */
   border-collapse: collapse;
   justify-content: center;
   table-layout: fixed;
@@ -187,16 +212,18 @@ const confirmPayment = () => {
 
 .st_table th,
 .st_table td {
-  border: none;             /* 선 제거 */
-  padding: 4px 6px;         /* 여백 좁게 */
+  border: none; /* 선 제거 */
+  padding: 4px 6px; /* 여백 좁게 */
   vertical-align: middle;
 }
 
 /* th: 작고 중앙 정렬 */
 .st_table th {
-  width: 80px;              
+  font-weight: bold;
+  width: 80px;
   text-align: center;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 /* td: 왼쪽 정렬 */
@@ -231,6 +258,7 @@ const confirmPayment = () => {
   border-radius: 20px;
 }
 .credit-option {
+  width: calc(100% / 4);
   padding: 15px 10px;
   display: flex;
   align-items: center;
@@ -259,8 +287,8 @@ const confirmPayment = () => {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   border: 1px solid #aaa;
   border-radius: 50%;
   background-color: #fff;
@@ -291,15 +319,17 @@ const confirmPayment = () => {
 }
 
 .st_reser {
+  width: 150px;
   margin: 10px auto;
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
   color: white;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 30px;
   text-align: center;
   text-decoration: none;
+  border: none;
   transition: background 0.3s;
 }
 
@@ -329,6 +359,88 @@ const confirmPayment = () => {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .st_wrap {
+    margin: 50px auto;
+    padding: 0 16px;
+  }
+
+  .yy_title1 .title_txt1 h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .st_check {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .st_table {
+    width: 100%;
+    table-layout: fixed; // ✅ 비율 유지
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+
+  .st_table th,
+  .st_table td {
+    padding: 8px;
+    font-size: 15px;
+    word-break: keep-all;
+    vertical-align: middle;
+    text-align: left; // ✅ 모바일에서도 읽기 쉽게
+  }
+
+  .st_table th {
+    width: 100px; // ✅ th는 고정폭
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .st_table td {
+    width: auto; // ✅ td는 남은 공간
+  }
+
+  .st_table th.th-bag {
+    vertical-align: top !important;
+  }
+
+  .yy_credit {
+    align-items: stretch;
+    gap: 8px; // ✅ 세로 간격 줄이기
+    padding: 10px; // ✅ 전체 여백 줄이기 (기존 padding이 있다면 확인)
+  }
+
+  .credit-option {
+    width: calc(100% / 4);
+    font-size: 15px;
+    padding: 6px 10px; // ✅ 기존보다 작게
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; // ✅ space-between이 아니라 정렬 왼쪽
+    border-radius: 8px;
+  }
+
+  .payment-info {
+    font-size: 15px;
+    padding: 8px 12px; // ✅ padding 줄이기
+    margin-top: 10px; // ✅ 위아래 간격 확인
+    line-height: 1.4;
+  }
+
+  .st_reser {
+    font-size: 15px;
+    padding: 12px;
+    margin-top: 20px;
+  }
+
+  .modal-box {
+    font-size: 16px;
+    width: 90%;
+  }
+}
+
 @media (max-width: 390px) {
   .st_wrap {
     margin: 50px auto;
@@ -336,39 +448,47 @@ const confirmPayment = () => {
   }
 
   .st_table {
-    width: 100%;
-    font-size: 14px;
+    width: 90%;
+    font-size: 15px;
     th,
     td {
       padding: 6px;
     }
   }
-
   .yy_credit {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap; // ✅ 줄바꿈 허용
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .credit-option {
-    width: 100%;
+    width: calc(50% - 5px); // ✅ 2개씩 정렬 (gap 고려해서)
     font-size: 15px;
-    padding: 0.75rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
+    border-radius: 8px;
+    box-sizing: border-box; // ✅ padding 포함한 너비 계산
   }
 
   .payment-info {
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
     margin: 10px;
   }
-
+  .payment-info img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin-top: 8px;
+  }
   .title_txt1 h1 {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   button {
-    width: 100%;
     font-size: 16px;
     padding: 0.75rem;
   }

@@ -31,7 +31,6 @@ const handleLookup = () => {
   }
   router.push("/yeyaklookup2");
 };
-
 </script>
 <template>
   <div class="st_wrap">
@@ -42,25 +41,22 @@ const handleLookup = () => {
       </div>
     </div>
     <div class="st_lookup">
-  <div
-    v-for="(input, index) in inputs"
-    :key="index"
-    class="tooltip-container"
-  >
-    <input
-      v-model="input.value"
-      :placeholder="input.placeholder"
-      :type="index === 1 ? 'tel' : index === 2 ? 'number' : 'text'"
-    />
-    <transition name="fade">
-      <div v-if="toastTargetIndex === index" class="tooltip-bottom">
-        {{ toastMessage }}
+      <div
+        v-for="(input, index) in inputs"
+        :key="index"
+        class="tooltip-container">
+        <input
+          v-model="input.value"
+          :placeholder="input.placeholder"
+          :type="index === 1 ? 'tel' : index === 2 ? 'number' : 'text'" />
+        <transition name="fade">
+          <div v-if="toastTargetIndex === index" class="tooltip-bottom">
+            {{ toastMessage }}
+          </div>
+        </transition>
       </div>
-    </transition>
-  </div>
-</div>
-
-<button @click="handleLookup">조회하기</button>
+    </div>
+    <button @click="handleLookup" class="st_reser">조회하기</button>
   </div>
 </template>
 
@@ -69,9 +65,12 @@ const handleLookup = () => {
 @use "@/assets/_Variables.scss" as *;
 
 .st_wrap {
-  width: 90%;
+  width: 100%;
   max-width: 700px;
-  margin: 100px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,50 +94,48 @@ const handleLookup = () => {
 .st_lookup {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   width: 100%;
   max-width: 700px;
-  padding: 20px;
   border: 1px solid #007bff;
   box-shadow: $box-shadow;
-    border-radius: 20px;
-    padding: 30px auto;
-    margin: 30px auto;
+  border-radius: 30px;
+  padding: 0;
 }
 
 input {
-  width: 90%;
+  width: 100%;
   max-width: 300px;
   padding: 10px;
-  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 10px;
   display: flex;
+  margin: 0;
 }
-button {
-  padding: $padding-sss $margin-ss;
-  margin: $margin-ss;
-  font-size: $basic-font-size-L;
-  font-family: $font-family;
-  color: #fff;
-  background-color: $main-color;
-  border: none;
-  border-radius: $border-radius-sm;
-  cursor: pointer;
-}
-button:hover {
-  background-color: $hover;
-}
-// 에러메세지
 .tooltip-container {
-  position: relative;
-  width: 90%;
-  max-width: 300px;
-  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // 입력칸 사이 간격 설정
+  padding: 0;
 }
 
+.st_reser {
+  width: 150px;
+  margin: 10px auto;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: $main-color;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  transition: background 0.3s;
+}
+
+.st_reser:hover {
+  background-color: $hover;
+}
 input {
   width: 100%;
   padding: 10px;
@@ -190,6 +187,80 @@ input {
     transform: translateY(0px);
   }
 }
+@media screen and (max-width: 768px) {
+  .st_wrap {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  .yy_title1 .title_txt1 h1 {
+    font-size: 25px;
+    text-align: center;
+  }
 
+  .st_lookup {
+    border-radius: 16px;
+  }
+
+  input {
+    font-size: 15px;
+    padding: 10px 12px;
+    max-width: 100%;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .tooltip-container {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .tooltip-bottom {
+    font-size: 13px;
+    padding: 6px 10px;
+    left: 4px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .st_wrap {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .yy_title1 .title_txt1 h1 {
+    font-size: 25px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 9px 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .tooltip-bottom {
+    font-size: 12px;
+    padding: 5px 8px;
+    left: 2px;
+  }
+
+  .tooltip-bottom::before {
+    left: 14px;
+  }
+}
 </style>

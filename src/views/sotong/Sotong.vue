@@ -243,8 +243,12 @@ const nextPage = () => {
   box-sizing: border-box;
 }
 .st_wrap {
-  width: 700px;
-  margin: 100px auto;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,7 +270,7 @@ const nextPage = () => {
     background-color: $main-color;
   }
   .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 35px;
   }
 }
 
@@ -361,16 +365,27 @@ button:disabled {
   .st_wrap {
     width: 100%;
     padding: 0 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .st_title1 .title_txt1 h1 {
-    font-size: 22px;
+    font-size: 25px;
   }
 
+  .st_notice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   .st_notice-table {
-    width: 100%;
+    max-width: 90%;
     font-size: 15px;
-
+    justify-content: center;
+    align-items: center;
     th,
     td {
       padding: 10px 5px;
@@ -383,7 +398,7 @@ button:disabled {
   }
 
   .st_slider-container {
-    width: 100%;
+    width: 90%;
     margin-bottom: 20px;
   }
 
@@ -401,17 +416,27 @@ button:disabled {
 @media screen and (max-width: 390px) {
   .st_wrap {
     width: 100%;
-    margin: 100px auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 10px;
   }
 
+  .st_notice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   .st_notice-table {
-    width: 100%;
-    font-size: 14px;
-
+    max-width: 90%;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
     th,
     td {
-      padding: 8px;
+      padding: 10px 5px;
       word-break: break-word;
     }
 
@@ -421,11 +446,11 @@ button:disabled {
   }
 
   .st_slider-container {
-    width: 100%;
+    width: 90%;
   }
 
   .st_title1 .title_txt1 h1 {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   .st_pagination {

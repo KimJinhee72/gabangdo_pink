@@ -298,8 +298,12 @@ const closeModal = () => {
 @use "@/assets/_Variables.scss" as *;
 
 .st_wrap {
-  width: 700px;
-  margin: 100px auto;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -316,13 +320,8 @@ const closeModal = () => {
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
-  .st_titleLine {
-    width: 3px;
-    height: 25px;
-    background-color: $main-color;
-  }
   .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 35px;
   }
 }
 // 리뷰 배너
@@ -395,7 +394,6 @@ h6 {
   padding: 5px auto;
   font-size: 10px;
   color: black;
-
   border-radius: 20px;
   text-decoration: none;
 }
@@ -435,12 +433,12 @@ h6 {
 
 .write-btn {
   padding: 8px 16px;
-  margin: 10px;
+  margin: 20px 0;
   background-color: $main-color;
   width: 100px;
   color: white;
   border: none;
-  border-radius: 15px;
+  border-radius: 30px;
   cursor: pointer;
 }
 
@@ -508,11 +506,15 @@ h6 {
 @media (max-width: 768px) {
   .st_wrap {
     width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 24px;
   }
 
   .title_txt1 h1 {
-    font-size: 22px;
+    font-size: 25px;
   }
 
   .st_reviewbanner img {
@@ -522,7 +524,7 @@ h6 {
 
   .st_card-container {
     width: 100%;
-    gap: 16px;
+    gap: 30px;
     justify-content: center;
   }
 
@@ -582,13 +584,16 @@ h6 {
 @media (max-width: 390px) {
   .st_wrap {
     width: 100%;
-    margin: 100px auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 16px;
   }
 
   .st_card-container {
     width: 100%;
-    gap: 12px;
+    gap: 25px;
     justify-content: center;
   }
 
