@@ -84,7 +84,9 @@
                 <a href="#" @click.prevent="toggleMobileSub(index)">
                   {{ item.label }}
                 </a>
-                <ul v-if="openedMobileMenu === index" class="subMenu show">
+                <ul
+                  v-if="openedMobileMenu === index"
+                  class="subMenu show">
                   <li v-for="(sub, idx) in item.sub" :key="idx">
                     <router-link :to="sub.to">{{ sub.label }}</router-link>
                   </li>
@@ -95,7 +97,7 @@
         </div>
       </div>
     </div>
-    <div :class="{ show: showAllSubMenu }" class="hd_subMenubg"></div>
+    <div   :class="{ show: showAllSubMenu }"  class="hd_subMenubg"  ></div>
   </header>
 </template>
 
@@ -268,7 +270,7 @@ body.modal-open {
 
 // 메뉴
 .hd_menu {
-  width: 800px;
+  width: 700px;
   margin-top: 7px;
   display: flex;
   justify-content: space-evenly;
@@ -416,7 +418,7 @@ body.modal-open {
   align-items: center;
   gap: 5px;
   color: $main-color;
-  a {
+  a{
     padding: 10px 5px;
     margin-bottom: 5px;
   }
@@ -495,8 +497,8 @@ body.modal-open {
 }
 .hd_man,
 .hd_man img {
-  width: 28.5px;
-  height: 29px;
+  width: 32px;
+  height: 33px;
   font-weight: bold;
   filter: invert(31%) sepia(97%) saturate(800%) hue-rotate(169deg)
     brightness(60%) contrast(96%);
@@ -514,7 +516,7 @@ body.modal-open {
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255,255,255,.8);
   z-index: 8;
   opacity: 0;
   transition: opacity 0.3s ease;
