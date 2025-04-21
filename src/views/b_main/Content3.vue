@@ -6,7 +6,7 @@
         <div class="ma3bg">
           <div class="ma3img">
             <img
-              src="/public/images/geen/1/sudal_01.png"
+              src="/public/images/gh/ma_content3/character_1.png"
               alt="여행도" />
           </div>
           <div class="ma3txt">
@@ -25,7 +25,7 @@
           </div>
           <div class="ma3img">
             <img
-              src="/public/images/geen/1/sudal_02.png"
+              src="/public/images/gh/ma_content3/character_2.png"
               alt="배달도" />
           </div>
         </div>
@@ -34,8 +34,8 @@
       <div class="macontent3_gp ma3shearch">
         <div class="ma3bg">
           <div class="ma3img">
-            <img class="locatesudal"
-              src="/public/images/geen/1/sudal_03.png"
+            <img
+              src="/public/images/gh/ma_content3/character_3.png"
               alt="배송조회도!" />
           </div>
           <div class="ma3txt">
@@ -87,7 +87,7 @@
   display: flex;
   width: 200%;
   max-width: 1050px;
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 /* 기본적으로 왼쪽 정렬 */

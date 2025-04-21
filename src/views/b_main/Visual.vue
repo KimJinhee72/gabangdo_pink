@@ -4,7 +4,7 @@
       <!-- 왼쪽 -->
       <div class="mavistxt">
         <img src="/public/images/geen/maintxt.png" alt="텍스트이미지" />
-        <router-link to="/yeyak" class="button">예약하기</router-link>
+        <button><router-link to="/yeyak">예약하기</router-link></button>
       </div>
       <!-- 오른쪽 -->
       <div class="mavisimg">
@@ -26,7 +26,7 @@
 .ma_visual-wrap .inner {
   width: 100%;
   max-width: 1300px;
-  margin: 30px auto 80px !important;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -77,7 +77,7 @@
   color: #0066b3 !important;
   padding: 20px 0 !important;
 }
-.mavistxt > .button {
+.mavistxt > button {
   position: relative;
   width: 145px;
   line-height: 60px;
@@ -86,8 +86,9 @@
   background: #db27b1;
   border: none;
   border-radius: $border-radius-L + $border-radius-s;
-  color: white;
-
+  a {
+    color: white !important;
+  }
   @media screen and (max-width: 970px) {
     margin: 20px 0 10px;
   }
@@ -99,7 +100,7 @@
     margin-left: 5px;
   }
 }
-.mavistxt > .button:hover {
+.mavistxt > button:hover {
   background: #e961c9;
 }
 /* 오른쪽 - gif이미지 */
