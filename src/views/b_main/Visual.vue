@@ -3,8 +3,8 @@
     <div class="inner">
       <!-- 왼쪽 -->
       <div class="mavistxt">
-        <img src="/public/images/geen/maintxt.png" alt="텍스트이미지">
-        <button>예약하기        </button>
+        <img src="/public/images/geen/maintxt.png" alt="텍스트이미지" />
+        <button><router-link to="/yeyak">예약하기</router-link></button>
       </div>
       <!-- 오른쪽 -->
       <div class="mavisimg">
@@ -26,7 +26,7 @@
 .ma_visual-wrap .inner {
   width: 100%;
   max-width: 1300px;
-  margin-top: 50px; 
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -38,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   width: 25%;
-  img{
+  img {
     margin-top: 180px;
     width: 100%;
     padding: 20px 20px 50px;
@@ -49,7 +49,7 @@
     }
   }
 }
-.ma_vis_h1 h1:first-child{
+.ma_vis_h1 h1:first-child {
   font-size: 20px !important;
   line-height: 30px !important;
   /* text-align: center; */
@@ -59,17 +59,17 @@
   font-size: 16px;
   color: #5a5a5a;
   margin-bottom: 10px;
-
 }
-.mavistxt > h1 , .ma_vis_h1 h1 {
+.mavistxt > h1,
+.ma_vis_h1 h1 {
   font-size: 40px;
   color: #5a5a5a;
-  line-height: 50px;  
+  line-height: 50px;
 }
-.ma_vis_h1{
-display: flex;
-justify-content: right;
-gap: 10px;
+.ma_vis_h1 {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
 }
 /* 맡기세요! (문구- 블루) */
 .mablue {
@@ -84,19 +84,21 @@ gap: 10px;
   font-size: 19px;
   // background: #0066b3;
   background: #db27b1;
-  color: white;
   border: none;
-  border-radius: $border-radius-L + $border-radius-s ;
-  @media screen and (max-width: 970px){
+  border-radius: $border-radius-L + $border-radius-s;
+  a {
+    color: white !important;
+  }
+  @media screen and (max-width: 970px) {
     margin: 20px 0 10px;
   }
   cursor: pointer;
   transition: 0.3s;
   text-align: center;
-  span{
+  span {
     font-size: 21px;
     margin-left: 5px;
-  };
+  }
 }
 .mavistxt > button:hover {
   background: #e961c9;

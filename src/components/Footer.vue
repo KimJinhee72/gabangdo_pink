@@ -46,8 +46,8 @@
     class="fixed-buttons"
     :class="{ 'fixed-buttons--alt': specialPages.includes(route.path) }">
     <button class="inquiry-btn" @click="openReservation">
-      <span>예약하러 갈래?</span>
-      <img class="fas fa-calendar-check" src="/public/images/gh/1/head.png" />
+      <span>예약 할래?</span>
+      <router-link to="/yeyak"><img class="fas fa-calendar-check" src="/public/images/gh/1/head.png" /></router-link>
     </button>
   </div>
 </template>

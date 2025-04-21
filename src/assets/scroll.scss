@@ -1,0 +1,29 @@
+@use "./_Variables" as *;
+html{
+     /* 전체 스크롤 바 스타일 */
+  ::-webkit-scrollbar {
+    width: 10px; /* 세로 스크롤 바 너비 */
+    height: 10px; /* 가로 스크롤 바 높이 */
+  }
+
+  /* 스크롤 바 트랙 (배경) */
+  ::-webkit-scrollbar-track {
+    background: $sub-color;
+    border-radius: 10px;
+  }
+
+  /* 스크롤 바 핸들  */
+  ::-webkit-scrollbar-thumb {
+    @media screen and (max-width : 390) {
+      background: $point-color;
+    border-radius: 10px;
+    }
+    background: $point-color;
+    border-radius: 10px;
+  }
+
+  /* 스크롤 바 핸들 호버 시 */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $main-color;
+  }
+}

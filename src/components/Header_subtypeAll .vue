@@ -247,7 +247,7 @@ header .inner {
 }
 .hd_wideMenu {
   width: 100%;
-  height: 100%;
+  height: 65px;
   display: flex;
   justify-content: space-between;
 }
@@ -407,16 +407,21 @@ body.modal-open {
 }
 .menu-label {
   display: inline-block; /* 너비 적용을 위해 */
-  height: 70px; /* 원하는 만큼 조정 */
+  // height: 50px; /* 원하는 만큼 조정 */
 }
 // delivery/login icon
 .hd_extra {
   width: 11%;
+  height: 58px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 5px;
   color: $main-color;
+  a{
+    padding: 10px 5px;
+    margin-bottom: 5px;
+  }
   img {
     width: 40px;
     font-weight: 600;

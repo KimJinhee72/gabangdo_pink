@@ -144,7 +144,7 @@
 /* hover 시 텍스트 보이게 하기 */
 .macontent2_icon_hover {
   position: absolute;
-  top: 45%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -375,20 +375,9 @@ strong {
     gap: 0 !important;
   }
 }
-
-@media screen and (max-width: 896px) {
-  // delivery/login icon
-  .hd_wideMenu {
-    display: none !important;
-  }
+@media screen and (max-width: 1230px) {
   .hd_mobileMenu {
     display: block !important;
-  }
-  .hd_logo {
-    width: 140px;
-    img {
-      width: 120px;
-    }
   }
   .hd_extra1 {
     width: 17%;
@@ -396,6 +385,18 @@ strong {
     text-align: right;
     img {
       width: 36px;
+    }
+  }
+  // delivery/login icon
+  .hd_wideMenu {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 896px) {  
+  .hd_logo {
+    width: 140px;
+    img {
+      width: 120px;
     }
   }
   .hd_man,
