@@ -55,16 +55,20 @@ router.go(-1);
     display: flex;
     align-items: center;
     margin-bottom: 1%;
+
     h1 {
       text-align: center;
       flex: 1.3;
-      font-size: 200px;
+      font-size: 150px;
       font-weight: bold;
     }
     .bb_errorPic {
       flex: 1;
       img {
-        width: 100%;
+        width: 110px;
+        height: 110px;
+        margin-left: 40px;
+        margin-right: 40px;
       }
     }
   }
@@ -103,4 +107,5 @@ router.go(-1);
     }
   }
 }
+
 </style>

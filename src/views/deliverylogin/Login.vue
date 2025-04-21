@@ -1,7 +1,9 @@
 <template>
   <!-- 로그인 페이지 틀 -->
   <div class="bb_login-container">
-    <h2 class="bb_login-title">로그인</h2>
+    <div class="bb_logoimg">
+    <img src="/public/images/yr/loginpage/logo (1).png" alt="">
+  </div>
     <p class="bb_login-sub">여행의 시작은 가방도와 함께</p>
 
     <form class="bb_login-form">
@@ -99,12 +101,11 @@ const handleLogin = () => {o
   text-align: center;
   padding-bottom: 2.3%;
 
-  .bb_login-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #005bac; // 파란색
-    padding-bottom: 20px;
-  }
+.bb_logoimg{
+
+  margin-bottom: 10px;
+
+}
 
   .bb_login-sub {
     font-size: 14px;
