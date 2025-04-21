@@ -82,7 +82,7 @@
         <div class="macontent2_iconimg">
           <a href="#">
             <!-- 아이콘 이미지 -->
-            <router-link to="/yeohaeng"><img src="/public/images/gh/ma_content2/trip_icon.png" alt="여행도 아이콘" /></router-link>
+            <router-link to="/yh_festival"><img src="/public/images/gh/ma_content2/trip_icon.png" alt="여행도 아이콘" /></router-link>
             <!-- hover시 보일 텍스트 -->
             <div class="macontent2_icon_hover">
               <h5>대구 축제<br/>시티투어</h5>

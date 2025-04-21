@@ -412,7 +412,6 @@ body.modal-open {
   width: 11%;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   gap: 5px;
   color: $main-color;
   img {
