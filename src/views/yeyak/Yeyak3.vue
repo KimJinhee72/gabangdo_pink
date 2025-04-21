@@ -118,7 +118,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="tooltip-container">
-          <input type="tel" placeholder="전화번호" v-model="phone" />
+          <input type="number" placeholder="전화번호" v-model="phone" />
           <div v-if="toastTarget === 'phone'" class="tooltip-bottom">
             {{ toastMessage }}
           </div>
@@ -221,13 +221,13 @@ onMounted(() => {
     </div>
 
     <button @click="submitReservation" class="st_reserve-btn">예약하기</button>
-
-    <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
-      <div class="modal">
-        <h3>예약 안내</h3>
-        <p>장소[기타] · 가방[기타] 예약은 가방도와 협의 후 선택해주세요.</p>
-        <button @click="closeModal">확인</button>
-      </div>
+  </div>
+  /
+  <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+    <div class="modal">
+      <h3>예약 안내</h3>
+      <p>장소[기타] · 가방[기타] 예약은 가방도와 협의 후 선택해주세요.</p>
+      <button @click="closeModal">확인</button>
     </div>
   </div>
 </template>
@@ -242,7 +242,10 @@ $base-width: 350px;
 .st_wrap {
   width: 100%;
   max-width: 700px;
-  margin: 100px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -492,13 +495,13 @@ button {
 }
 
 .st_reserve-btn {
-  margin-top: 20px;
+  margin: 20px auto;
   width: 150px;
   background-color: $main-color;
   color: white;
-  font-size: 1.1rem;
+  font-size: 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -506,6 +509,7 @@ button {
 .st_reserve-btn:hover {
   background-color: $hover;
 }
+// 모달창
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -611,21 +615,38 @@ button {
   }
 
   .st_size {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #b5b5b5;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+
+  .st_text {
+    text-align: left;
+  }
+
+  .st_label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .st_tag {
+    color: #7b7b7b;
+    font-size: $basic-font-size-m;
   }
 
   .st_pm {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .st_reserve-btn {
-    width: 100%;
-    max-width: 300px;
-    font-size: 1rem;
+    width: 150px;
+    font-size: 16px;
   }
 
   .modal {
@@ -660,7 +681,7 @@ button {
   }
   .st_start,
   .st_stop {
-    width: 90% !important; // 너비 줄이고
+    width: 100% !important; // 너비 줄이고
     margin: 0 auto; // 중앙 정렬
   }
 
@@ -676,7 +697,7 @@ button {
   }
 
   .st_reserve-btn {
-    font-size: 0.95rem;
+    font-size: 16px;
   }
 
   .st_total {

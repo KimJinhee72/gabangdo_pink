@@ -92,7 +92,6 @@ const toggleDetails = (index) => {
   <div class="st_wrap">
     <div class="yy_title1">
       <!-- 제목 스타일 -->
-
       <!-- 제목 -->
       <div class="title_txt1">
         <h1>예약하기</h1>
@@ -155,7 +154,10 @@ const toggleDetails = (index) => {
 
 .st_wrap {
   width: 700px;
-  margin: 100px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,7 +229,7 @@ img {
 .st_checkbox label {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 18px;
   justify-content: flex-end;
 }
 
@@ -289,7 +291,7 @@ img {
   background-color: $main-color;
   color: white;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 30px;
   text-align: center;
   text-decoration: none;
   transition: background 0.3s;
@@ -336,7 +338,7 @@ img {
 
 @media (max-width: 390px) {
   .st_wrap {
-    width: 95%;
+    width: 90%;
     margin: 30px auto;
   }
 
