@@ -1,6 +1,32 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router"; // ✅ 이 부분 추가!
 
+const router = useRouter();
+//토스트말풍선
+const toastMessage = ref("");
+const toastTargetIndex = ref(null);
+
+const showToast = (message, index) => {
+  toastMessage.value = message;
+  toastTargetIndex.value = index;
+  setTimeout(() => {
+    toastMessage.value = "";
+    toastTargetIndex.value = null;
+  }, 3000);
+};
+
+const goToReservation = (routeName) => {
+  const firstUncheckedIndex = dataUsageList.value.findIndex(
+    (item) => !item.isChecked
+  );
+  if (firstUncheckedIndex !== -1) {
+    showToast("이 항목에 동의해주세요.", firstUncheckedIndex);
+    return;
+  }
+
+  router.push(`/${routeName}`);
+};
 const dataUsageList = ref([
   {
     title: "개인정보이용내역",
@@ -95,6 +121,13 @@ const toggleDetails = (index) => {
         <div v-if="item.isOpen" class="st_details">
           <p class="yy_purpose">{{ item.purpose }}</p>
         </div>
+        <!-- ✅ 여기서 말풍선 메시지를 표시 -->
+        <div
+          v-if="toastTargetIndex === index && toastMessage"
+          class="toast-bubble">
+          {{ toastMessage }}
+        </div>
+        <!-- 체크박스 -->
         <div class="st_checkbox">
           <label>
             {{ item.dataItems }}
@@ -103,9 +136,15 @@ const toggleDetails = (index) => {
         </div>
       </div>
     </div>
+
+    <!-- 링크이동버튼 -->
     <div class="st_button">
-      <router-link to="/yeyak2" class="st_reser">사전예약</router-link>
-      <router-link to="/yeyak3" class="st_reser">당일예약</router-link>
+      <button class="st_reser" @click="goToReservation('yeyak2')">
+        사전예약
+      </button>
+      <button class="st_reser" @click="goToReservation('yeyak3')">
+        당일예약
+      </button>
     </div>
   </div>
 </template>
@@ -195,6 +234,48 @@ img {
 .st_checkbox input {
   margin-right: 8px;
 }
+.toast-bubble {
+  position: relative;
+  background-color: #ff4d4f;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 10px auto 0;
+  width: fit-content;
+  max-width: 90%;
+  text-align: center;
+  animation: fadeInOut 3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.toast-bubble::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent #ff4d4f transparent;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
 .st_button {
   display: flex;
   gap: 10px;
@@ -212,6 +293,7 @@ img {
   text-align: center;
   text-decoration: none;
   transition: background 0.3s;
+  border: none;
 }
 
 .st_reser:hover {
@@ -279,7 +361,7 @@ img {
   }
 
   img {
-    width: 100%;
+    width: 80%;
     height: auto;
   }
 }

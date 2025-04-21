@@ -1,9 +1,39 @@
 <script setup>
 import { useReservationStore } from "../../stores/reservationStore";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const selectedPayment = ref("");
+const showModal = ref(false);
 const reservationStore = useReservationStore();
+const router = useRouter();
+
+const paymentNames = {
+  bank: "계좌이체",
+  card: "카드결제",
+  kakao: "카카오페이",
+  naver: "네이버페이"
+};
+
+const confirmPayment = () => {
+  if (!selectedPayment.value) {
+    alert("결제 수단을 선택해주세요.");
+    return;
+  }
+
+  showModal.value = true;
+
+  setTimeout(() => {
+    // 모달 닫고 페이지 이동
+    showModal.value = false;
+    router.push({
+      path: "/yeyak5",
+      query: {
+        payment: selectedPayment.value
+      }
+    });
+  }, 3000); // 3초 후 이동
+};
 </script>
 
 <template>
@@ -18,35 +48,35 @@ const reservationStore = useReservationStore();
       <table class="st_table">
         <tbody>
           <tr>
-            <th><span class="fix th-name">이름 :</span></th>
+            <th><span class="fix th-name"><span>이</span><span>름</span>:</span></th>
             <td>{{ reservationStore.name }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-phone">전화번호 :</span></th>
+            <th><span class="fix th-phone"><span>전</span><span>화</span><span>번</span><span>호</span>:</span></th>
             <td>{{ reservationStore.phone }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-date">날짜 :</span></th>
+            <th><span class="fix th-date"><span>날</span><span>짜</span>:</span></th>
             <td>{{ reservationStore.selectedDate }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-time">시간 :</span></th>
+            <th><span class="fix th-time"><span>시</span><span>간</span>:</span></th>
             <td>
               {{ reservationStore.selectedHour }}시
               {{ reservationStore.selectedMinute }}분
             </td>
           </tr>
           <tr>
-            <th><span class="fix th-start">출발 :</span></th>
+            <th><span class="fix th-start"><span>출</span><span>발</span>:</span></th>
             <td>{{ reservationStore.selectedStart }}</td>
           </tr>
           <tr>
-            <th><span class="fix th-stop">도착 :</span></th>
+            <th><span class="fix th-stop"><span>도</span><span>착</span>:</span></th>
             <td>{{ reservationStore.selectedStop }}</td>
           </tr>
           <tr>
-            <th rowspan="{{ reservationStore.sizes.length }}">
-              <span class="fix th-bag">가방수량 :</span>
+            <th rowspan="{{ reservationStore.sizes.length }}" class="th-bag">
+              <span class="fix th-bag"><span>가</span><span>방</span><span>수</span><span>량</span>:</span>
             </th>
             <td>
               <p v-for="(item, i) in reservationStore.sizes" :key="i">
@@ -55,7 +85,7 @@ const reservationStore = useReservationStore();
             </td>
           </tr>
           <tr>
-            <th><span class="fix th-total">총 금액 :</span></th>
+            <th><span class="fix th-total"><span>총</span><span>금</span><span>액</span>:</span></th>
             <td>{{ reservationStore.totalPrice.toLocaleString() }}원</td>
           </tr>
         </tbody>
@@ -99,8 +129,16 @@ const reservationStore = useReservationStore();
       <h4>네이버페이결제</h4>
       <img src="/images/cr/yy_naver.jpg" />
     </div>
-    <router-link to="/yeyak5" class="st_btn">결제하기</router-link>
+    <button class="st_button st_reser" @click="confirmPayment">
+  결제하기
+</button>
   </div>
+<!-- 모달창 -->
+<div v-if="showModal" class="modal-overlay">
+  <div class="modal-box">
+    선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong>로 결제가 되었습니다.
+  </div>
+</div>
 </template>
 <style lang="scss" scoped>
 @use "@/assets/Main.scss" as *;
@@ -139,28 +177,47 @@ const reservationStore = useReservationStore();
   box-shadow: $box-shadow;
 }
 .st_table {
-  font-family: "Pretendard", sans-serif;
-  font-size: 15px;
+  width: 50%;
+  margin: 0 auto;         /* 수평 가운데 정렬 */
+  display: flex;         /* block으로 강제 전환 */
   border-collapse: collapse;
-}
-.st_table th {
-  position: relative;
-  text-align: left;
-  width: 180px; /* 고정된 너비 */
-  letter-spacing: 2px; /* 자간 설정 */
-  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  justify-content: center;
+  table-layout: fixed;
 }
 
-th,
-td {
-  padding: 10px;
-  text-align: left;
-  vertical-align: top;
+.st_table th,
+.st_table td {
+  border: none;             /* 선 제거 */
+  padding: 4px 6px;         /* 여백 좁게 */
+  vertical-align: middle;
 }
-th {
-  width: 100px;
+
+/* th: 작고 중앙 정렬 */
+.st_table th {
+  width: 80px;              
   text-align: center;
   white-space: nowrap;
+}
+
+/* td: 왼쪽 정렬 */
+.st_table td {
+  text-align: left;
+}
+/* ✅ 가방수량 th만 위로 정렬 */
+.st_table th.th-bag {
+  vertical-align: top !important;
+}
+/* 라벨 span: 양끝 균등 정렬 */
+.fix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  width: 100%;
+  gap: 0.1em;
+  justify-items: center;
+}
+
+.fix span {
+  display: inline-block;
 }
 
 .yy_credit {
@@ -230,9 +287,11 @@ th {
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  border: none;
 }
 
 .st_reser {
+  margin: 10px auto;
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
@@ -246,6 +305,29 @@ th {
 
 .st_reser:hover {
   background-color: $hover;
+}
+// 모달
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
 @media (max-width: 390px) {
   .st_wrap {
