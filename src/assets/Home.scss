@@ -111,8 +111,8 @@
 /* 아이콘 전체 영역 */
 .macontent2_icon {
   height: 170px;
-  margin-top: $margin-m + $margin-s;
-  margin-bottom: $margin-m + $margin-s;
+  margin-top: $margin-m * 2 + $margin-m ;
+  margin-bottom: $margin-m * 2;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -168,6 +168,17 @@
 }
 .mablue {
   color: #0066b3 !important;
+}
+// content3
+.ma3img{
+  width: 50%;
+  img{
+    width: 85%;
+  }
+}
+.locatesudal{
+  width: 95% !important;
+  text-align: left !important;
 }
 /* footer 전체영역 */
 // 풋터 상단
@@ -294,7 +305,7 @@ strong {
 
   .ma3img {
     img {
-      width: 120%;
+      width: 120% !important;
     }
   }
   .macontent3_gp {
@@ -356,7 +367,7 @@ strong {
   }
 
   .mavisimg > img {
-    padding: 0 10px 20px 20px !important;
+    padding: 20px 10px 20px 20px !important;
   }
 
   .mavistxt {
@@ -401,8 +412,8 @@ strong {
   }
   .hd_man,
   .hd_man img {
-    width: calc(34px - 5px) !important;
-    height: calc(34px - 6px) !important;
+    // width: calc(34px - 5px) !important;
+    // height: calc(34px - 6px) !important;
   }
   .hd_bag img {
     margin-top: 5px;
