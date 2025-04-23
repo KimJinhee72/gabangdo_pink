@@ -35,7 +35,7 @@
             </ul>
           </nav>
           <nav class="hd_extra">
-            <router-link to="/delivery">가방조회</router-link> |
+            <router-link to="/login">가방조회</router-link> |
             <div class="hd_myPage">
               <router-link to="/login" v-if="!isLoggedIn">로그인</router-link>
               <div class="hd_afterlogindropPage" v-else>
@@ -57,7 +57,7 @@
               ><img src="/images/txtlogo.png" alt="로고"
             /></router-link>
             <div class="hd_mobileRight">
-              <router-link to="/delivery" class="hd_bag"
+              <router-link to="/login" class="hd_bag"
                 ><img src="/images/bagfind_icon.png" alt="가방조회이미지"
               /></router-link>
               <router-link to="/login" class="hd_man"

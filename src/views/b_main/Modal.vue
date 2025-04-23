@@ -1,88 +1,108 @@
 <template>
-  <section class="Mamodal" id="MaModalid" v-if="isModalVisible">
+  <section class="Mamodal" v-if="visible">
     <div class="modal_content">
-      <!-- <img src="/public/images/ma/ma_modal/modal.png" alt="모달이미지" /> -->
-      <img src="/public/images/gh/ma_modal/modal.png" alt="모달이미지" />
-      <a class="close_modal" @click="close_modall">
-        <!-- <img src="/public/images/ma/ma_modal/x.png" alt="모달 x아이콘" /> -->
-        <img src="/public/images/gh/ma_modal/x.png" alt="모달 x아이콘" />
+      <img src="/images/gh/ma_modal/modal.png" alt="모달 이미지" />
+      <a class="close_modal" @click="$emit('close')">
+        <img src="/images/gh/ma_modal/x.png" alt="닫기 아이콘" />
       </a>
     </div>
   </section>
 </template>
+
 <script setup>
-import { ref, onMounted } from "vue";
-
-// 모달 상태를 반응형으로 관리
-const isModalVisible = ref(false);
-
-// 모달 열기
-const openModal = () => {
-  isModalVisible.value = true;
-};
-
-// 모달 닫기
-const close_modall = () => {
-  isModalVisible.value = false;
-};
-
-// 페이지 로드 시 모달을 열어둘 경우 (예: 테스트용으로)
-onMounted(() => {
-  openModal();
+defineProps({
+  visible: Boolean,
 });
+defineEmits(["close"]);
 </script>
+
 <style scoped>
-/* 모달 background */
 .Mamodal {
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99999;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   align-items: center;
   justify-content: center;
-  z-index: 99999;
-  display: none;
 }
-/* 모달창 */
+
 .modal_content {
-  /* background: white; */
-  padding: 20px;
-  text-align: center;
   position: relative;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
 }
+
 .modal_content img {
-  display: block; /* 이미지의 하단 여백 제거 */
-  margin: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
-/* 모달-닫기버튼 */
+
 .close_modal {
   position: absolute;
-  top: 48px;
-  right: 55px;
+  top: 50px;
+  right: 50px;
   cursor: pointer;
-  margin-top: 0;
 }
-/* 반응형 - 타블렛 (700px) */
-@media screen and (max-width: 700px) {
-  /* 모달이미지 */
+
+.close_modal img {
+  width: 24px;
+  height: 24px;
+}
+
+/* 📱 반응형 - 768px 이하 (태블릿) */
+@media screen and (max-width: 768px) {
   .modal_content {
-    width: 480px;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .close_modal {
+    top: 50px;
+    right: 50px;
   }
   .modal_content img {
     width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  .close_modal img {
+    width: 25px;
+    height: 25px;
   }
 }
-/* 반응형 - (500px) */
-@media screen and (max-width: 500px) {
-  /* 모달이미지 */
+
+/* 📱 반응형 - 390px 이하 (모바일) */
+@media screen and (max-width: 390px) {
   .modal_content {
-    width: 370px;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .close_modal {
+    top: 25px;
+    right: 25px;
   }
   .modal_content img {
     width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  .close_modal img {
+    width: 18px;
+    height: 18px;
   }
 }
 </style>

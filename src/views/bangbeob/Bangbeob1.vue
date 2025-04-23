@@ -19,46 +19,46 @@
           <div class="bb_processIcon1">
             <!-- 아이콘1_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page1/1p_icon1.png" alt="icon1" />
+              <img src="/images/yr/page1/1p_icon1.png" alt="icon1" />
             </div>
             <!-- 아이콘1_글 -->
             <span class="bb_span">예약/결제</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘2 -->
           <div class="bb_processIcon1">
             <!-- 아이콘2_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page1/1p_icon2.png" alt="icon2" />
+              <img src="/images/yr/page1/1p_icon2.png" alt="icon2" />
             </div>
             <!-- 아이콘2_글 -->
             <span class="bb_span">사진촬영/업로드</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘3 -->
           <div class="bb_processIcon1">
             <!-- 아이콘3_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page1/1p_icon3.png" alt="icon3" />
+              <img src="/images/yr/page1/1p_icon3.png" alt="icon3" />
             </div>
             <!-- 아이콘3_글 -->
             <span class="bb_span">픽업/배송</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘4 -->
           <div class="bb_processIcon1">
             <!-- 아이콘4_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page1/1p_icon4.png" alt="icon4" />
+              <img src="/images/yr/page1/1p_icon4.png" alt="icon4" />
             </div>
             <!-- 아이콘4_글 -->
             <span class="bb_span">짐찾기</span>
@@ -71,53 +71,55 @@
           <div class="bb_processIcon1">
             <!-- 아이콘1_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon1.png" alt="icon1" />
+              <img src="/images/yr/page2/2p_icon1.png" alt="icon1" />
             </div>
             <!-- 아이콘1_글 -->
             <span class="bb_spanPlus">1. 예약/결제</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘2 -->
           <div class="bb_processIcon1">
             <!-- 아이콘2_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon2.png" alt="icon2" />
+              <img src="/images/yr/page2/2p_icon2.png" alt="icon2" />
             </div>
             <!-- 아이콘2_글 -->
             <span class="bb_spanPlus">2. 사진촬영/업로드</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘3 -->
           <div class="bb_processIcon1">
             <!-- 아이콘3_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon3.png" alt="icon3" />
+              <img src="/images/yr/page2/2p_icon3.png" alt="icon3" />
             </div>
             <!-- 아이콘3_글 -->
             <span class="bb_spanPlus">3. 픽업/배송</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘4 -->
           <div class="bb_processIcon1">
             <!-- 아이콘4_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon4.png" alt="icon4" />
+              <img src="/images/yr/page2/2p_icon4.png" alt="icon4" />
             </div>
             <!-- 아이콘4_글 -->
             <span class="bb_spanPlus">4. 짐찾기</span>
           </div>
         </div>
         <!-- 예약하기 버튼 -->
-        <div class="bb_reservation_btn"><button>예약하기</button></div>
+        <div class="bb_reservation_btn">
+          <router-link to="/yeyak"><button>예약하기</button></router-link>
+        </div>
       </div>
     </div>
     <!-- 전달방법 -->
@@ -148,9 +150,7 @@
                 </div>
                 <!-- 카드1 아이콘 -->
                 <div class="bb_card1Icon">
-                  <img
-                    src="/public/images/yr/page1/1p_icon5.png"
-                    alt="비행기" />
+                  <img src="/images/yr/page1/1p_icon5.png" alt="비행기" />
                 </div>
               </div>
               <!-- 카드1 중간 -->
@@ -211,7 +211,7 @@
                 </div>
                 <!-- 카드2 아이콘 -->
                 <div class="bb_card1Icon">
-                  <img src="/public/images/yr/page1/1p_icon6.png" alt="숙소" />
+                  <img src="/images/yr/page1/1p_icon6.png" alt="숙소" />
                 </div>
               </div>
               <!-- 카드2 중간 -->
@@ -250,14 +250,16 @@
                 <div class="bb_card1Step3">
                   <div class="bb_cardTxt">
                     <p class="bb_stepTitle">고객 직접 전달 가능</p>
-                    <p class="bb_stepContent">
+                    <p class="bb_stepContent bb_plusSome">
                       운송 담당자가 짐을 수거하면 픽업 완료 및 예상 도착 시간이
                       포함된 메시지가 발송됩니다.
                     </p>
                   </div>
                 </div>
               </div>
-              <button class="bb_pickupBtn">픽업장소 위치안내</button>
+              <button class="bb_pickupBtn bb_removeSome">
+                픽업장소 위치안내
+              </button>
             </div>
           </div>
           <!-- 카드3 -->
@@ -272,9 +274,7 @@
                 </div>
                 <!-- 카드3 아이콘 -->
                 <div class="bb_card1Icon">
-                  <img
-                    src="/public/images/yr/page1/1p_icon7.png"
-                    alt="비행기" />
+                  <img src="/images/yr/page1/1p_icon7.png" alt="비행기" />
                 </div>
               </div>
               <!-- 카드3 중간 -->
@@ -320,7 +320,9 @@
                   </div>
                 </div>
               </div>
-              <button class="bb_pickupBtn">픽업장소 위치안내</button>
+              <button class="bb_pickupBtn bb_addPlusSome">
+                픽업장소 위치안내
+              </button>
             </div>
           </div>
         </div>
@@ -339,9 +341,7 @@
                 </div>
                 <!-- 카드1 아이콘 -->
                 <div class="bb_card1Icon">
-                  <img
-                    src="/public/images/yr/page1/1p_icon5.png"
-                    alt="비행기" />
+                  <img src="/images/yr/page1/1p_icon5.png" alt="비행기" />
                 </div>
               </div>
               <!-- 카드 하나로 -->
@@ -351,7 +351,7 @@
               </div>
               <div class="bb_cardMiddle">
                 <div class="bb_stepNumber"><p>2</p></div>
-                <p class="bb_stepTitle  bb_skyBlue">가방 전달</p>
+                <p class="bb_stepTitle bb_skyBlue">가방 전달</p>
               </div>
               <div class="bb_cardMiddle">
                 <div class="bb_stepNumber"><p>3</p></div>
@@ -372,9 +372,7 @@
                 </div>
                 <!-- 카드1 아이콘 -->
                 <div class="bb_card1Icon">
-                  <img
-                    src="/public/images/yr/page1/1p_icon6.png"
-                    alt="비행기" />
+                  <img src="/images/yr/page1/1p_icon6.png" alt="비행기" />
                 </div>
               </div>
               <!-- 카드 하나로 -->
@@ -384,7 +382,7 @@
               </div>
               <div class="bb_cardMiddle">
                 <div class="bb_stepNumber"><p>2</p></div>
-                <p class="bb_stepTitle  bb_skyBlue">가방 전달</p>
+                <p class="bb_stepTitle bb_skyBlue">가방 전달</p>
               </div>
               <div class="bb_cardMiddle">
                 <div class="bb_stepNumber"><p>3</p></div>
@@ -405,9 +403,7 @@
                 </div>
                 <!-- 카드1 아이콘 -->
                 <div class="bb_card1Icon">
-                  <img
-                    src="/public/images/yr/page1/1p_icon7.png"
-                    alt="비행기" />
+                  <img src="/images/yr/page1/1p_icon7.png" alt="비행기" />
                 </div>
               </div>
               <!-- 카드 하나로 -->
@@ -417,7 +413,7 @@
               </div>
               <div class="bb_cardMiddle">
                 <div class="bb_stepNumber"><p>2</p></div>
-                <p class="bb_stepTitle  bb_skyBlue">가방 전달</p>
+                <p class="bb_stepTitle bb_skyBlue">가방 전달</p>
               </div>
               <div class="bb_cardMiddle">
                 <div class="bb_stepNumber"><p>3</p></div>
@@ -427,7 +423,6 @@
               <button class="bb_pickupBtn">픽업장소 위치안내</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -439,7 +434,7 @@
         <div class="bb_contain3Left">
           <!-- 용달씨 그림 -->
           <div class="bb_yongdal">
-            <img src="/public/images/yr/page1/1p_character.png" alt="" />
+            <img src="/images/yr/page1/1p_character.png" alt="" />
           </div>
           <p class="bb_sizeControll">확인해주세요!</p>
         </div>
@@ -537,11 +532,14 @@
 
 <style lang="scss" scoped>
 @use "/src/assets/_Variables.scss" as *;
+
 .bb_wrap {
   position: relative;
   padding-top: 100px;
+  font-family: $font-family;
   // 이너
   .bb_inner {
+
     position: relative;
     max-width: 1300px;
     margin: 0 auto;
@@ -564,6 +562,7 @@
         padding-bottom: 10px;
         .title_txt1 h1 {
           font-size: 35px;
+          font-family: $font-ownglyph;
         }
       }
       // 이용절차
@@ -640,12 +639,16 @@
         color: $notice-1stcolor;
         border-radius: 40px;
         padding: 1% 3% 1% 3%;
-        font-size: 20px;
+        font-size: 25px;
         white-space: nowrap;
         border: none;
         margin-top: 4%;
         margin-bottom: 6%;
         cursor: pointer;
+        font-family: $font-ownglyph;
+      }
+      .bb_reservation_btn :hover{
+        background-color: #00b3eb;
       }
     }
   }
@@ -672,7 +675,7 @@
       }
     }
     // 전달방법 카드전체
-    .bb_cardMobile{
+    .bb_cardMobile {
       display: none;
     }
     .bb_cardAll {
@@ -804,6 +807,15 @@
               }
             }
           }
+          .bb_plusSome {
+            margin-bottom: 90px;
+          }
+          .bb_removeSome {
+            display: none;
+          }
+          .bb_addPlusSome {
+            margin-left: 230px !important;
+          }
           .bb_pickupBtn {
             position: relative;
             background-color: $main-color;
@@ -909,11 +921,14 @@
       }
     }
     .bb_container4Bg {
-      background-color: #e9e9e9;
+      background-color: #ffffff;
       .bb_inner {
+        background-color: #e9e9e9;
+        border-radius: 15px;
+        padding-left: 2%;
         .bb_notice {
           padding-top: 2%;
-          padding-bottom: 2%;
+          padding-bottom: 1%;
           h3 {
             font-size: 22px;
             padding-bottom: 5px;
@@ -1018,14 +1033,14 @@
   .bb_yongdal {
     display: none;
   }
-  .bb_container4{
+  .bb_container4 {
     padding: 0 !important;
     margin-bottom: 30px;
   }
   .bb_container4 {
     padding-left: 2% !important;
   }
-  
+
   .bb_container3 .bb_inner {
     flex-direction: column !important;
     text-align: left;
@@ -1045,10 +1060,10 @@
   .bb_noteDown2 {
     width: 100% !important;
   }
-  .bb_container4{
+  .bb_container4 {
     padding: 0 !important;
   }
-  .bb_notice{
+  .bb_notice {
     padding-top: 30px !important;
   }
 }
@@ -1091,14 +1106,14 @@
   }
 
   // 카드안
-  .bb_cardMobileNone{
+  .bb_cardMobileNone {
     display: none;
   }
-  .bb_cardMobile{
+  .bb_cardMobile {
     display: block !important;
   }
-  .bb_card{
-    padding:0 !important;
+  .bb_card {
+    padding: 0 !important;
   }
   .bb_card1 {
     flex-direction: column;
@@ -1114,10 +1129,10 @@
       width: 100%;
     }
   }
-  .bb_cardMiddle{
+  .bb_cardMiddle {
     display: flex;
   }
-  .bb_cardMiddle{
+  .bb_cardMiddle {
     padding-top: 10px !important;
     padding-left: 70px !important;
   }
@@ -1125,14 +1140,14 @@
     margin-bottom: 15px !important;
     padding: 5px 12px !important;
   }
-  .bb_stepTitle{
+  .bb_stepTitle {
     margin-top: 8px !important;
     margin-left: 10px;
     font-weight: bold;
     color: $main-color;
   }
-  .bb_skyBlue{
-    color: #00B3EB;
+  .bb_skyBlue {
+    color: #00b3eb;
   }
   .bb_pickupBtn {
     margin-top: 5px !important;
@@ -1143,10 +1158,10 @@
     padding: 5px !important;
   }
   // 안내사항 1
-  .bb_sizeControll{
+  .bb_sizeControll {
     font-size: 20px !important;
   }
-  .bb_container3{
+  .bb_container3 {
     padding-left: 30px !important;
   }
 
@@ -1158,23 +1173,24 @@
   }
 
   // 안내사항2
-  .bb_container4{
+  .bb_container4 {
     padding: 0 !important;
     margin-bottom: 30px;
   }
-  .bb_container4 .bb_title3 h1{
+  .bb_container4 .bb_title3 h1 {
     padding-bottom: 5px !important;
   }
-  .bb_container4 .bb_title3{
+  .bb_container4 .bb_title3 {
     padding-bottom: 5px !important;
   }
-  .bb_container4 h3{
+  .bb_container4 h3 {
     font-size: 18px !important;
   }
-  .bb_container4 li, p{
+  .bb_container4 li,
+  p {
     font-size: 14px !important;
   }
-  .bb_notice{
+  .bb_notice {
     padding-top: 20px !important;
   }
 }

@@ -22,46 +22,46 @@ import Tab from "../../components/Tab.vue";
           <div class="bb_processIcon1">
             <!-- 아이콘1_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon1.png" alt="icon1" />
+              <img src="/images/yr/page2/2p_icon1.png" alt="icon1" />
             </div>
             <!-- 아이콘1_글 -->
             <span class="bb_span">무인보관함 방문</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘2 -->
           <div class="bb_processIcon1">
             <!-- 아이콘2_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon2.png" alt="icon2" />
+              <img src="/images/yr/page2/2p_icon2.png" alt="icon2" />
             </div>
             <!-- 아이콘2_글 -->
             <span class="bb_span">보관함 선택 </span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘3 -->
           <div class="bb_processIcon1">
             <!-- 아이콘3_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon3.png" alt="icon3" />
+              <img src="/images/yr/page2/2p_icon3.png" alt="icon3" />
             </div>
             <!-- 아이콘3_글 -->
             <span class="bb_span">비밀번호 설정</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘4 -->
           <div class="bb_processIcon1">
             <!-- 아이콘4_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon4.png" alt="icon4" />
+              <img src="/images/yr/page2/2p_icon4.png" alt="icon4" />
             </div>
             <!-- 아이콘4_글 -->
             <span class="bb_span">물품보관</span>
@@ -74,46 +74,46 @@ import Tab from "../../components/Tab.vue";
           <div class="bb_processIcon1">
             <!-- 아이콘1_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon1.png" alt="icon1" />
+              <img src="/images/yr/page2/2p_icon1.png" alt="icon1" />
             </div>
             <!-- 아이콘1_글 -->
             <span class="bb_spanPlus">1. 무인보관함 방문</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘2 -->
           <div class="bb_processIcon1">
             <!-- 아이콘2_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon2.png" alt="icon2" />
+              <img src="/images/yr/page2/2p_icon2.png" alt="icon2" />
             </div>
             <!-- 아이콘2_글 -->
             <span class="bb_spanPlus">2. 보관함 선택</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘3 -->
           <div class="bb_processIcon1">
             <!-- 아이콘3_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon3.png" alt="icon3" />
+              <img src="/images/yr/page2/2p_icon3.png" alt="icon3" />
             </div>
             <!-- 아이콘3_글 -->
             <span class="bb_spanPlus">3. 비밀번호 설정</span>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
-            <img src="/public/images/yr/page1/arrow.png" alt="arrow1" />
+            <img src="/images/yr/page1/arrow.png" alt="arrow1" />
           </div>
           <!-- 아이콘4 -->
           <div class="bb_processIcon1">
             <!-- 아이콘4_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/public/images/yr/page2/2p_icon4.png" alt="icon4" />
+              <img src="/images/yr/page2/2p_icon4.png" alt="icon4" />
             </div>
             <!-- 아이콘4_글 -->
             <span class="bb_spanPlus">4. 물품보관</span>
@@ -150,7 +150,7 @@ import Tab from "../../components/Tab.vue";
               <!-- 그림 -->
               <div class="bb_luggageimg">
                 <img
-                  src="/public/images/yr/page2/2p_icon5.png"
+                  src="/images/yr/page2/2p_icon5.png"
                   class="bb_smaller"
                   alt="sSize" />
               </div>
@@ -172,7 +172,7 @@ import Tab from "../../components/Tab.vue";
               <!-- 그림 -->
               <div class="bb_luggageimg">
                 <img
-                  src="/public/images/yr/page2/2p_icon6.png"
+                  src="/images/yr/page2/2p_icon6.png"
                   alt="sSize"
                   class="bb_smaller" />
               </div>
@@ -194,7 +194,7 @@ import Tab from "../../components/Tab.vue";
               <!-- 그림 -->
               <div class="bb_luggageimg">
                 <img
-                  src="/public/images/yr/page2/2p_icon7.png"
+                  src="/images/yr/page2/2p_icon7.png"
                   alt="sSize"
                   class="bb_smaller" />
               </div>
@@ -216,7 +216,7 @@ import Tab from "../../components/Tab.vue";
               <!-- 그림 -->
               <div class="bb_luggageimg">
                 <img
-                  src="/public/images/yr/page2/2p_icon8.png"
+                  src="/images/yr/page2/2p_icon8.png"
                   alt="sSize"
                   class="bb_smaller" />
               </div>
@@ -370,7 +370,7 @@ import Tab from "../../components/Tab.vue";
           <div class="bb_contain3Left">
             <!-- 용달씨 그림 -->
             <div class="bb_yongdal">
-              <img src="/public/images/yr/page2/2p_character.png" alt="" />
+              <img src="/images/yr/page2/2p_character.png" alt="" />
             </div>
             <p class="bb_sizeControll">확인해주세요!</p>
           </div>
@@ -929,11 +929,14 @@ import Tab from "../../components/Tab.vue";
       }
     }
     .bb_container4Bg {
-      background-color: #e9e9e9;
+      background-color: #ffffff;
       .bb_inner {
+        background-color: #e9e9e9;
+        border-radius: 15px;
+        padding-left: 2%;
         .bb_notice {
           padding-top: 2%;
-          padding-bottom: 2%;
+          padding-bottom: 1%;
           h3 {
             font-size: 22px;
             padding-bottom: 5px;
@@ -1124,11 +1127,11 @@ import Tab from "../../components/Tab.vue";
   .bb_luggageTitleM {
     font-size: 18px !important;
   }
-  .bb_luggageTitle {
-    font-size: 10px !important;
+  .bb_luggageTitle p{
+    font-size: 11px !important;
   }
-  .bb_luggagedetail {
-    font-size: 7.8px !important;
+  .bb_luggagedetail p{
+    font-size: 8px !important;
   }
 
   // 수화물 표안내
@@ -1171,16 +1174,16 @@ import Tab from "../../components/Tab.vue";
   }
   // 분류별 색깔주기
   .bb_red{
-    color: #f60000;
+    color: #000000;
   }
   .bb_blue{
-    color: #0029FF;
+    color: #000000;
   }
   .bb_green{
-    color: #00AC11;
+    color: #000000;
   }
   .bb_purple{
-    color: #AD00FF;
+    color: #000000;
   }
   .bb_someMore{
     padding-left: 8px !important;

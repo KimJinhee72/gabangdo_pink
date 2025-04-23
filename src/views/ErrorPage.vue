@@ -49,7 +49,7 @@ router.go(-1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 115px;
   .bb_404Letter {
     justify-content: center;
     display: flex;
@@ -96,7 +96,7 @@ router.go(-1);
     display: flex;
     width: 20%;
     gap: 7%;
-    margin-bottom: 95px;
+    margin-bottom: 130px;
     button {
       width: 100%;
       border: 1.5px solid rgb(150, 150, 150);
