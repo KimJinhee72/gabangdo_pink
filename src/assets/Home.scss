@@ -66,7 +66,7 @@
 .macontent1_wrap,
 .macontent1_wrap1 {
   width: 100%;
-  background-color: #0066b3;
+  background-color: #007bd8;
   margin: auto;
 }
 .macontent1_wrap .inner {
@@ -110,9 +110,10 @@
 }
 /* 아이콘 전체 영역 */
 .macontent2_icon {
+  display: none;
   height: 170px;
-  margin-top: $margin-m + $margin-s;
-  margin-bottom: $margin-m + $margin-s;
+  margin: $margin-m * 2 auto;
+
   display: flex;
   justify-content: center;
   text-align: center;
@@ -168,6 +169,16 @@
 }
 .mablue {
   color: #0066b3 !important;
+}
+// content3 수달3d
+.ma3img {
+  width: 40%;
+  img {
+    width: 100%;
+  }
+  .ma_sudal3img {
+    width: 110%;
+  }
 }
 /* footer 전체영역 */
 // 풋터 상단
@@ -291,17 +302,41 @@ strong {
       text-align: center;
     }
   }
-
   .ma3img {
-    img {
-      width: 120%;
-    }
-  }
-  .macontent3_gp {
-    width: 200% !important;
+    width: 60% !important;
   }
 }
-
+@media screen and (max-width: 1230px) {
+  .hd_mobileMenu {
+    display: block !important;
+  }
+  .hd_extra1 {
+    width: 17%;
+    margin-top: 5px;
+    text-align: right;
+    img {
+      width: 36px;
+    }
+  }
+  .hd_man,
+  .hd_man img {
+    width: calc(34px - 5px) !important;
+    height: calc(34px - 5px) !important;
+    margin-right: 20px;
+    margin-bottom: 3px;
+  }
+  // delivery/login icon
+  .hd_wideMenu {
+    display: none !important;
+  }
+  // 비주얼이미지(오른쪽)
+  .mavisimg {
+    width: 67%;
+  }
+  .mavistxt img {
+    margin-top: 100px !important;
+  }
+}
 @media screen and (max-width: 1170px) {
   .main {
     padding-top: 50px !important;
@@ -321,7 +356,9 @@ strong {
   .mavisimg > img {
     padding: 0px 0px 50px 50px;
   }
-
+  .mavistxt img {
+    margin-top: 0px !important;
+  }
   .macontent1_down {
     max-width: 78%;
     margin: auto;
@@ -356,14 +393,21 @@ strong {
   }
 
   .mavisimg > img {
+    width: 270px;
     padding: 0 10px 20px 20px !important;
   }
 
   .mavistxt {
     margin-top: 0 !important;
     align-items: center !important;
+    img{
+      padding: 20px 20px 30px;
+      width: 270px !important;
+      margin: 10px 0 0;
+    }
   }
 
+  .mavistxt > button{margin: 20px 0 10px;}
   .mavistxt > h4 {
     text-align: center;
   }
@@ -375,26 +419,12 @@ strong {
     gap: 0 !important;
   }
 }
-@media screen and (max-width: 1230px) {
-  .hd_mobileMenu {
-    display: block !important;
-  }
-  .hd_extra1 {
-    width: 17%;
-    margin-top: 5px;
-    text-align: right;
-    img {
-      width: 36px;
-    }
-  }
-  // delivery/login icon
-  .hd_wideMenu {
-    display: none !important;
-  }
-}
-@media screen and (max-width: 896px) {  
+
+@media screen and (max-width: 896px) {
   .hd_logo {
-    width: 140px;
+    width: 120px !important;
+    text-align: center;
+    margin-right: 10px;
     img {
       width: 120px;
     }
@@ -403,9 +433,10 @@ strong {
   .hd_man img {
     width: calc(34px - 5px) !important;
     height: calc(34px - 6px) !important;
+    margin-right: 20px;
   }
   .hd_bag img {
-    margin-top: 5px;
+    margin-top: 3px;
   }
   .hd_hambar a {
     width: 35px;
@@ -524,9 +555,15 @@ strong {
   .mavisimg img {
     padding: 0 0 0 !important;
   }
+  .mavistxt img {
+    width: 270px !important;
+  }
+  .macontent2_icon{
+    margin: 50px 0  30px !important;
+  }
   .macontent2_iconimg {
     gap: 0 !important;
-  }
+  }     
   .macontent2_wrap {
     display: none;
   }
@@ -564,12 +601,16 @@ strong {
 
   .ma3img {
     img {
-      width: 80%;
+      max-width: 190px;
+      min-width: 160px;
     }
   }
 
   .macontent3_gp {
-    width: 265% !important;
+    margin: 30px 0 !important;
+  }
+  .macontent3_gp:last-child{
+    margin-bottom: 0 !important;
   }
 }
 
@@ -588,8 +629,10 @@ strong {
   .swiper-button-next {
     display: none;
   }
-
-  .masize1 {
+  .mavistxt img{
+    width: 250px !important;
+  }
+  .masize , .masize1 {
     width: 100%;
     max-width: 250px !important;
     display: block;
@@ -612,7 +655,6 @@ strong {
   .macontent1_down {
     flex-direction: column;
     align-items: center;
-    padding: 10px 0 !important;
   }
 
   .masize {

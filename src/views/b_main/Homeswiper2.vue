@@ -19,7 +19,7 @@
                 <!-- 아이콘 이미지 -->
                 <router-link to="/bangbeob1"
                   ><img
-                    src="/public/images/gh/ma_content2/bangbeobdo_icon.png"
+                    src="/images/gh/ma_content2/bangbeobdo_icon.png"
                     alt="방법도 아이콘"
                 /></router-link>
                 <!-- hover시 보일 텍스트 -->
@@ -43,7 +43,7 @@
                 <!-- 아이콘 이미지 -->
                 <router-link to="/yeyak"
                   ><img
-                    src="/public/images/gh/ma_content2/reservation_icon.png"
+                    src="/images/gh/ma_content2/reservation_icon.png"
                     alt="예약도 아이콘"
                 /></router-link>
                 <!-- hover시 보일 텍스트 -->
@@ -67,7 +67,7 @@
                 <!-- 아이콘 이미지 -->
                 <router-link to="/yogeum"
                   ><img
-                    src="/public/images/gh/ma_content2/cash_icon.png"
+                    src="/images/gh/ma_content2/cash_icon.png"
                     alt="요금도 아이콘"
                 /></router-link>
                 <!-- hover시 보일 텍스트 -->
@@ -92,7 +92,7 @@
                 <!-- 아이콘 이미지 -->
                 <router-link to="/sotong"
                   ><img
-                    src="/public/images/gh/ma_content2/comunity_icon.png"
+                    src="/images/gh/ma_content2/comunity_icon.png"
                     alt="소통도 아이콘"
                 /></router-link>
                 <!-- hover시 보일 텍스트 -->
@@ -117,7 +117,7 @@
                 <!-- 아이콘 이미지 -->
                 <router-link to="/yeohaeng"
                   ><img
-                    src="/public/images/gh/ma_content2/trip_icon.png"
+                    src="/images/gh/ma_content2/trip_icon.png"
                     alt="여행도 아이콘"
                 /></router-link>
                 <!-- hover시 보일 텍스트 -->

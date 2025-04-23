@@ -21,7 +21,7 @@
           <a href="#">추가요금 발생지역 > </a>
           <p>
             <img
-              src="/public/images/geen/caution_icon.png"
+              src="/images/geen/caution_icon.png"
               alt="주의표시" />수하물 개당요금
           </p>
         </div>
@@ -35,7 +35,7 @@
         <div class="yg_refundProcess">
           <ul>
             <li class="yg_refunddLi1">
-              <img src="/public/images/geen/1/announce.png" alt="알림이미지" />
+              <img src="/images/geen/1/announce.png" alt="알림이미지" />
             </li>
             <li class="yg_refunddLi2">
               <a>환불신청</a><span> > </span> <a>환불여부확인</a>

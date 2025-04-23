@@ -2,15 +2,22 @@
   <header>
     <div class="header">
       <div class="inner">
+        <!-- 데스크탑 메뉴 -->
         <div class="hd_wideMenu">
-          <router-link to="/" class="hd_logo"
-            ><img src="/images/txtlogo.png" alt="로고"
-          /></router-link>
+          <!-- 로고 :좌영역 -->
+          <router-link to="/" class="hd_logo">
+            <img src="/images/txtlogo.png" alt="로고" />
+          </router-link>
+          <!-- 메인탭메뉴(방법도/요금도/예약도/소통도/여행도) :중간영역 -->
           <nav v-if="!isMobile" class="hd_menu">
+            <!-- 메인메뉴  -->
             <ul
               @mouseenter="showAllSubMenu = true"
               @mouseleave="showAllSubMenu = false">
-              <li v-for="(item, index) in menuItems" :key="index">
+              <li
+                v-for="(item, index) in menuItems"
+                :key="index"
+                @click="handleMenuClick(item)">
                 <router-link
                   v-if="!item.sub"
                   :to="item.to"
@@ -23,6 +30,7 @@
                   :class="{ mainMenu: item.label === '예약도' }">
                   {{ item.label }}
                 </a>
+                <!-- 서브메뉴영역 -->
                 <ul
                   v-if="item.sub"
                   class="subMenu"
@@ -34,6 +42,7 @@
               </li>
             </ul>
           </nav>
+          <!--  가방조회/로그인: 오른쪽 영역-->
           <nav class="hd_extra">
             <router-link to="/delivery">가방조회</router-link> |
             <div class="hd_myPage">
@@ -42,62 +51,71 @@
                 <span class="user-name">{{ userName }}</span>
                 <div class="hd_afterlogindropPage_content">
                   <router-link to="/yeyak4">마이페이지</router-link>
-                  <a @click="logout"> 로그아웃</a>
+                  <a @click="logout">로그아웃</a>
                 </div>
               </div>
             </div>
           </nav>
         </div>
+
+        <!--1230px 및 모바일 메뉴 -->
         <div class="hd_mobileMenu">
-          <nav class="hd_extra1">
-            <a href="#" class="hd_hambar" @click.prevent="toggleShortMenu"
-              ><img src="/images/geen/bar_humburger_icon.png" alt="햄버거메뉴"
-            /></a>
-            <router-link to="/" class="hd_logo"
-              ><img src="/images/txtlogo.png" alt="로고"
-            /></router-link>
+          <!-- 헤더 아이콘 영역 -->
+          <nav class="hd_hambar1 hd_extra1">
+            <!-- 햄버거바 -->
+            <a href="#" class="hd_hambar" @click.prevent="toggleShortMenu">
+              <img src="/images/geen/bar_humburger_icon.png" alt="햄버거메뉴" />
+            </a>
+            <!-- 로고 -->
+            <router-link to="/" class="hd_logo">
+              <img src="/images/txtlogo.png" alt="로고" />
+            </router-link>
+            <!-- 가방/로그인 아이콘 -->
             <div class="hd_mobileRight">
-              <router-link to="/delivery" class="hd_bag"
-                ><img src="/images/bagfind_icon.png" alt="가방조회이미지"
-              /></router-link>
-              <router-link to="/login" class="hd_man"
-                ><img src="/images/gh/man1_icon.png" alt="로그인이미지"
-              /></router-link>
+              <router-link to="/delivery" class="hd_bag">
+                <img src="/images/bagfind_icon.png" alt="가방조회이미지" />
+              </router-link>
+              <router-link to="/login" class="hd_man">
+                <img src="/images/gh/man1_icon.png" alt="로그인이미지" />
+              </router-link>
+            </div>
+            <!-- 1230px 및 모바일에서 열리는 메뉴 파랑바탕-->
+            <div
+              class="hd_menu1"
+              :class="{ show: shortMenu, leave: isLeaving }"
+              v-show="shortMenu"
+              @mouseleave="handleMouseLeave"
+              @mouseenter="clearLeave">
+              <span @click.prevent="closeMobileMenu" role="button">X</span>
+              <ul>
+                <li v-for="(item, index) in menuItems" :key="index">
+                  <router-link
+                    v-if="!item.sub"
+                    :to="item.to"
+                    @click="handleMenuClick(item)">
+                    <span>{{ item.label }}</span>
+                  </router-link>
+                  <div v-else>
+                    <a href="#" @click.prevent="toggleMobileSub(index)">
+                      {{ item.label }}
+                    </a>
+                    <ul v-if="openedMobileMenu === index" class="subMenu show">
+                      <li v-for="(sub, idx) in item.sub" :key="idx">
+                        <router-link :to="sub.to" @click="handleMenuClick(item)">{{
+                          sub.label
+                        }}</router-link>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
             </div>
           </nav>
         </div>
-
-        <div
-          class="hd_menu1"
-          :class="{ show: shortMenu, leave: isLeaving }"
-          v-show="shortMenu"
-          @mouseleave="handleMouseLeave"
-          @mouseenter="clearLeave">
-          <span @click.prevent="closeMobileMenu" role="button">X</span>
-          <ul>
-            <li v-for="(item, index) in menuItems" :key="index">
-              <!-- submenu가 없는 경우 바로 링크 -->
-              <router-link v-if="!item.sub" :to="item.to"
-                ><span>{{ item.label }}</span></router-link
-              >
-              <div v-else>
-                <a href="#" @click.prevent="toggleMobileSub(index)">
-                  {{ item.label }}
-                </a>
-                <ul
-                  v-if="openedMobileMenu === index"
-                  class="subMenu show">
-                  <li v-for="(sub, idx) in item.sub" :key="idx">
-                    <router-link :to="sub.to">{{ sub.label }}</router-link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
-    <div   :class="{ show: showAllSubMenu }"  class="hd_subMenubg"  ></div>
+    <!-- 전체 서브메뉴 바탕 -->
+    <div :class="{ show: showAllSubMenu }" class="hd_subMenubg"></div>
   </header>
 </template>
 
@@ -111,7 +129,11 @@ import { storeToRefs } from "pinia";
 const isLeaving = ref(false); // 트랜지션 상태
 const leaveTimeout = ref(null);
 const isMobile = ref(window.innerWidth < 896);
-//
+const router = useRouter();
+const authStore = useAuthStore();
+// 햄버거 메뉴 토글 상태
+const shortMenu = ref(false);
+
 // 마우스를 메뉴 밖으로 벗어났을 때
 function handleMouseLeave() {
   isLeaving.value = true;
@@ -127,6 +149,13 @@ function closeMobileMenu() {
     isLeaving.value = false;
   }, 300);
 }
+
+const handleMenuClick = (item) => {
+  if (isMobile.value) {
+    shortMenu.value = false;
+    openedMobileMenu.value = null;
+  }
+};
 // 마우스가 다시 들어왔을 때
 function clearLeave() {
   clearTimeout(leaveTimeout.value);
@@ -137,8 +166,7 @@ function clearLeave() {
 onBeforeUnmount(() => {
   clearTimeout(leaveTimeout.value);
 });
-const router = useRouter();
-const authStore = useAuthStore();
+
 const { isLoggedIn, userName } = storeToRefs(authStore);
 const logout = () => {
   authStore.logout();
@@ -149,6 +177,7 @@ const openedMobileMenu = ref(null); // 모바일에서 열린 submenu 인덱스
 const toggleMobileSub = (index) => {
   openedMobileMenu.value = openedMobileMenu.value === index ? null : index;
 };
+
 // 메뉴 호버
 const showAllSubMenu = ref(false); // 현재 열린 서브메뉴 li의 index
 const menuItems = [
@@ -186,9 +215,6 @@ const menuItems = [
   },
 ];
 
-// 햄버거 메뉴 토글 상태
-const shortMenu = ref(false);
-
 // 햄버거 메뉴 열릴 때 body 스크롤 방지
 watch(shortMenu, (val) => {
   document.body.style.overflow = val ? "hidden" : "auto";
@@ -200,6 +226,7 @@ watch(shortMenu, (val) => {
 function toggleShortMenu() {
   shortMenu.value = !shortMenu.value;
 }
+
 // 창 크기 변경 시 모바일 여부 확인 + 창이 커지면 메뉴 닫기
 const updateScreenSize = () => {
   const width = window.innerWidth;
@@ -258,7 +285,7 @@ body.modal-open {
 }
 // 로고
 .hd_logo {
-  width: 140px;
+  width: 130px;
   img {
     width: 120px;
   }
@@ -299,9 +326,6 @@ body.modal-open {
         color: #fff;
         font-weight: bold;
         background-color: $main-color;
-      }
-      .mainMenu {
-        border: 1px solid $main-color;
       }
       .subMenu {
         width: 100%;
@@ -418,7 +442,7 @@ body.modal-open {
   align-items: center;
   gap: 5px;
   color: $main-color;
-  a{
+  a {
     padding: 10px 5px;
     margin-bottom: 5px;
   }
@@ -504,11 +528,11 @@ body.modal-open {
     brightness(60%) contrast(96%);
 }
 .hd_mobileRight {
-  width: 12%;
+  width: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 .hd_subMenubg {
   position: fixed;
@@ -516,7 +540,7 @@ body.modal-open {
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: rgba(255,255,255,.8);
+  background-color: rgba(255, 255, 255, 0.8);
   z-index: 8;
   opacity: 0;
   transition: opacity 0.3s ease;

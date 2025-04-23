@@ -1,13 +1,13 @@
 <template>
-  <!-- 탭아래 이미지영역 -->
+  <!-- 여행도 전체영역 -->
   <div class="inner">
     <transition name="fade">
-      <!-- 탭1:축제안내  -->
+      <!-- 대구축제 전체영역  -->
       <div v-if="currentTab === 'guide1'" key="guide1">
-        <Yh_Festival/>
+        <Yh_Festival />
       </div>
-      <!-- 탭2:시티투어버스 -->
-      <div v-else key="guide2">
+      <!-- 시티투어버스 전체영역 -->
+      <div v-else key="guide2" class="yh_cititourBus">
         <!-- 순환버스 -->
         <div class="yh_roundBus">
           <!-- 순환버스 제목 -->
@@ -22,6 +22,9 @@
               <img v-if="imgSrc" :src="imgSrc" alt="순환버스지도" />
             </a>
           </div>
+        </div>
+        <!-- 테마버스 -->
+        <div class="yh_themaBus">
           <!-- 테마버스 제목 -->
           <div class="bb_title1">
             <div class="title_txt1">
@@ -29,9 +32,7 @@
             </div>
           </div>
           <!-- 테마버스 이미지 -->
-          <div class="yh_themaBus">
-            <YeohaengSwiper />
-          </div>
+          <YeohaengSwiper />
         </div>
       </div>
     </transition>
@@ -42,8 +43,6 @@
 import Yh_Festival from "./Yh_Festival.vue";
 import YeohaengSwiper from "./YeohaengSwiper.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
-
-
 
 const currentTab = ref("guide2");
 // 순환버스 이미지 크기
@@ -74,10 +73,10 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 @use "/src/assets/Variables" as *;
 // 전체
-.yh_themaBus{
-
+.inner {
+  width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
-  margin-bottom: 50px;
 }
 // 제목
 .bb_title1 {
@@ -88,35 +87,24 @@ onBeforeUnmount(() => {
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
-  margin-top: 100px; 
+  margin-top: 100px;
   .title_txt1 h1 {
     font-size: 35px;
   }
 }
+// 대구축제 탭
 .yh_tab-container {
   width: 100%;
   height: 100%;
 }
-
-.inner {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-}
 .yh_tab-container .inner {
   padding: 20px;
-  @media (max-width: 1170px) {
+}
+@media (max-width: 1170px) {
+  .yh_tab-container .inner {
     padding: 40px 0 0;
   }
 }
-.yh_tab-bar {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
 .yh_tab {
   flex: 1;
   text-align: center;
@@ -138,34 +126,34 @@ onBeforeUnmount(() => {
     background-color: #007bff;
     color: white;
   }
-
-  @media (max-width: 600px) {
+}
+@media (max-width: 600px) {
+  .yh_tab {
     flex-direction: column;
     padding: 14px 0;
     font-size: 16px;
   }
-
-  @media (max-width: 376px) {
+}
+@media (max-width: 376px) {
+  .yh_tab {
     padding: 12px 0;
     font-size: 15px;
   }
 }
-
-.iframe-view {
-  width: 100%;
-  height: 900px;
-  border: none;
-  border-radius: 8px;
-
-  @media (max-width: 600px) {
-    height: 600px;
-  }
-
-  @media (max-width: 376px) {
-    height: 500px;
-  }
+.yh_tab-bar {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
 }
-
+// 시티투어
+// 시티투어 전체 영역
+@media screen and (max-width:760px) {
+.yh_cititourBus{
+  margin: 0 20px;
+}
+}  
 .yh_content-box {
   width: 100%;
   max-width: 700px;
@@ -189,5 +177,9 @@ onBeforeUnmount(() => {
 .fade-leave-to {
   opacity: 0;
 }
-
+// 시티투어버스
+.yh_themaBus {
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
 </style>

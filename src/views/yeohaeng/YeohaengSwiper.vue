@@ -21,49 +21,49 @@
       ><h4>군위시장투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_02.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_02.jpg"
           alt="군위전통시장투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>현풍투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_03.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_03.jpg"
           alt="현풍전통시장투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>사시사철투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_04.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_04.jpg"
           alt="사시사철투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>낙동강투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_05.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_05.jpg"
           alt="낙동강투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>군위군돋보기투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_06.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_06.jpg"
           alt="군위군돋보기투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>팔공산투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_07.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_07.jpg"
           alt="팔공산투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>야경투어</h4>
       <a href="#"
         ><img
-          src="/public/images/geen/1/KakaoTalk_20250410_194237551_01.jpg"
+          src="/images/geen/1/KakaoTalk_20250410_194237551_01.jpg"
           alt="야경투어" /></a
     ></swiper-slide>
     <template #container-end>
