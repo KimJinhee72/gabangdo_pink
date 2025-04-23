@@ -13,8 +13,10 @@ html{
   }
 
   /* 스크롤 바 핸들  */
+
   ::-webkit-scrollbar-thumb {    
     background: #ffeb35;
+
     border-radius: 10px;
   }
   @media screen and (max-width : 390) {

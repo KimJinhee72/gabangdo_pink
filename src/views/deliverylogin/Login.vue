@@ -2,7 +2,7 @@
   <!-- 로그인 페이지 틀 -->
   <div class="bb_login-container">
     <div class="bb_logoimg">
-    <img src="/public/images/yr/loginpage/logo (1).png" alt="">
+    <img src="/public/images/yr/loginpage/logory.png" alt="">
   </div>
     <p class="bb_login-sub">여행의 시작은 가방도와 함께</p>
 
@@ -24,7 +24,7 @@
     </form>
 
     <div class="bb_login-links">
-      <router-link to="signups">아이디 찾기</router-link> | <router-link to="/findpassword">비밀번호 찾기</router-link> |
+      <router-link to="signups">아이디 찾기</router-link> | <router-link to="/delivery">비밀번호 찾기</router-link> |
       <router-link to="/signup">회원가입</router-link>
     </div>
 
@@ -104,7 +104,10 @@ const handleLogin = () => {o
 .bb_logoimg{
 
   margin-bottom: 10px;
-
+  
+  img{
+  width: 30%;
+  }
 }
 
   .bb_login-sub {

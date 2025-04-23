@@ -10,7 +10,32 @@ $background-maincolor: #ebeffa;
 
 
 // 폰트(패밀리, 크기 웨이트)
-$font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  $font-family: 'Pretendard',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI', Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+
+
+    @font-face {
+        font-family: 'omyu_pretty';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+  
+  // 폰트 변수 선언
+$font-ownglyph: 'omyu_pretty', sans-serif;
+
 $title-font-size-L: 40px;
 $title-font-size-m: 30px;
 $title-font-size-s: 20px;
