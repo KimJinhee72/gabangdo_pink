@@ -1,43 +1,55 @@
 <script setup>
 import { computed, ref, watch, onMounted } from "vue";
-//스와이프
+import Modal from "@/views/b_main/Modal.vue"; // 모달 컴포넌트 불러오기
+
+// 스와이프
 const slides = ref([
   "/images/cr/st_notice01.jpg",
   "/images/cr/st_notice02.jpg",
   "/images/cr/st_notice03.jpg",
 ]);
-// 📌 무한 루프를 위해 앞뒤에 복제본 추가
 const loopSlides = ref([
-  slides.value[slides.value.length - 1], // 마지막 이미지 (앞쪽)
+  slides.value[slides.value.length - 1],
   ...slides.value,
-  slides.value[0], // 첫 번째 이미지 (뒷쪽)
+  slides.value[0],
 ]);
-
-const position = ref(-100); // 처음 시작 위치 (-100%부터 시작)
+const position = ref(-100);
 const slideWidth = 100;
 const isTransitioning = ref(true);
 
-// 📌 슬라이드 자동 이동
+// 자동 슬라이드 이동
 const moveSlide = () => {
   position.value -= slideWidth;
   isTransitioning.value = true;
 
   setTimeout(() => {
     if (position.value <= -slideWidth * (loopSlides.value.length - 1)) {
-      // 👇 마지막 이미지에서 첫 번째로 순간 이동
       position.value = -slideWidth;
       isTransitioning.value = false;
     }
-  }, 500); // 0.5초 후 transition 효과 제거
+  }, 500);
 };
 
-// 📌 3초마다 슬라이드 이동
 onMounted(() => {
   setInterval(moveSlide, 3000);
 });
 
-//공지사항
-// notice 더미 데이터
+// ✅ 모달 상태
+const isModalVisible = ref(false);
+
+// ✅ 3번 슬라이드 클릭 시 모달 표시
+const handleSlideClick = (index) => {
+  // loopSlides 인덱스 기준이므로 3번째 원본 이미지의 실제 위치를 계산
+  if (index === 3) {
+    isModalVisible.value = true;
+  }
+};
+
+const closeModal = () => {
+  isModalVisible.value = false;
+};
+
+// 공지사항
 const notices = ref([
   {
     title: "가방도 서비스오픈",
@@ -120,55 +132,38 @@ const notices = ref([
   },
 ]);
 const activeIndex = ref(null);
-
-// 공지사항을 클릭했을 때 열고 닫기
-const toggleNotice = (index) => {
-  activeIndex.value = activeIndex.value === index ? null : index;
-};
-
 const currentPage = ref(1);
 const itemsPerPage = 7;
-// 총 페이지 수 계산
-const totalPages = computed(() => {
-  return Math.ceil(notices.value.length / itemsPerPage);
-});
-
-// 현재 페이지에 해당하는 공지사항 목록 계산
+const totalPages = computed(() =>
+  Math.ceil(notices.value.length / itemsPerPage)
+);
 const paginatedNotices = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   return notices.value.slice(start, start + itemsPerPage);
 });
-
-// 페이지가 변경될 때마다 첫 번째 공지사항이 자동으로 열리도록 할 수도 있음
-watch(currentPage, (newPage) => {
-  const start = (newPage - 1) * itemsPerPage;
-  activeIndex.value = null; // 첫 번째 공지사항을 자동으로 열기
+watch(currentPage, () => {
+  activeIndex.value = null;
 });
-
-// 이전 페이지로 이동
-const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--;
-  }
+const toggleNotice = (index) => {
+  activeIndex.value = activeIndex.value === index ? null : index;
 };
-
-// 다음 페이지로 이동
+const prevPage = () => {
+  if (currentPage.value > 1) currentPage.value--;
+};
 const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++;
-  }
+  if (currentPage.value < totalPages.value) currentPage.value++;
 };
 </script>
 
 <template>
   <div class="st_wrap">
     <div class="st_title1">
-      <!-- 제목 -->
       <div class="title_txt1">
         <h1>공지사항</h1>
       </div>
     </div>
-    <!-- 스와이프 -->
+
+    <!-- ✅ 슬라이더 -->
     <div class="st_slider-container">
       <div
         class="st_slider-wrapper"
@@ -180,11 +175,15 @@ const nextPage = () => {
           v-for="(slide, index) in loopSlides"
           :key="index"
           class="st_slider-slide">
-          <img :src="slide" alt="슬라이드 이미지" />
+          <img
+            :src="slide"
+            alt="슬라이드 이미지"
+            @click="handleSlideClick(index)" />
         </div>
       </div>
     </div>
-    <!-- 공지사항 -->
+
+    <!-- ✅ 공지사항 -->
     <div class="st_notice-container">
       <table class="st_notice-table">
         <thead>
@@ -195,7 +194,6 @@ const nextPage = () => {
         </thead>
         <tbody>
           <template v-for="(notice, index) in paginatedNotices" :key="index">
-            <!-- 제목 줄 -->
             <tr @click="toggleNotice(index)" class="st_title-row">
               <td class="st_number">
                 {{ (currentPage - 1) * itemsPerPage + index + 1 }}
@@ -207,14 +205,12 @@ const nextPage = () => {
                 }}</span>
               </td>
             </tr>
-            <!-- 내용 줄 -->
             <tr v-if="activeIndex === index" class="st_content-row">
               <td colspan="2">{{ notice.content }}</td>
             </tr>
           </template>
         </tbody>
       </table>
-      <!-- 페이지네이션 -->
       <div class="st_pagination">
         <button @click="prevPage" :disabled="currentPage === 1">이전</button>
         <button
@@ -230,9 +226,11 @@ const nextPage = () => {
         </button>
       </div>
     </div>
+
+    <!-- ✅ 모달 컴포넌트 -->
+    <Modal :visible="isModalVisible" @close="closeModal" />
   </div>
 </template>
-
 <style lang="scss" scoped>
 @use "@/assets/Main.scss" as *;
 @use "@/assets/_Variables.scss" as *;
@@ -290,12 +288,15 @@ const nextPage = () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: auto; // 👉 클릭 활성화
 }
 .st_slider-slide img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
+  cursor: pointer; // 👉 커서 모양도 변경
+  pointer-events: auto;
 }
 /*공지사항*/
 .st_notice-container {

@@ -158,7 +158,6 @@ onMounted(() => {
   margin-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,26 +240,29 @@ onMounted(() => {
 
 .st_reser {
   width: 150px;
-  margin: 10px auto;
+  height: 50px;
+  line-height: 25px;
+  margin: 20px auto;
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   border-radius: 30px;
   text-align: center;
-  border: none;
   text-decoration: none;
+  border: none;
   transition: background 0.3s;
 }
 
 .st_reser:hover {
   background-color: $hover;
 }
+
 @media screen and (max-width: 768px) {
   .st_wrap {
+    margin: 50px auto;
     padding: 0 16px;
-    margin: 60px auto;
   }
 
   .yy_title1 .title_txt1 h1 {
@@ -269,73 +271,73 @@ onMounted(() => {
   }
 
   .st_check {
-    padding: 16px;
+    padding: 15px;
+    width: 100%;
   }
 
   .st_table {
-    width: 90%;
-    display: block;
+    width: 100%;
+    table-layout: fixed; // ✅ 비율 유지
+    border-collapse: collapse;
+    margin: 0 auto;
   }
 
   .st_table th,
   .st_table td {
-    display: block;
-    width: 90%;
-    padding: 8px 0;
-    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+    word-break: keep-all;
+    vertical-align: middle;
+    text-align: left; // ✅ 모바일에서도 읽기 쉽게
   }
 
   .st_table th {
+    width: 100px; // ✅ th는 고정폭
     font-weight: bold;
-    background-color: #f2f2f2;
-    border-radius: 6px;
+    white-space: nowrap;
   }
 
-  .fix {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 3px;
+  .st_table td {
+    width: auto; // ✅ td는 남은 공간
   }
 
-  .fix span {
-    font-size: 14px;
+  .st_table th.th-bag {
+    vertical-align: top !important;
   }
 
   .st_reser {
-    font-size: 15px;
-    padding: 12px;
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 12px 24px;
     margin-top: 20px;
   }
 }
 
-@media screen and (max-width: 390px) {
+@media (max-width: 390px) {
   .st_wrap {
-    padding: 0 12px;
-    margin: 40px auto;
+    margin: 50px auto;
+    padding: 0 16px;
   }
 
-  .yy_title1 .title_txt1 h1 {
+  .st_table {
+    width: 90%;
+    font-size: 15px;
+    th,
+    td {
+      padding: 6px;
+    }
+  }
+  .title_txt1 h1 {
     font-size: 25px;
   }
-
-  .st_check {
-    padding: 12px;
-  }
-
-  .st_table th,
-  .st_table td {
-    font-size: 14px;
-    padding: 6px 0;
-  }
-
-  .fix span {
-    font-size: 13px;
-  }
-
   .st_reser {
-    font-size: 15px;
-    padding: 12px;
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 12px 24px;
     margin-top: 20px;
   }
 }

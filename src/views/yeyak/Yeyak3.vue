@@ -1,25 +1,49 @@
 <script setup>
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, reactive, computed, onMounted, watch, nextTick } from "vue";
 import { useReservationStore } from "@/stores/reservationStore";
 import { useRouter } from "vue-router";
 
 const reservationStore = useReservationStore();
 const router = useRouter();
 
-// 상태
+// 유효성 검사 시 사용
+const isValidPhone = computed(() => {
+  return (
+    middlePhone.value.length >= 3 &&
+    lastPhone.value.length >= 4 &&
+    /^\d+$/.test(middlePhone.value + lastPhone.value)
+  );
+});
+//번호 자동 넘어감
+
+const telPrefix = ref("010");
+const middlePhone = ref("");
+const lastPhone = ref("");
+
+const moveFocus = (event, nextRef) => {
+  if (event.target.value.length >= event.target.maxLength) {
+    nextTick(() => {
+      nextRef?.focus();
+    });
+  }
+};
+
+const middlePhoneRef = ref(null);
+const lastPhoneRef = ref(null);
+
+// 기타 상태
 const name = ref("");
-const phone = ref("");
 const selectedDate = ref("");
 const selectedHour = ref("--");
 const selectedMinute = ref("--");
 const selectedStart = ref(null);
 const selectedStop = ref(null);
 const showModal = ref(false);
+const today = ref(new Date().toISOString().split("T")[0]);
 
-// 에러 토스트
+// 에러 메시지 토스트
 const toastMessage = ref("");
 const toastTarget = ref("");
-
 const showToast = (msg, target) => {
   toastMessage.value = msg;
   toastTarget.value = target;
@@ -29,46 +53,28 @@ const showToast = (msg, target) => {
   }, 3000);
 };
 
+// 출발/도착지
 const startPlaces = ["공항", "동대구역", "숙소", "기타"];
 const stopPlaces = ["공항", "동대구역", "숙소", "기타"];
 
-// 사이즈 정보와 가격 정의
+// 가방 정보
 const sizes = reactive([
-  {
-    label: "S사이즈",
-    tag: "기내용 캐리어,소형 배낭 등",
-    count: 0,
-    price: 12000,
-  },
-  {
-    label: "M사이즈",
-    tag: "화물용 캐리어, 등산 가방 등",
-    count: 0,
-    price: 16000,
-  },
-  {
-    label: "L사이즈",
-    tag: "대형 캐리어, 배낭, 골프백 등",
-    count: 0,
-    price: 18000,
-  },
-  {
-    label: "기타사이즈",
-    tag: "기타 물품 및 표시 외 사이즈",
-    count: 0,
-    price: 25000,
-  },
+  { label: "S사이즈", tag: "기내용 캐리어", count: 0, price: 12000 },
+  { label: "M사이즈", tag: "화물용 캐리어", count: 0, price: 16000 },
+  { label: "L사이즈", tag: "대형 캐리어", count: 0, price: 18000 },
+  { label: "기타사이즈", tag: "표시 외 물품", count: 0, price: 25000 },
 ]);
-
 const totalPrice = computed(() =>
   sizes.reduce((sum, item) => sum + item.count * item.price, 0)
 );
-
 const formatCurrency = (num) => new Intl.NumberFormat("ko-KR").format(num);
 
+// 예약 제출
 const submitReservation = () => {
   if (!name.value) return showToast("이름을 입력해주세요", "name");
-  if (!phone.value) return showToast("전화번호를 입력해주세요", "phone");
+
+  if (!isValidPhone.value) return showToast("전화번호를 입력해주세요", "phone");
+
   if (!selectedDate.value) return showToast("날짜를 선택해주세요", "date");
   if (selectedHour.value === "--" || selectedMinute.value === "--")
     return showToast("시간을 선택해주세요", "time");
@@ -78,9 +84,10 @@ const submitReservation = () => {
   const bagCount = sizes.reduce((sum, item) => sum + item.count, 0);
   if (bagCount === 0) return showToast("가방 수량을 선택해주세요", "bag");
 
+  const fullPhone = `${telPrefix.value}${middlePhone.value}${lastPhone.value}`;
   reservationStore.setReservation({
     name: name.value,
-    phone: phone.value,
+    phone: fullPhone,
     selectedDate: selectedDate.value,
     selectedHour: selectedHour.value,
     selectedMinute: selectedMinute.value,
@@ -105,7 +112,7 @@ onMounted(() => {
 <template>
   <div class="st_wrap">
     <div class="yy_title1">
-      <div class="title_txt1"><h1>사전예약</h1></div>
+      <div class="title_txt1"><h1>당일예약</h1></div>
     </div>
 
     <div class="st_top">
@@ -117,8 +124,33 @@ onMounted(() => {
             {{ toastMessage }}
           </div>
         </div>
-        <div class="tooltip-container">
-          <input type="number" placeholder="전화번호" v-model="phone" />
+        <div class="tooltip-container st_phone-wrapper">
+          <div class="st_phone-group">
+            <select v-model="telPrefix" class="st_phone-select">
+              <option value="010">010</option>
+              <option value="011">011</option>
+              <option value="016">016</option>
+              <option value="017">017</option>
+              <option value="018">018</option>
+              <option value="019">019</option>
+            </select>
+            <span>-</span>
+            <input
+              v-model="middlePhone"
+              maxlength="4"
+              class="st_phone-input"
+              placeholder="1234"
+              ref="middlePhoneRef"
+              @input="moveFocus($event, lastPhoneRef)" />
+            <span>-</span>
+            <input
+              type="text"
+              v-model="lastPhone"
+              maxlength="4"
+              class="st_phone-input"
+              placeholder="5678"
+              ref="lastPhoneRef" />
+          </div>
           <div v-if="toastTarget === 'phone'" class="tooltip-bottom">
             {{ toastMessage }}
           </div>
@@ -129,7 +161,7 @@ onMounted(() => {
         <p class="st_section-title">이용 날짜 및 시간</p>
         <div class="st_datetime">
           <div class="tooltip-container">
-            <input type="date" v-model="selectedDate" />
+            <input type="date" v-model="selectedDate" :min="today" />
             <div v-if="toastTarget === 'date'" class="tooltip-bottom">
               {{ toastMessage }}
             </div>
@@ -199,7 +231,11 @@ onMounted(() => {
               </div>
               <div class="st_pm">
                 <div class="st_counter">
-                  <button @click="item.count > 0 && item.count--">-</button>
+                  <button
+                    @click="item.count > 0 && item.count--"
+                    :disabled="item.count === 0">
+                    -
+                  </button>
                   <span>{{ item.count }}</span>
                   <button @click="item.count++">+</button>
                 </div>
@@ -220,7 +256,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <button @click="submitReservation" class="st_reserve-btn">예약하기</button>
+    <button @click="submitReservation" class="st_reser">예약하기</button>
   </div>
   /
   <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
@@ -281,6 +317,11 @@ $base-width: 350px;
   margin: 15px auto;
   text-align: center;
 }
+button:disabled {
+  background-color: #ccc !important;
+  color: #777 !important;
+  cursor: not-allowed !important;
+}
 
 input,
 select,
@@ -320,7 +361,32 @@ button {
   flex-direction: column;
   align-items: center;
 }
+.st_phone-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
+.st_phone-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.st_phone-select,
+.st_phone-input {
+  height: 44px;
+  padding: 10px;
+  margin: 8px auto;
+  border: 1px solid #b5b5b5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 80px;
+}
+
+.st_phone-input {
+  flex: 1;
+}
 .st_date {
   display: flex;
   justify-content: center;
@@ -494,19 +560,24 @@ button {
   text-align: center;
 }
 
-.st_reserve-btn {
-  margin: 20px auto;
+.st_reser {
   width: 150px;
+  height: 50px;
+  line-height: 25px;
+  margin: 20px auto;
+  display: inline-block;
+  padding: 12px 24px;
   background-color: $main-color;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
-  border: none;
   border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  transition: background 0.3s;
 }
 
-.st_reserve-btn:hover {
+.st_reser:hover {
   background-color: $hover;
 }
 // 모달창
@@ -644,9 +715,13 @@ button {
     align-items: center;
   }
 
-  .st_reserve-btn {
+  .st_reser {
     width: 150px;
+    height: 50px;
+    line-height: 25px;
     font-size: 16px;
+    padding: 12px 24px;
+    margin-top: 20px;
   }
 
   .modal {
@@ -696,8 +771,13 @@ button {
     font-size: 16px;
   }
 
-  .st_reserve-btn {
+  .st_reser {
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
     font-size: 16px;
+    padding: 12px 24px;
+    margin-top: 20px;
   }
 
   .st_total {

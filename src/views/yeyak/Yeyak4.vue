@@ -21,18 +21,18 @@ const confirmPayment = () => {
     return;
   }
 
-  showModal.value = true;
+  showModal.value = true; // 자동 이동 X
+};
 
-  setTimeout(() => {
-    // 모달 닫고 페이지 이동
-    showModal.value = false;
-    router.push({
-      path: "/yeyak5",
-      query: {
-        payment: selectedPayment.value,
-      },
-    });
-  }, 3000); // 3초 후 이동
+const closeModal = () => {
+  showModal.value = false;
+
+  router.push({
+    path: "/yeyak5",
+    query: {
+      payment: selectedPayment.value,
+    },
+  });
 };
 </script>
 
@@ -41,7 +41,7 @@ const confirmPayment = () => {
     <div class="yy_title1">
       <!-- 제목 -->
       <div class="title_txt1">
-        <h1>예약·결제하기</h1>
+        <h1>결제하기</h1>
       </div>
     </div>
     <div class="st_check">
@@ -108,7 +108,9 @@ const confirmPayment = () => {
                 ><span>총</span><span>금</span><span>액</span>:</span
               >
             </th>
-            <td>{{ reservationStore.totalPrice.toLocaleString() }}원</td>
+            <td>
+              {{ reservationStore.totalPrice?.toLocaleString() || "0" }}원
+            </td>
           </tr>
         </tbody>
       </table>
@@ -156,8 +158,11 @@ const confirmPayment = () => {
   <!-- 모달창 -->
   <div v-if="showModal" class="modal-overlay">
     <div class="modal-box">
-      선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong
-      >로 결제가 되었습니다.
+      <p>
+        선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong
+        >로 결제가 되었습니다.
+      </p>
+      <button @click="closeModal" class="st_reser">확인</button>
     </div>
   </div>
 </template>
@@ -172,10 +177,9 @@ const confirmPayment = () => {
   margin-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   font-family: $font-family;
 }
 .yy_title1 {
@@ -320,11 +324,13 @@ const confirmPayment = () => {
 
 .st_reser {
   width: 150px;
-  margin: 10px auto;
+  height: 50px;
+  line-height: 25px;
+  margin: 20px auto;
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   border-radius: 30px;
   text-align: center;
@@ -352,7 +358,7 @@ const confirmPayment = () => {
 
 .modal-box {
   background: white;
-  padding: 2rem 2.5rem;
+  padding: 2rem 2rem;
   border-radius: 12px;
   font-size: 18px;
   font-weight: 500;
@@ -364,6 +370,7 @@ const confirmPayment = () => {
   .st_wrap {
     margin: 50px auto;
     padding: 0 16px;
+    justify-content: center;
   }
 
   .yy_title1 .title_txt1 h1 {
@@ -430,8 +437,11 @@ const confirmPayment = () => {
   }
 
   .st_reser {
-    font-size: 15px;
-    padding: 12px;
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 12px 24px;
     margin-top: 20px;
   }
 
@@ -445,6 +455,7 @@ const confirmPayment = () => {
   .st_wrap {
     margin: 50px auto;
     padding: 0 16px;
+    justify-content: center;
   }
 
   .st_table {
@@ -488,9 +499,13 @@ const confirmPayment = () => {
     font-size: 25px;
   }
 
-  button {
+  .st_reser {
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
     font-size: 16px;
-    padding: 0.75rem;
+    padding: 12px 24px;
+    margin-top: 20px;
   }
 }
 </style>

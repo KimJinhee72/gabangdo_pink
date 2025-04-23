@@ -112,7 +112,7 @@ const paymentNames = {
                 ><span>:</span></span
               >
             </th>
-            <td>{{ reservationStore.totalPrice.toLocaleString() }}원</td>
+            <td>{{ (reservationStore.totalPrice || 0).toLocaleString() }}원</td>
           </tr>
           <tr>
             <th>
@@ -142,7 +142,6 @@ const paymentNames = {
   margin-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -226,6 +225,8 @@ const paymentNames = {
 
 .st_reser {
   width: 150px;
+  height: 50px;
+  line-height: 25px;
   margin: 10px auto;
   display: inline-block;
   padding: 12px 24px;
@@ -289,8 +290,11 @@ const paymentNames = {
   }
 
   .st_reser {
-    font-size: 15px;
-    padding: 12px;
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 12px 24px;
     margin-top: 20px;
   }
 }
@@ -312,10 +316,13 @@ const paymentNames = {
   .title_txt1 h1 {
     font-size: 25px;
   }
-
-  button {
+  .st_reser {
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
     font-size: 16px;
-    padding: 0.75rem;
+    padding: 12px 24px;
+    margin-top: 20px;
   }
 }
 </style>
