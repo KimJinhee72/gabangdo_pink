@@ -13,13 +13,15 @@ html{
   }
 
   /* 스크롤 바 핸들  */
-  ::-webkit-scrollbar-thumb {
-    @media screen and (max-width : 390) {
-   background: $point-color;
+
+  ::-webkit-scrollbar-thumb {    
+    background: #ffeb35;
+
     border-radius: 10px;
-    }
-    background: $point-color;
-    border-radius: 10px;
+  }
+  @media screen and (max-width : 390) {
+    background: #ffeb35;
+  border-radius: 10px;
   }
 
   /* 스크롤 바 핸들 호버 시 */

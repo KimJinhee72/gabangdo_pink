@@ -6,7 +6,7 @@
         <div class="ma3bg">
           <div class="ma3img">
             <img
-              src="/public/images/gh/ma_content3/character_1.png"
+              src="/images/geen/1/sudal_01.png"
               alt="여행도" />
           </div>
           <div class="ma3txt">
@@ -25,7 +25,7 @@
           </div>
           <div class="ma3img">
             <img
-              src="/public/images/gh/ma_content3/character_2.png"
+              src="/images/geen/1/sudal_02.png"
               alt="배달도" />
           </div>
         </div>
@@ -34,8 +34,8 @@
       <div class="macontent3_gp ma3shearch">
         <div class="ma3bg">
           <div class="ma3img">
-            <img
-              src="/public/images/gh/ma_content3/character_3.png"
+            <img class="ma_sudal3img"
+              src="/images/geen/1/sudal_03.png"
               alt="배송조회도!" />
           </div>
           <div class="ma3txt">
@@ -97,7 +97,7 @@
   justify-content: center;
   width: 600px;
   height: 120px;
-  background-color: #0066b3;
+  background-color: #007bd8;
   border-radius: 90px;
   margin: 20px;
 }
@@ -117,13 +117,13 @@
   margin-right: 30px;
   span, strong{
     font-size: 14px;
-    color: #fff 
+    color:  #fff;
   }
   h3{
     width: 100%;
     font-size: 22px;
     line-height: 30px;
-    color: #fff !important;     
+    color:  #fff !important;     
   }
  
 }

@@ -13,8 +13,8 @@
           </div>
           <!-- 아이콘 -->
           <div class="masize_icon">
-            <img src="/public/images/gh/ma_content1/s_size.png" alt="S사이즈" />
-            <!-- <img src="/public/images/ma/ma_content1/s_size.png" alt="S사이즈" /> -->
+            <img src="/images/gh/ma_content1/s_size.png" alt="S사이즈" />
+            <!-- <img src="/images/ma/ma_content1/s_size.png" alt="S사이즈" /> -->
           </div>
           <!-- 당일예약시 -->
           <div class="masize_aftercash">
@@ -37,8 +37,8 @@
           </div>
           <!-- 아이콘 -->
           <div class="masize_icon">
-            <!-- <img src="/public/images/ma/ma_content1/m_size.png" alt="m사이즈" /> -->
-            <img src="/public/images/gh/ma_content1/m_size.png" alt="m사이즈" />
+            <!-- <img src="/images/ma/ma_content1/m_size.png" alt="m사이즈" /> -->
+            <img src="/images/gh/ma_content1/m_size.png" alt="m사이즈" />
           </div>
           <!-- 당일예약시 -->
           <div class="masize_aftercash">
@@ -60,8 +60,8 @@
           </div>
           <!-- 아이콘 -->
           <div class="masize_icon">
-            <!-- <img src="/public/images/ma/ma_content1/l-size.png" alt="l사이즈" /> -->
-            <img src="/public/images/gh/ma_content1/l-size.png" alt="l사이즈" />
+            <!-- <img src="/images/ma/ma_content1/l-size.png" alt="l사이즈" /> -->
+            <img src="/images/gh/ma_content1/l-size.png" alt="l사이즈" />
           </div>
           <!-- 당일예약시 -->
           <div class="masize_aftercash">
@@ -83,8 +83,8 @@
           </div>
           <!-- 아이콘 -->
           <div class="masize_icon">
-            <!-- <img src="/public/images/ma/ma_content1/size.png" alt="?사이즈" /> -->
-            <img src="/public/images/gh/ma_content1/size.png" alt="?사이즈" />
+            <!-- <img src="/images/ma/ma_content1/size.png" alt="?사이즈" /> -->
+            <img src="/images/gh/ma_content1/size.png" alt="?사이즈" />
           </div>
           <!-- 사전예약시 -->
           <div class="masize_beforecash">

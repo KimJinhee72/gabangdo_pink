@@ -1,9 +1,10 @@
 <template>
+  <!-- 대구축제 영역 -->
   <div id="festivalBanner">
     <div class="main-slide-list2">
+      <!-- 대구축제 제목 -->
       <div class="main-slide-list2-title">
         <i class="ico_bright"></i>
-        <!-- 순환버스 제목 -->
         <div class="bb_title1">
           <div class="festival-title"></div>
           <div class="title_txt1">
@@ -25,8 +26,9 @@
           >가을</a
         >
       </div>
-      <!-- Swiper (슬라이드 내용) -->
+      <!-- 이미지 Swiper (슬라이드 내용) 양쪽 빨간 페이지화살표 -->
       <div id="main-swiper" class="swiper mySwiper">
+        <!-- 이미지 영역 -->
         <div class="swiper-wrapper">
           <div
             v-for="(festival, index) in festivalData[activeTab]"
@@ -86,19 +88,26 @@
             </div>
           </div>
         </div>
+        <!-- 이미지 오른쪽 빨간화살표 영역(다음) -->
         <div class="swiper-button-next"></div>
+        <!-- 이미지 왼쪽 빨간화살표 영역(전) -->
         <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
+      <!-- 맨아래 페이지이동 버튼과 숫자페이지네이션 -->
       <div class="swiper-btn-wrap">
+        <!-- 맨아래 페이지 전이동 버튼 -->
         <div
           class="swiper-button-prev2"
           tabindex="0"
           role="button"
           aria-label="Previous slide"></div>
+        <!-- 맨아래 숫자페이지네이션 -->
         <div class="swiper-pagination2 swiper-pagination-fraction">
           <span class="swiper-pagination-current">10</span> /
           <span class="swiper-pagination-total">11</span>
         </div>
+        <!-- 맨아래 페이지 다음이동 버튼 -->
         <div
           class="swiper-button-next2"
           tabindex="0"
@@ -106,7 +115,7 @@
           aria-label="Next slide"></div>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
+ 
   </div>
 </template>
 
@@ -129,7 +138,7 @@ const festivalData = {
       title1: "대구페스티벌",
       date: "2025.5.10.(토) ~ 5.11.(일)",
       location: "국채보상로",
-      image: "/public/images/geen/power_poster.jpg",
+      image: "/images/geen/power_poster.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000070",
     },
     {
@@ -137,14 +146,14 @@ const festivalData = {
       title1: "한방문화축제",
       date: "2025.5.8.(목) ~ 5.11.(일)",
       location: "약령시 일원",
-      image: "/public/images/geen/yak.jpg",
+      image: "/images/geen/yak.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000130",
     },
     {
       title: "대구 생활문화제",
       date: "2025.5.10.(토) ~ 5.11.(일)",
       location: "국채보상운동기념공원",
-      image: "/public/images/geen/kukchae.jpg",
+      image: "/images/geen/kukchae.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000040",
     },
     {
@@ -152,7 +161,7 @@ const festivalData = {
       title1: " 경연대회",
       date: "2025.5.10.(토)",
       location: "코오롱야외음악당",
-      image: "/public/images/geen/music.jpg",
+      image: "/images/geen/music.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000041",
     },
     {
@@ -160,42 +169,42 @@ const festivalData = {
       title1: "청년버스킹",
       date: "2025.5.15.(목) ~ 5.17.(토)",
       location: "동성로 일원",
-      image: "/public/images/geen/busking.jpeg",
+      image: "/images/geen/busking.jpeg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000065",
     },
     {
       title: "동성로 축제",
       date: "2025.5.9.(금) ~ 5.11.(일)",
       location: "동성로 일대",
-      image: "/public/images/geen/dong.jpg",
+      image: "/images/geen/dong.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000069",
     },
     {
       title: "장미꽃 필 무렵",
       date: "2025.5.16.(금) ~ 5.18.(일)",
       location: "이곡장미공원 일대",
-      image: "/public/images/geen/rose.jpg",
+      image: "/images/geen/rose.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000067",
     },
     {
       title: "YES!키즈존",
       date: "2025.5.10.(토)~11.(일), 2025.5.31.(토)~6.1.(일)",
       location: "강정보 디아크 /  국립대구과학관 일원",
-      image: "/public/images/geen/ai.jpg",
+      image: "/images/geen/ai.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000172",
     },
     {
       title: "대구무용제",
       date: "2025.5.11.(일)",
       location: "대구문화예술회관 팔공홀",
-      image: "/public/images/geen/palgong.jpg",
+      image: "/images/geen/palgong.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000173",
     },
     {
       title: "대구간송미술관 기획전",
       date: "2025.4 ~",
       location: "대구간송미술관",
-      image: "/public/images/geen/gansong.jpg",
+      image: "/images/geen/gansong.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_0000175",
     },
   ],
@@ -204,40 +213,39 @@ const festivalData = {
       title: "대구국제오페라축제 축제 1",
       date: "2025.9.26.(금) ~ 11.8.(토)",
       location: "대구오페라하우스",
-      image: "/public/images/geen/opera.jpg",
+      image: "/images/geen/opera.jpg",
       href: "https://fantasiafesta.or.kr/Festival-October?searchFESTV_MONTH_DCD=CDF018.002",
     },
     {
       title: "월드오케스트라페스티벌",
       date: "2025.9.26.(금) ~ 11.8.(토)",
       location: "2025.9~11월",
-      image: "/public/images/geen/orchestra.jpg",
+      image: "/images/geen/orchestra.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000095",
     },
     {
       title: "대구포크페스티벌",
       date: "2025.9.",
       location: "김광석거리 일대",
-      image: "/public/images/geen/folk.jpg",
+      image: "/images/geen/folk.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000090",
     },
     {
       title: "대구콘텐츠페어",
       date: "2025.9.26.(금) ~ 9.27.(토)",
       location: "엑스코",
-      image: "/public/images/geen/content.jpg",
+      image: "/images/geen/content.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000094",
     },
     {
       title: "대구국제힐링공연예술제",
       date: "2025.9 ~ 10월",
       location: "대명공연거리",
-      image: "/public/images/geen/hilling.jpg",
+      image: "/images/geen/hilling.jpg",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000092",
     },
   ],
 };
-
 
 // 탭 변경
 const changeTab = (tabId) => {
@@ -270,6 +278,14 @@ const initSwiper = () => {
   });
 
   //  swiperInstance가 생성된 후에 실행
+  const nextButton = document.querySelector(".swiper-button-next2");
+  const prevButton = document.querySelector(".swiper-button-prev2");
+
+  if (nextButton && prevButton) {
+    nextButton.addEventListener("click", () => swiperInstance.slideNext());
+    prevButton.addEventListener("click", () => swiperInstance.slidePrev());
+  }
+  
   const nextButton2 = document.querySelector(".swiper-button-next2");
   const prevButton2 = document.querySelector(".swiper-button-prev2");
 
@@ -287,14 +303,18 @@ const initSwiper = () => {
 };
 
 // 탭 변경 후 DOM이 업데이트된 다음 Swiper 다시 초기화
-watch(activeTab, async () => {
-  await nextTick();
-  initSwiper();
+onMounted(() => {
+  nextTick(() => {
+    // 최초 마운트 시 초기화
+    initSwiper();
+  });
 });
 
-// 최초 마운트 시 초기화
-onMounted(() => {
-  initSwiper();
+watch(activeTab, () => {
+  nextTick(() => {
+    // 최초 마운트 시 초기화
+    initSwiper();
+  });
 });
 </script>
 
@@ -552,7 +572,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
 .festival-month {
   display: flex;
   justify-content: center;
-  margin: 25px 0 40px;
+  margin: 50px 0 70px;
 }
 .festival-month a {
   width: 100%;
@@ -590,7 +610,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   position: relative;
 }
 .swiper-button-next2 {
-  background-image: url(../../images/user/main/ico-next.svg);
+  background-image: url(/images/user/main/ico-next.svg);
   background-repeat: no-repeat;
   width: 46px;
   height: 46px;
@@ -598,7 +618,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   z-index: 20;
 }
 .swiper-button-prev2 {
-  background-image: url(../../images/user/main/ico-prev.svg);
+  background-image: url(/images/user/main/ico-prev.svg);
   background-repeat: no-repeat;
   width: 46px;
   height: 46px;
@@ -609,7 +629,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 .swiper-btn-wrap .swiper-pagination2 {
   display: flex;
@@ -1641,7 +1661,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
     display: none;
   }
   .swiper-btn-wrap {
-    margin-top: 70px;
+    margin-top: 50px;
   }
 
   /*footer*/
@@ -1786,9 +1806,9 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
-::v-deep(.swiper-button-prev){
+::v-deep(.swiper-button-prev) {
   color: #ee2b2b;
   left: var(--swiper-navigation-sides-offset, 390px);
   @media (max-width: 1530px) {
@@ -1801,11 +1821,10 @@ header.main.fix .hd-gnb .hd-menu > li:after {
     display: none;
   }
 }
-::v-deep(.swiper-button-prev::after){
+::v-deep(.swiper-button-prev::after) {
   font-size: 25px;
-  
 }
-::v-deep(.swiper-button-next){
+::v-deep(.swiper-button-next) {
   color: #ee2b2b;
   right: var(--swiper-navigation-sides-offset, 390px);
   @media (max-width: 1530px) {

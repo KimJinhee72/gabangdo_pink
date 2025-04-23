@@ -3,17 +3,17 @@
     <div class="inner">
       <!-- 왼쪽 -->
       <div class="mavistxt">
-        <img src="/public/images/geen/maintxt.png" alt="텍스트이미지" />
+        <img src="/images/geen/maintxt.png" alt="텍스트이미지" />
         <button><router-link to="/yeyak">예약하기</router-link></button>
       </div>
       <!-- 오른쪽 -->
       <div class="mavisimg">
-        <!-- <img src="/public/images/ma/ma_visual/mavisual.gif" alt="ma-viusal" /> -->
-        <img src="/public/images/gh/ma_visual/mavisual.gif" alt="ma-viusal" />
+        <!-- <img src="/images/ma/ma_visual/mavisual.gif" alt="ma-viusal" /> -->
+        <img src="/images/gh/ma_visual/mavisual.gif" alt="ma-viusal" />
         <!-- 오디오 음악재생 -->
         <audio autoplay controls class="mavisaudio" loop>
-          <!-- <source src="/public/music.mp3" /> -->
-          <source src="/public/images/gh/music.mp3" />
+          <!-- <source src="/music.mp3" /> -->
+          <source src="/images/gh/music.mp3" />
         </audio>
       </div>
     </div>
@@ -25,11 +25,10 @@
 /* 전체영역 */
 .ma_visual-wrap .inner {
   width: 100%;
-  max-width: 1300px;
-  margin-top: 50px;
+  max-width: 1300px;;
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 50px auto 80px;
   /* background-color: antiquewhite; */
 }
 /* 왼쪽 - 텍스트박스  */
@@ -41,12 +40,7 @@
   img {
     margin-top: 180px;
     width: 100%;
-    padding: 20px 20px 50px;
-    @media screen and (max-width: 970px) {
-      padding: 0px 20px 30px;
-      width: 300px;
-      margin: 10px 0 0;
-    }
+    padding: 20px 20px 50px;   
   }
 }
 .ma_vis_h1 h1:first-child {
@@ -88,10 +82,7 @@
   border-radius: $border-radius-L + $border-radius-s;
   a {
     color: white !important;
-  }
-  @media screen and (max-width: 970px) {
-    margin: 20px 0 10px;
-  }
+  }  
   cursor: pointer;
   transition: 0.3s;
   text-align: center;

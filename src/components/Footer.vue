@@ -3,20 +3,11 @@
     <div class="inner">
       <!-- 풋터 상단 -->
       <div class="ft_footerTop">
-        <!-- 풋터 상단 왼쪽 -->
+        <!-- 풋터 상단 왼쪽 : 회사정보 -->
         <div class="ft_topLeft">
           <div class="ft_serviceInfo">
-            <a href="#">개인정보취급방침</a>|
-            <a href="#">이용약관</a>
-          </div>
-          <div class="ft_corpInfo">
-            <p>
-              대표자 : 도용달 | 사업자등록번호 053-123-4567 <br />
-              주&nbsp;&nbsp;&nbsp;소 : 대구광역시 신천구 신천동로 888
-              (대구광역시 신천구 신천동33-3)
-              <br />
-              이메일 : yongdaldo@email.com | 팩스번호 : 053-123-5678
-            </p>
+            <a href="https://www.kakao.com/policy/privacy?lang=ko" target="_blank">개인정보취급방침</a>|
+            <a href="https://www.kakao.com/policy/terms?type=a&lang=ko" target="_blank">이용약관</a>
           </div>
           <div class="ft_accountAddress">
             <p>
@@ -26,8 +17,18 @@
               (우:45023)
             </p>
           </div>
+          <div class="ft_corpInfo">
+            <p>
+              대표자 : 도용달 | 사업자등록번호 053-123-4567 <br />
+              주&nbsp;&nbsp;&nbsp;소 : 대구광역시 신천구 신천동로 888
+              (대구광역시 신천구 신천동33-3)
+              <br />
+              이메일 : yongdaldo@email.com | 팩스번호 : 053-123-5678
+            </p>
+            <p class="copyP">Copyright 2025. 가방도 Co. All rights reserved.</p>
+          </div>
         </div>
-        <!-- 풋터 상단 오른쪽 -->
+        <!-- 풋터 상단 오른쪽 : 고객센터 -->
         <div class="ft_contactUs">
           <h1>고객센터</h1>
           <h2>123-456-7891</h2>
@@ -41,34 +42,17 @@
       </div>
     </div>
   </div>
-  <!-- 고정 버튼들 -->
+  <!-- 용달씨 머리(예약할래?)이미지 고정 버튼 -->
   <div
-    class="fixed-buttons"
-    :class="{ 'fixed-buttons--alt': specialPages.includes(route.path) }">
+    class="fixed-buttons">
     <button class="inquiry-btn" @click="openReservation">
       <span>예약 할래?</span>
-      <router-link to="/yeyak"><img class="fas fa-calendar-check" src="/public/images/gh/1/head.png" /></router-link>
+      <router-link to="/yeyak"><img class="fas fa-calendar-check" src="/images/gh/1/head.png" /></router-link>
     </button>
   </div>
 </template>
 
-<script setup>
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-const specialPages = [
-  "/yeyak",
-  "/yeyaklookup",
-  "/sotong",
-  "/sotong2",
-  "/yh_festival",
-  "/yeohaeng",
-]; // 여기에 페이지 경로 넣기
-const openReservation = () => {
-  // 예약하기 기능 구현
-  console.log("예약하기 클릭");
-};
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .ft_footer {
@@ -101,7 +85,7 @@ const openReservation = () => {
   padding-left: 40px;
   border-left: 1px solid #ddd;
   min-width: 0;
-
+  letter-spacing: 1.2px;
   h1 {
     font-size: 18px;
     color: #333;
@@ -120,13 +104,13 @@ const openReservation = () => {
     color: #666;
     line-height: 1.6;
     font-size: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;    
   }
 }
 
 .ft_serviceInfo {
   margin-bottom: 15px;
-
+  letter-spacing: 1.2px;
   a {
     color: #333;
     text-decoration: none;
@@ -141,11 +125,14 @@ const openReservation = () => {
 .ft_corpInfo,
 .ft_accountAddress {
   margin-bottom: 10px;
-
+  letter-spacing: 1.1px;
   p {
     color: #666;
     line-height: 1.5;
     font-size: 13px;
+    strong{
+      font-size: 15px;
+    }
   }
 }
 // 고정버튼들
@@ -162,12 +149,6 @@ const openReservation = () => {
   gap: 8px;
   z-index: 1000;
 }
-// 다른페이지
-// .fixed-buttons--alt {
-//   bottom: 80px; /* 위치 조정 예시 */
-//   right: 300px;
-//   transform: translateX(35%);
-// }
 .contactUs {
   display: flex;
   flex-direction: column;
@@ -236,17 +217,18 @@ const openReservation = () => {
   .inquiry-btn {
     padding: 8px 15px;
     font-size: 12px;
-
-    i {
-      font-size: 12px;
-    }
+    span{
+      width: 80px !important;
+      line-height: 35px !important;
+    }   
   }
   .fas{
-    width: 60px !important;
+    width: 50px !important;
   }
   .ft_contactUs {
     h1 {
       font-size: 16px;
+      letter-spacing: 1.4px;
     }
 
     h2 {
