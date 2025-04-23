@@ -618,6 +618,9 @@ th{
 .bb_cell{
   font-size: 15px !important;
 }
+button{
+  font-size: 15px !important;
+}
 }
 
 // 모바일 : 390px
@@ -628,6 +631,15 @@ th{
 }
 .bb_StoreTable .bb_StoreContents{
   height: 550px;
+}
+.bb_StoreTabs{
+  padding-left: 2% !important;
+}
+button{
+  font-size: 12px !important;
+  padding: 1% !important;
+  margin-top: 0.5% !important;
+  margin-bottom: 0.5% !important;
 }
 }
 </style>

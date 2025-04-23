@@ -15,7 +15,7 @@ html{
   /* 스크롤 바 핸들  */
   ::-webkit-scrollbar-thumb {
     @media screen and (max-width : 390) {
-      background: $point-color;
+   background: $point-color;
     border-radius: 10px;
     }
     background: $point-color;
