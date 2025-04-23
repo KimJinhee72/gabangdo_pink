@@ -432,8 +432,11 @@ h6 {
 }
 
 .write-btn {
+  width: 150px;
+  height: 50px;
+  line-height: 25px;
   padding: 8px 16px;
-  margin: 20px 0;
+  margin: 40px 0;
   background-color: $main-color;
   width: 100px;
   color: white;
@@ -457,7 +460,15 @@ h6 {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: $sub-color;
+  color: #fff;
+}
 .form-buttons {
   display: flex;
   gap: 10px;
