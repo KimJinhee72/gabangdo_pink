@@ -2,8 +2,8 @@
   <!-- 로그인 페이지 틀 -->
   <div class="bb_login-container">
     <div class="bb_logoimg">
-    <img src="/images/yr/loginpage/logory.png" alt="">
-  </div>
+      <img src="/images/yr/loginpage/logory.png" alt="" />
+    </div>
     <p class="bb_login-sub">여행의 시작은 가방도와 함께</p>
 
     <form class="bb_login-form">
@@ -17,14 +17,22 @@
           placeholder="비밀번호를 입력하세요"
           required />
         <button @click="togglePassword" type="button" class="toggle-password">
-          {{ showPassword ? "숨기기" : "보기" }}
+          <img
+            :src="
+              showPassword
+                ? '/images/yr/loginpage/eye-off.png'
+                : '/images/yr/loginpage/eye.png'
+            "
+            alt="비밀번호 보기 토글"
+            class="eye-icon" />
         </button>
       </div>
       <button>로그인</button>
     </form>
 
     <div class="bb_login-links">
-      <router-link to="signups">아이디 찾기</router-link> | <router-link to="signups">비밀번호 찾기</router-link> |
+      <router-link to="signups">아이디 찾기</router-link> |
+      <router-link to="signups">비밀번호 찾기</router-link> |
       <router-link to="/signup">회원가입</router-link>
     </div>
 
@@ -34,15 +42,17 @@
       <div class="bb_grayline"></div>
     </div>
     <div class="bb_sns-icons">
-      <a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount#login"
+      <a
+        href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount#login"
         ><img src="/images/yr/loginpage/loginKT.png" alt="깨톡"
       /></a>
-      <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
+      <a
+        href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
         ><img src="/images/yr/loginpage/loginN.png" alt="네이버"
       /></a>
 
-
-      <a href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&followup=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&hl=ko&osid=1&passive=1209600&ifkv=AXH0vVudToPB1oXfNyrRstCJ2S8_6MGsxrjKMEimiqpbXowYURSOX1dz9tFsLIFhTsRW8skj6ngVQw&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
+      <a
+        href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&followup=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&hl=ko&osid=1&passive=1209600&ifkv=AXH0vVudToPB1oXfNyrRstCJ2S8_6MGsxrjKMEimiqpbXowYURSOX1dz9tFsLIFhTsRW8skj6ngVQw&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
         ><img src="/images/yr/loginpage/loginG.png" alt="구글"
       /></a>
     </div>
@@ -64,8 +74,9 @@ const formData = ref({
   password: "",
   rememberMe: false,
 });
-const handleLogin = () => {o
-  
+const handleLogin = () => {
+  o;
+
   // 1.로컬스토리지레서 사용자 데이터 가져오기
   const users = JSON.parse(localStorage.getItem("users") || []);
   // 2.입력된 이메일과 비밀번호로 사용자 찾기
@@ -102,14 +113,13 @@ const handleLogin = () => {o
   text-align: center;
   // padding-bottom: 2.3%;
 
-.bb_logoimg{
+  .bb_logoimg {
+    margin-bottom: 10px;
 
-  margin-bottom: 10px;
-  
-  img{
-  width: 30%;
+    img {
+      width: 30%;
+    }
   }
-}
 
   .bb_login-sub {
     font-size: 14px;
@@ -138,31 +148,47 @@ const handleLogin = () => {o
       cursor: pointer;
       font-weight: bold;
     }
-    .password-input {
-  position: relative;
-  width: 100%;
-}
-
-.password-input input {
-  width: 100%;
-  padding-right: 80px; /* 버튼이 겹치지 않도록 오른쪽 여유 */
-  height: 40px;
-  box-sizing: border-box;
-}
-
-.password-input .toggle-password {
+    .toggle-password {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
-  color: #aeaeae;
-  font-size: 14px;
-  padding: 4px 8px;
-}
 
+  .eye-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.3;
+  }
+}
+    .password-input {
+      position: relative;
+      width: 100%;
+    }
+
+    .password-input input {
+      width: 100%;
+      padding-right: 80px; /* 버튼이 겹치지 않도록 오른쪽 여유 */
+      height: 40px;
+      box-sizing: border-box;
+    }
+
+    .password-input .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #aeaeae;
+      font-size: 14px;
+      padding: 4px 8px;
+    }
   }
 
   .bb_login-links {
@@ -184,7 +210,7 @@ const handleLogin = () => {o
     display: flex;
     align-items: center;
     gap: 10px; // 선과 텍스트 사이 간격
-    margin: 8% 0;
+    margin: 12% 0 8% 0;
 
     .bb_grayline {
       flex: 1;
