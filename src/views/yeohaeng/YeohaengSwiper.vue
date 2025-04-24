@@ -115,7 +115,8 @@ export default {
 @use "/src/assets/Variables" as *;
 h4 {
   margin: 10px 0;
-  font-size: 20px;
+  font-family: 'omyu_pretty';
+  font-size: 25px;
   color: $main-color;
 }
 .swiper-slide {

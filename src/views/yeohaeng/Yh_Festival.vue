@@ -333,7 +333,8 @@ watch(activeTab, () => {
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   .title_txt1 h1 {
-    font-size: 35px;
+    font-family: 'omyu_pretty';
+    font-size: 40px;
   }
 }
 header.main {
