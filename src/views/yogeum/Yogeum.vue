@@ -127,14 +127,15 @@ onUnmounted(() => {
 .bb_title1 {
   display: flex;
   gap: 10px;
+  margin-top: 100px;
   line-height: 40px;
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   align-items: center; /* 세로 중앙 정렬 */
   flex-direction: column;
   padding-bottom: 10px;
-  margin-top: 100px;
   .title_txt1 h1 {
-    font-size: 35px;
+    font-family: 'omyu_pretty';
+    font-size: 40px;
   }
 }
 //    요금안내

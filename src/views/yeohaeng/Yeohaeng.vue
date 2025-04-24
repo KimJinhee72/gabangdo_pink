@@ -89,7 +89,8 @@ onBeforeUnmount(() => {
   padding-bottom: 10px;
   margin-top: 100px;
   .title_txt1 h1 {
-    font-size: 35px;
+    font-family: 'omyu_pretty';
+    font-size: 40px;
   }
 }
 // 대구축제 탭
