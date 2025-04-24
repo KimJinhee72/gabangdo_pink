@@ -2,7 +2,7 @@
   <!-- 로그인 페이지 틀 -->
   <div class="bb_login-container">
     <div class="bb_logoimg">
-    <img src="/public/images/yr/loginpage/logory.png" alt="">
+    <img src="/images/yr/loginpage/logory.png" alt="">
   </div>
     <p class="bb_login-sub">여행의 시작은 가방도와 함께</p>
 
@@ -24,7 +24,7 @@
     </form>
 
     <div class="bb_login-links">
-      <router-link to="signups">아이디 찾기</router-link> | <router-link to="/delivery">비밀번호 찾기</router-link> |
+      <router-link to="signups">아이디 찾기</router-link> | <router-link to="signups">비밀번호 찾기</router-link> |
       <router-link to="/signup">회원가입</router-link>
     </div>
 
@@ -35,15 +35,15 @@
     </div>
     <div class="bb_sns-icons">
       <a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount#login"
-        ><img src="/public/images/yr/loginpage/loginKT.png" alt="깨톡"
+        ><img src="/images/yr/loginpage/loginKT.png" alt="깨톡"
       /></a>
       <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
-        ><img src="/public/images/yr/loginpage/loginN.png" alt="네이버"
+        ><img src="/images/yr/loginpage/loginN.png" alt="네이버"
       /></a>
 
 
       <a href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&followup=https%3A%2F%2Ftakeout.google.com%2F%3Fhl%3Dko&hl=ko&osid=1&passive=1209600&ifkv=AXH0vVudToPB1oXfNyrRstCJ2S8_6MGsxrjKMEimiqpbXowYURSOX1dz9tFsLIFhTsRW8skj6ngVQw&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
-        ><img src="/public/images/yr/loginpage/loginG.png" alt="구글"
+        ><img src="/images/yr/loginpage/loginG.png" alt="구글"
       /></a>
     </div>
   </div>
@@ -97,9 +97,10 @@ const handleLogin = () => {o
 @use "/src/assets/_Variables.scss" as *;
 .bb_login-container {
   width: 320px;
-  margin: 100px auto;
+  margin: 110px auto;
+  padding-bottom: 100px;
   text-align: center;
-  padding-bottom: 2.3%;
+  // padding-bottom: 2.3%;
 
 .bb_logoimg{
 

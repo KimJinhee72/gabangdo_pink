@@ -49,7 +49,8 @@ router.go(-1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 115px;
+  margin-top: 150px;
+  margin-bottom: 60px;
   .bb_404Letter {
     justify-content: center;
     display: flex;

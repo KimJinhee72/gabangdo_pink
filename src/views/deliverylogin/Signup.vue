@@ -44,9 +44,9 @@
         <div class="bb_grayline"></div>
       </div>
       <div class="icons">
-        <img src="/public/images/yr/loginpage/loginKT.png" alt="카카오톡" />
-        <img src="/public/images/yr/loginpage/loginN.png" alt="네이버" />
-        <img src="/public/images/yr/loginpage/loginG.png" alt="구글" />
+        <img src="/images/yr/loginpage/loginKT.png" alt="카카오톡" />
+        <img src="/images/yr/loginpage/loginN.png" alt="네이버" />
+        <img src="/images/yr/loginpage/loginG.png" alt="구글" />
       </div>
       <div class="bb_alreadyLogin">
       <p class="login-link">이미 회원이신가요?</p><router-link to="/login"> 로그인</router-link>
@@ -65,7 +65,6 @@ body {
   align-items: center;
   height: 100vh;
 }
-
 .signup-container {
   margin-top: 100px !important;
   margin-bottom: 100px !important;
