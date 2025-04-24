@@ -1,133 +1,94 @@
 <script setup>
-import { useReservationStore } from "../../stores/reservationStore";
-import { useRoute } from "vue-router";
+import { useReservationStore } from "@/stores/reservationStore";
+import { useRoute, useRouter } from "vue-router";
 
 const reservationStore = useReservationStore();
 const route = useRoute();
+const router = useRouter();
 
-// 쿼리로 전달된 결제 수단
 const payment = route.query.payment;
-
-// 보기 좋게 이름으로 변환
 const paymentNames = {
   bank: "계좌이체",
   card: "카드결제",
   kakao: "카카오페이",
   naver: "네이버페이",
+  toss: "토스",
+  phone: "휴대폰이체",
 };
 </script>
-<template>
-  <div class="st_wrap">
-    <div class="yy_title1">
-      <div class="title_txt1">
-        <h1>예약완료</h1>
-      </div>
-    </div>
 
-    <div class="st_check">
-      <table class="st_table">
-        <tbody>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>예</span><span>약</span><span>번</span><span>호</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>
+<template>
+  <div class="wrap">
+    <div class="total">
+      <div class="payment-page">
+        <div class="yy_title1">
+          <div class="title_txt1">
+            <h1>예약완료</h1>
+          </div>
+        </div>
+
+        <!-- 예약 정보 -->
+        <div class="payment-info-box">
+          <div class="info-row">
+            <span class="label">예약번호</span>
+            <span class="value">
               {{
                 "R" + Date.now().toString() + Math.floor(Math.random() * 1000)
               }}
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>이</span><span>름</span><span>:</span></span
-              >
-            </th>
-            <td>{{ reservationStore.name }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>전</span><span>화</span><span>번</span><span>호</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>{{ reservationStore.phone }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>날</span><span>짜</span><span>:</span></span
-              >
-            </th>
-            <td>{{ reservationStore.selectedDate }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>시</span><span>간</span><span>:</span></span
-              >
-            </th>
-            <td>
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="label">이름</span>
+            <span class="value">{{ reservationStore.name }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">전화번호</span>
+            <span class="value">{{ reservationStore.phone }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">날짜</span>
+            <span class="value">{{ reservationStore.selectedDate }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">시간</span>
+            <span class="value">
               {{ reservationStore.selectedHour }}시
               {{ reservationStore.selectedMinute }}분
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>출</span><span>발</span><span>:</span></span
-              >
-            </th>
-            <td>{{ reservationStore.selectedStart }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>도</span><span>착</span><span>:</span></span
-              >
-            </th>
-            <td>{{ reservationStore.selectedStop }}</td>
-          </tr>
-          <tr>
-            <th rowspan="{{ reservationStore.sizes.length }}" class="th-bag">
-              <span class="fix"
-                ><span>가</span><span>방</span><span>수</span><span>량</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="label">출발지</span>
+            <span class="value">{{ reservationStore.selectedStart }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">도착지</span>
+            <span class="value">{{ reservationStore.selectedStop }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">가방 종류 및 수량</span>
+            <span class="value">
               <p v-for="(item, i) in reservationStore.sizes" :key="i">
                 {{ item.label }} ({{ item.count }}개)
               </p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>총</span><span>금</span><span>액</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>{{ (reservationStore.totalPrice || 0).toLocaleString() }}원</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix"
-                ><span>결</span><span>제</span><span>방</span><span>식</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>{{ paymentNames[payment] || "선택되지 않음" }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="label">총 금액</span>
+            <span class="value red"
+              >{{ (reservationStore.totalPrice || 0).toLocaleString() }}원</span
+            >
+          </div>
+          <div class="info-row">
+            <span class="label">결제방식</span>
+            <span class="value">{{
+              paymentNames[payment] || "선택되지 않음"
+            }}</span>
+          </div>
+        </div>
 
-    <router-link to="/" class="st_button st_reser">처음으로</router-link>
+        <router-link to="/" class="st_reser">처음으로</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -135,103 +96,80 @@ const paymentNames = {
 @use "@/assets/Main.scss" as *;
 @use "@/assets/_Variables.scss" as *;
 
-.st_wrap {
+.wrap {
   width: 100%;
   max-width: 700px;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 100px auto;
+  font-family: "Pretendard", sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  font-family: $font-family;
-  height: 100vh;
+  align-items: center;
+  flex-direction: column;
 }
-.yy_title1 {
-  display: flex;
-  gap: 10px;
-  line-height: 40px;
-  flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
-  align-items: center; /* 세로 중앙 정렬 */
-  justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
-  .title_txt1 h1 {
-    font-size: 40px;
-    font-family: "omyu_pretty";
-  }
-}
-.st_check {
-  width: 100%;
+
+.total {
+  width: 90%;
   padding: 20px;
+  border: 1px solid #007bff;
+  box-shadow: $box-shadow;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #007bff;
-  box-shadow: $box-shadow;
 }
-.st_table {
-  width: 50%;
-  margin: 0 auto; /* 수평 가운데 정렬 */
-  display: flex; /* block으로 강제 전환 */
-  border-collapse: collapse;
-  justify-content: center;
-  table-layout: fixed;
-}
-
-.st_table th,
-.st_table td {
-  border: none; /* 선 제거 */
-  padding: 4px 6px; /* 여백 좁게 */
-  vertical-align: middle;
-}
-
-/* th: 작고 중앙 정렬 */
-.st_table th {
-  width: 80px;
-  text-align: center;
-  white-space: nowrap;
-  font-weight: bold;
-}
-
-/* td: 왼쪽 정렬 */
-.st_table td {
-  text-align: left;
-}
-/* ✅ 가방수량 th만 위로 정렬 */
-.st_table th.th-bag {
-  vertical-align: top !important;
-}
-/* 라벨 span: 양끝 균등 정렬 */
-.fix {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  width: 100%;
-  gap: 0.1em;
-  justify-items: center;
-}
-
-.fix span {
-  display: inline-block;
-}
-
-.st_button {
+.yy_title1 {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  border: none;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  .title_txt1 h1 {
+    font-size: 40px;
+    font-family: "omyu_pretty";
+  }
+}
+
+.payment-page {
+  width: 90%;
+  padding: 20px;
+  color: #333;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-info-box {
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    .label {
+      font-weight: 500;
+      color: #666;
+    }
+    .value {
+      font-weight: 600;
+    }
+    &.total .value {
+      color: #ff3b30;
+      font-weight: 700;
+    }
+  }
 }
 
 .st_reser {
   width: 150px;
   height: 50px;
   line-height: 25px;
-  margin: 10px auto;
+  margin: 20px auto;
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
@@ -239,97 +177,12 @@ const paymentNames = {
   font-size: 16px;
   border-radius: 30px;
   text-align: center;
-  border: none;
   text-decoration: none;
+  border: none;
   transition: background 0.3s;
 }
 
 .st_reser:hover {
   background-color: $hover;
-}
-@media screen and (max-width: 768px) {
-  .st_wrap {
-    margin: 50px auto;
-    padding: 0 16px;
-  }
-
-  .yy_title1 .title_txt1 h1 {
-    font-size: 30px;
-    font-family: "omyu_pretty";
-    text-align: center;
-  }
-
-  .st_check {
-    padding: 15px;
-    width: 100%;
-  }
-
-  .st_table {
-    width: 100%;
-    table-layout: fixed; // ✅ 비율 유지
-    border-collapse: collapse;
-    margin: 0 auto;
-  }
-
-  .st_table th,
-  .st_table td {
-    padding: 8px;
-    font-size: 14px;
-    word-break: keep-all;
-    vertical-align: middle;
-    text-align: left; // ✅ 모바일에서도 읽기 쉽게
-  }
-
-  .st_table th {
-    width: 100px; // ✅ th는 고정폭
-    font-weight: bold;
-    white-space: nowrap;
-  }
-
-  .st_table td {
-    width: auto; // ✅ td는 남은 공간
-  }
-
-  .st_table th.th-bag {
-    vertical-align: top !important;
-  }
-
-  .st_reser {
-    width: 150px;
-    height: 50px;
-    line-height: 25px;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 390px) {
-  .st_wrap {
-    margin: 50px auto;
-    padding: 0 16px;
-  }
-
-  .st_table {
-    width: 90%;
-    font-size: 15px;
-    th,
-    td {
-      padding: 6px;
-    }
-  }
-  .yy_title1 .title_txt1 h1 {
-    font-size: 30px;
-    font-family: "omyu_pretty";
-    text-align: center;
-  }
-  .st_reser {
-    width: 150px;
-    height: 50px;
-    line-height: 25px;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin-top: 20px;
-  }
 }
 </style>

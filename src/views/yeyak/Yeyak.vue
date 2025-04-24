@@ -137,7 +137,7 @@ const toggleDetails = (index) => {
         </transition>
 
         <div class="st_checkbox">
-          <label>
+          <label class="checkbox-label">
             <input type="checkbox" v-model="item.isChecked" />
             <span class="label-text">{{ item.dataItems }}</span>
           </label>
@@ -195,7 +195,7 @@ const toggleDetails = (index) => {
   margin-bottom: 10px;
 }
 .st_img img {
-  width: 100%;
+  width: 90%;
   max-width: 300px;
   margin: 10px;
 }
@@ -245,31 +245,26 @@ const toggleDetails = (index) => {
   line-height: 1.5;
 }
 .st_checkbox {
-  margin-top: 5px;
   display: flex;
-  justify-content: flex-end; // ✅ 우측 정렬
-  padding-right: 0; // ✅ 오른쪽 여백 없애기
-  position: relative;
-  left: 65%; // or 60%, 70% 등 원하는 만큼 조정
-}
-.st_checkbox label {
-  display: flex;
-  justify-content: space-between; /* 체크박스를 오른쪽 끝에 두고 텍스트는 왼쪽 */
-  align-items: center;
+  justify-content: flex-end; // 전체 우측 정렬
   width: 100%;
 }
 
-.st_checkbox input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px; // 간격 설정
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
   accent-color: #1976d2;
-  margin-left: 10px; /* 체크박스와 텍스트 간격 */
 }
 
 .label-text {
-  text-align: left;
   font-size: 14px;
-  flex-grow: 1; /* 텍스트가 공간을 채우도록 */
+  color: #333;
 }
 
 .toast-bubble {
@@ -391,7 +386,6 @@ const toggleDetails = (index) => {
     justify-content: flex-end; // ✅ 우측 정렬
     padding-right: 0; // ✅ 오른쪽 여백 없애기
     position: relative;
-    left: 65%; // or 60%, 70% 등 원하는 만큼 조정
   }
   .yy_purpose {
     font-size: 14px;
@@ -439,7 +433,6 @@ const toggleDetails = (index) => {
     justify-content: flex-end; // ✅ 우측 정렬
     padding-right: 0; // ✅ 오른쪽 여백 없애기
     position: relative;
-    left: 28%; // or 60%, 70% 등 원하는 만큼 조정
   }
   .yy_purpose {
     font-size: 13px;
