@@ -321,7 +321,8 @@ const closeModal = () => {
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
   .title_txt1 h1 {
-    font-size: 35px;
+    font-size: 40px;
+    font-family: "omyu_pretty";
   }
 }
 // 리뷰 배너
@@ -525,7 +526,9 @@ button {
   }
 
   .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
   .st_reviewbanner img {
@@ -619,7 +622,9 @@ button {
   }
 
   .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
   .write-btn {

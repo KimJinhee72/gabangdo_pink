@@ -1,18 +1,17 @@
 <script setup>
-import { useReservationStore } from "../../stores/reservationStore";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useReservationStore } from "@/stores/reservationStore";
 
+const reservationStore = useReservationStore();
 const selectedPayment = ref("");
 const showModal = ref(false);
-const reservationStore = useReservationStore();
 const router = useRouter();
 
 const paymentNames = {
   bank: "계좌이체",
   card: "카드결제",
-  kakao: "카카오페이",
-  naver: "네이버페이",
+  phone: "휴대폰이체",
 };
 
 const confirmPayment = () => {
@@ -20,152 +19,110 @@ const confirmPayment = () => {
     alert("결제 수단을 선택해주세요.");
     return;
   }
-
-  showModal.value = true; // 자동 이동 X
+  showModal.value = true;
 };
 
 const closeModal = () => {
   showModal.value = false;
-
   router.push({
     path: "/yeyak5",
-    query: {
-      payment: selectedPayment.value,
-    },
+    query: { payment: selectedPayment.value },
   });
 };
 </script>
 
 <template>
-  <div class="st_wrap">
-    <div class="yy_title1">
-      <!-- 제목 -->
-      <div class="title_txt1">
-        <h1>결제하기</h1>
+  <div class="wrap">
+    <div class="payment-page">
+      <div class="yy_title1">
+        <div class="title_txt1">
+          <h1>결제하기</h1>
+        </div>
       </div>
-    </div>
-    <div class="st_check">
-      <table class="st_table">
-        <tbody>
-          <tr>
-            <th>
-              <span class="fix th-name"><span>이</span><span>름</span>:</span>
-            </th>
-            <td>{{ reservationStore.name }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-phone"
-                ><span>전</span><span>화</span><span>번</span
-                ><span>호</span>:</span
-              >
-            </th>
-            <td>{{ reservationStore.phone }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-date"><span>날</span><span>짜</span>:</span>
-            </th>
-            <td>{{ reservationStore.selectedDate }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-time"><span>시</span><span>간</span>:</span>
-            </th>
-            <td>
-              {{ reservationStore.selectedHour }}시
-              {{ reservationStore.selectedMinute }}분
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-start"><span>출</span><span>발</span>:</span>
-            </th>
-            <td>{{ reservationStore.selectedStart }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-stop"><span>도</span><span>착</span>:</span>
-            </th>
-            <td>{{ reservationStore.selectedStop }}</td>
-          </tr>
-          <tr>
-            <th rowspan="{{ reservationStore.sizes.length }}" class="th-bag">
-              <span class="fix th-bag"
-                ><span>가</span><span>방</span><span>수</span
-                ><span>량</span>:</span
-              >
-            </th>
-            <td>
-              <p v-for="(item, i) in reservationStore.sizes" :key="i">
-                {{ item.label }} ({{ item.count }}개)
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-total"
-                ><span>총</span><span>금</span><span>액</span>:</span
-              >
-            </th>
-            <td>
-              {{ reservationStore.totalPrice?.toLocaleString() || "0" }}원
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="yy_credit">
-      <label class="credit-option">
-        <input type="radio" value="bank" v-model="selectedPayment" />
-        <span>계좌이체</span>
-      </label>
-      <label class="credit-option">
-        <input type="radio" value="card" v-model="selectedPayment" />
-        <span>카드결제</span>
-      </label>
-      <label class="credit-option">
-        <input type="radio" value="kakao" v-model="selectedPayment" />
-        <span>카카오페이</span>
-      </label>
-      <label class="credit-option">
-        <input type="radio" value="naver" v-model="selectedPayment" />
-        <span>네이버페이</span>
-      </label>
-    </div>
+      <!-- 결제 정보 -->
+      <div class="payment-info-box">
+        <div class="info-row">
+          <span class="label">이름</span>
+          <span class="value">{{ reservationStore.name }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">날짜</span>
+          <span class="value">{{ reservationStore.selectedDate }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">예약시간</span>
+          <span class="value">
+            {{ reservationStore.selectedHour }}시
+            {{ reservationStore.selectedMinute }}분</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="label">출발지</span>
+          <span class="value">{{ reservationStore.selectedStart }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">도착지</span>
+          <span class="value">{{ reservationStore.selectedStop }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">가방 종류 및 수량</span>
+          <span class="value">
+            <p v-for="(item, i) in reservationStore.sizes" :key="i">
+              {{ item.label }} ({{ item.count }}개)
+            </p></span
+          >
+        </div>
+        <div class="info-row total">
+          <span class="label">결제 금액</span>
+          <span class="value red">{{ reservationStore.totalPrice }}</span>
+        </div>
+      </div>
 
-    <div v-if="selectedPayment === 'bank'" class="payment-info">
-      <h4>계좌이체</h4>
-      <p>대구은행 123-456-78910 예금주: 도용달</p>
-    </div>
+      <!-- 결제 수단 -->
+      <div class="payment-section">
+        <h3>결제 수단</h3>
+        <div class="payment-methods">
+          <label
+            v-for="(label, key) in paymentNames"
+            :key="key"
+            class="method-btn">
+            <input type="radio" :value="key" v-model="selectedPayment" />
+            <span>{{ label }}</span>
+          </label>
+        </div>
+        <div class="easy-payments">
+          <h3 class="payment-section">간편결제</h3>
+          <label class="easy-option">
+            <input type="radio" value="toss" v-model="selectedPayment" />
+            <img src="/images/cr/yy_toss.png" alt="토스" />
+          </label>
+          <label class="easy-option">
+            <input type="radio" value="naver" v-model="selectedPayment" />
+            <img src="/images/cr/yy_naver.png" alt="네이버페이" />
+          </label>
+          <label class="easy-option">
+            <input type="radio" value="kakao" v-model="selectedPayment" />
+            <img src="/images/cr/yy_kakao.png" alt="카카오페이" />
+          </label>
+        </div>
 
-    <div v-if="selectedPayment === 'card'" class="payment-info">
-      <h4>카드결제</h4>
-      <img src="/images/cr/yy_card.jpg" />
-    </div>
+        <button class="st_reser" @click="confirmPayment">결제완료</button>
+      </div>
 
-    <div v-if="selectedPayment === 'kakao'" class="payment-info">
-      <h4>카카오페이결제</h4>
-      <img src="/images/cr/yy_kakao.jpg" />
-    </div>
-
-    <div v-if="selectedPayment === 'naver'" class="payment-info">
-      <h4>네이버페이결제</h4>
-      <img src="/images/cr/yy_naver.jpg" />
-    </div>
-    <button class="st_button st_reser" @click="confirmPayment">결제하기</button>
-  </div>
-  <!-- 모달창 -->
-  <div v-if="showModal" class="modal-overlay">
-    <div class="modal-box">
-      <p>
-        선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong
-        >로 결제가 되었습니다.
-      </p>
-      <button @click="closeModal" class="st_reser">확인</button>
+      <!-- 모달 -->
+      <div v-if="showModal" class="modal-overlay">
+        <div class="modal-box">
+          <p>
+            선택하신 <strong>{{ paymentNames[selectedPayment] }}</strong
+            >로 결제가 완료되었습니다.
+          </p>
+          <button @click="closeModal" class="st_reser">확인</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped>
 @use "@/assets/Main.scss" as *;
 @use "@/assets/_Variables.scss" as *;
@@ -178,9 +135,12 @@ const closeModal = () => {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-family: $font-family;
+  height: 100vh;
 }
 .yy_title1 {
   display: flex;
@@ -191,135 +151,136 @@ const closeModal = () => {
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
   .title_txt1 h1 {
-    font-size: 35px;
+    font-size: 40px;
+    font-family: "omyu_pretty";
   }
 }
-.st_check {
-  width: 100%;
+
+.payment-page {
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: "Pretendard", sans-serif;
   padding: 20px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #007bff;
-  box-shadow: $box-shadow;
-}
-.st_table {
-  width: 50%;
-  margin: 0 auto; /* 수평 가운데 정렬 */
-  display: flex; /* block으로 강제 전환 */
-  border-collapse: collapse;
-  justify-content: center;
-  table-layout: fixed;
+  color: #333;
 }
 
-.st_table th,
-.st_table td {
-  border: none; /* 선 제거 */
-  padding: 4px 6px; /* 여백 좁게 */
-  vertical-align: middle;
-}
-
-/* th: 작고 중앙 정렬 */
-.st_table th {
+.page-title {
+  font-size: 28px;
   font-weight: bold;
-  width: 80px;
   text-align: center;
-  white-space: nowrap;
-  font-weight: bold;
+  margin-bottom: 24px;
 }
 
-/* td: 왼쪽 정렬 */
-.st_table td {
-  text-align: left;
-}
-/* ✅ 가방수량 th만 위로 정렬 */
-.st_table th.th-bag {
-  vertical-align: top !important;
-}
-/* 라벨 span: 양끝 균등 정렬 */
-.fix {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  width: 100%;
-  gap: 0.1em;
-  justify-items: center;
+.payment-info-box {
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+
+    .label {
+      font-weight: 500;
+      color: #666;
+    }
+
+    .value {
+      font-weight: 600;
+    }
+
+    &.total .value {
+      color: #ff3b30;
+      font-weight: 700;
+    }
+  }
 }
 
-.fix span {
-  display: inline-block;
+.payment-section {
+  text-align: center;
 }
+  h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
 
-.yy_credit {
+  .payment-methods {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .method-btn {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 48%;
+    text-align: center;
+    transition: all 0.2s;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    span {
+      color: #333;
+    }
+
+    input[type="radio"]:checked + span {
+      color: #03c75a;
+      font-weight: 700;
+    }
+  }
+
+.easy-payments {
   display: flex;
-  gap: 1rem;
-  margin: 15px auto;
-  padding: 20px auto;
-  border: 1px solid #007bff;
-  box-shadow: $box-shadow;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px; // 버튼 사이 간격
+  margin: 20px 0;
+  padding: 2px 0;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
   width: 100%;
-  border-radius: 20px;
+  transition: all 0.2s;
 }
-.credit-option {
-  width: calc(100% / 4);
-  padding: 15px 10px;
+.payment-section h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 auto 16px auto;
+  display: block;
+}
+.easy-option {
   display: flex;
   align-items: center;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-size: 16px;
-  gap: 0.5rem;
-}
-
-.credit-option input[type="radio"] {
-  display: none;
-}
-
-.credit-option span {
-  position: relative;
-  padding-left: 28px; /* 원형 체크박스를 위한 여백 */
-  line-height: 1.5;
-  display: inline-flex;
-  align-items: center; /* span 내부 요소 정렬 */
-  height: 24px; /* 체크 원과 동일한 높이 */
-}
-
-.credit-option span::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border: 1px solid #aaa;
-  border-radius: 50%;
-  background-color: #fff;
-}
-
-.credit-option input[type="radio"]:checked + span::before {
-  border-color: #007bff;
-  background-color: #007bff;
-}
-
-.credit-option input[type="radio"]:checked + span {
-  font-weight: bold;
-  color: #007bff;
-}
-.payment-info {
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  transition: all 0.3s ease;
-}
-.st_button {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
   justify-content: center;
-  border: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 5px;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+
+  input[type="radio"] {
+    display: block;
+  }
+
+  img {
+    width: 75px;
+    height: auto;
+    display: block;
+  }
 }
 
 .st_reser {
@@ -338,174 +299,32 @@ const closeModal = () => {
   border: none;
   transition: background 0.3s;
 }
-
 .st_reser:hover {
   background-color: $hover;
 }
-// 모달
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-box {
-  background: white;
-  padding: 2rem 2rem;
+  background: #fff;
+  padding: 2rem;
   border-radius: 12px;
-  font-size: 18px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   text-align: center;
-}
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-@media screen and (max-width: 768px) {
-  .st_wrap {
-    margin: 50px auto;
-    padding: 0 16px;
-    justify-content: center;
-  }
-
-  .yy_title1 .title_txt1 h1 {
-    font-size: 25px;
-    text-align: center;
-  }
-
-  .st_check {
-    padding: 15px;
-    width: 100%;
-  }
-
-  .st_table {
-    width: 100%;
-    table-layout: fixed; // ✅ 비율 유지
-    border-collapse: collapse;
-    margin: 0 auto;
-  }
-
-  .st_table th,
-  .st_table td {
-    padding: 8px;
-    font-size: 15px;
-    word-break: keep-all;
-    vertical-align: middle;
-    text-align: left; // ✅ 모바일에서도 읽기 쉽게
-  }
-
-  .st_table th {
-    width: 100px; // ✅ th는 고정폭
-    font-weight: bold;
-    white-space: nowrap;
-  }
-
-  .st_table td {
-    width: auto; // ✅ td는 남은 공간
-  }
-
-  .st_table th.th-bag {
-    vertical-align: top !important;
-  }
-
-  .yy_credit {
-    align-items: stretch;
-    gap: 8px; // ✅ 세로 간격 줄이기
-    padding: 10px; // ✅ 전체 여백 줄이기 (기존 padding이 있다면 확인)
-  }
-
-  .credit-option {
-    width: calc(100% / 4);
-    font-size: 15px;
-    padding: 6px 10px; // ✅ 기존보다 작게
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; // ✅ space-between이 아니라 정렬 왼쪽
-    border-radius: 8px;
-  }
-
-  .payment-info {
-    font-size: 15px;
-    padding: 8px 12px; // ✅ padding 줄이기
-    margin-top: 10px; // ✅ 위아래 간격 확인
-    line-height: 1.4;
-  }
-
-  .st_reser {
-    width: 150px;
-    height: 50px;
-    line-height: 25px;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin-top: 20px;
-  }
-
-  .modal-box {
-    font-size: 16px;
-    width: 90%;
-  }
-}
-
-@media (max-width: 390px) {
-  .st_wrap {
-    margin: 50px auto;
-    padding: 0 16px;
-    justify-content: center;
-  }
-
-  .st_table {
-    width: 90%;
-    font-size: 15px;
-    th,
-    td {
-      padding: 6px;
-    }
-  }
-  .yy_credit {
-    display: flex;
-    flex-wrap: wrap; // ✅ 줄바꿈 허용
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .credit-option {
-    width: calc(50% - 5px); // ✅ 2개씩 정렬 (gap 고려해서)
-    font-size: 15px;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-radius: 8px;
-    box-sizing: border-box; // ✅ padding 포함한 너비 계산
-  }
-
-  .payment-info {
-    font-size: 15px;
-    padding: 10px;
-    margin: 10px;
-  }
-  .payment-info img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    margin-top: 8px;
-  }
-  .title_txt1 h1 {
-    font-size: 25px;
-  }
-
-  .st_reser {
-    width: 150px;
-    height: 50px;
-    line-height: 25px;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin-top: 20px;
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
   }
 }
 </style>

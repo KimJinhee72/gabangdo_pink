@@ -262,16 +262,11 @@ const nextPage = () => {
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
-  .st_titleLine {
-    width: 3px;
-    height: 25px;
-    background-color: $main-color;
-  }
   .title_txt1 h1 {
-    font-size: 35px;
+    font-size: 40px;
+    font-family: "omyu_pretty";
   }
 }
-
 /*슬라이더*/
 .st_slider-container {
   width: 100%;
@@ -365,15 +360,23 @@ button:disabled {
 @media screen and (max-width: 768px) {
   .st_wrap {
     width: 100%;
-    padding: 0 20px;
+    max-width: 700px;
     margin-top: 100px;
     margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: $font-family;
   }
 
   .st_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
   .st_notice-container {
@@ -451,7 +454,9 @@ button:disabled {
   }
 
   .st_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
   .st_pagination {
