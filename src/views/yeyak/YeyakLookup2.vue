@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+
 const reservations = ref([]);
 const selectedReservation = ref(null);
 
@@ -26,19 +27,18 @@ function generateRandomBags() {
   return bagTypes
     .map((type) => ({
       label: type,
-      count: getRandomInt(0, 3), // 0~3개 랜덤
+      count: getRandomInt(0, 3),
     }))
     .filter((bag) => bag.count > 0);
 }
 
-// 예약 더미 데이터 생성
 function generateDummyReservations(count = 5) {
   const result = [];
   for (let i = 0; i < count; i++) {
     result.push({
-      reservationNumber: `R${Date.now()}${i}`, // 예약번호 추가
+      reservationNumber: `R${Date.now()}${i}`,
       name: getRandomItem(names),
-      phone: `010-${getRandomInt(1000, 9999)}-${getRandomInt(1000, 9999)}`, // 연락처 추가
+      phone: `010-${getRandomInt(1000, 9999)}-${getRandomInt(1000, 9999)}`,
       date: generateRandomDate(),
       time: `${String(getRandomInt(0, 23)).padStart(2, "0")}:${String(
         getRandomInt(0, 59)
@@ -55,95 +55,61 @@ onMounted(() => {
   const dummy = generateDummyReservations(5);
   reservations.value = dummy;
   selectedReservation.value = getRandomItem(dummy);
-
-  console.log("선택된 예약 정보:", selectedReservation.value); // ✅ 콘솔 확인
 });
 </script>
+
 <template>
-  <div class="st_wrap">
-    <div class="yy_title1">
-      <div class="title_txt1">
-        <h1>예약확인</h1>
-      </div>
-    </div>
-    <div class="st_check" v-if="selectedReservation">
-      <table class="st_table">
-        <tbody>
-          <tr>
-            <th>
-              <span class="fix th-number"
-                ><span>예</span><span>약</span><span>번</span><span>호</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.reservationNumber }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-name"
-                ><span>이</span><span>름</span><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.name }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-phone"
-                ><span>전</span><span>화</span><span>번</span><span>호</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.phone }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-date"
-                ><span>날</span><span>짜</span><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.date }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-time"
-                ><span>시</span><span>간</span><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.time }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-start"
-                ><span>출</span><span>발</span><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.start }}</td>
-          </tr>
-          <tr>
-            <th>
-              <span class="fix th-stop"
-                ><span>도</span><span>착</span><span>:</span></span
-              >
-            </th>
-            <td>{{ selectedReservation.stop }}</td>
-          </tr>
-          <tr>
-            <th class="th-bag">
-              <span class="fix th-bag"
-                ><span>가</span><span>방</span><span>수</span><span>량</span
-                ><span>:</span></span
-              >
-            </th>
-            <td>
+  <div class="wrap">
+    <div class="total">
+      <div class="payment-page">
+        <div class="yy_title1">
+          <div class="title_txt1">
+            <h1>예약확인</h1>
+          </div>
+        </div>
+        <div class="payment-info-box" v-if="selectedReservation">
+          <div class="info-row">
+            <span class="label">예약번호</span>
+            <span class="value">{{
+              selectedReservation.reservationNumber
+            }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">이름</span>
+            <span class="value">{{ selectedReservation.name }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">전화번호</span>
+            <span class="value">{{ selectedReservation.phone }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">날짜</span>
+            <span class="value">{{ selectedReservation.date }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">시간</span>
+            <span class="value">{{ selectedReservation.time }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">출발지</span>
+            <span class="value">{{ selectedReservation.start }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">도착지</span>
+            <span class="value">{{ selectedReservation.stop }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">가방 종류 및 수량</span>
+            <span class="value">
               <p v-for="(bag, i) in selectedReservation.bags" :key="i">
                 {{ bag.label }} ({{ bag.count }}개)
               </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </span>
+          </div>
+        </div>
+        <router-link to="/" class="st_reser">처음으로</router-link>
+      </div>
     </div>
-    <router-link to="/" class="st_button st_reser">처음으로</router-link>
   </div>
 </template>
 
@@ -151,95 +117,68 @@ onMounted(() => {
 @use "@/assets/Main.scss" as *;
 @use "@/assets/_Variables.scss" as *;
 
-.st_wrap {
+.wrap {
   width: 100%;
   max-width: 700px;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 100px auto;
+  font-family: "Pretendard", sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  font-family: $font-family;
-  height: 100vh;
+  align-items: center;
+  flex-direction: column;
 }
-.yy_title1 {
-  display: flex;
-  gap: 10px;
-  line-height: 40px;
-  flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
-  align-items: center; /* 세로 중앙 정렬 */
-  justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
-  .title_txt1 h1 {
-    font-size: 40px;
-    font-family: "omyu_pretty";
-  }
-}
-.st_check {
-  width: 100%;
+.total {
+  width: 90%;
   padding: 20px;
+  border: 1px solid #007bff;
+  box-shadow: $box-shadow;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #007bff;
-  box-shadow: $box-shadow;
 }
-.st_table {
-  width: 50%;
-  margin: 0 auto; /* 수평 가운데 정렬 */
-  display: flex; /* block으로 강제 전환 */
-  border-collapse: collapse;
-  justify-content: center;
-  table-layout: fixed;
-}
-
-.st_table th,
-.st_table td {
-  border: none; /* 선 제거 */
-  padding: 4px 6px; /* 여백 좁게 */
-  vertical-align: middle;
-}
-
-/* th: 작고 중앙 정렬 */
-.st_table th {
-  width: 80px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* td: 왼쪽 정렬 */
-.st_table td {
-  text-align: left;
-}
-/* ✅ 가방수량 th만 위로 정렬 */
-.st_table th.th-bag {
-  vertical-align: top !important;
-}
-/* 라벨 span: 양끝 균등 정렬 */
-.fix {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  width: 100%;
-  gap: 0.1em;
-  justify-items: center;
-}
-
-.fix span {
-  display: inline-block;
-}
-
-.st_button {
+.yy_title1 {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  border: none;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  .title_txt1 h1 {
+    font-size: 40px;
+    font-family: "omyu_pretty";
+  }
+}
+
+.payment-page {
+  width: 90%;
+  padding: 20px;
+  color: #333;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-info-box {
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    .label {
+      font-weight: 500;
+      color: #666;
+    }
+    .value {
+      font-weight: 600;
+    }
+  }
 }
 
 .st_reser {
@@ -250,7 +189,7 @@ onMounted(() => {
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
-  color: rgb(255, 255, 255);
+  color: white;
   font-size: 16px;
   border-radius: 30px;
   text-align: center;
@@ -261,91 +200,5 @@ onMounted(() => {
 
 .st_reser:hover {
   background-color: $hover;
-}
-
-@media screen and (max-width: 768px) {
-  .st_wrap {
-    margin: 50px auto;
-    padding: 0 16px;
-  }
-
-  .yy_title1 .title_txt1 h1 {
-    font-size: 30px;
-    font-family: "omyu_pretty";
-    text-align: center;
-  }
-
-  .st_check {
-    padding: 15px;
-    width: 100%;
-  }
-
-  .st_table {
-    width: 100%;
-    table-layout: fixed; // ✅ 비율 유지
-    border-collapse: collapse;
-    margin: 0 auto;
-  }
-
-  .st_table th,
-  .st_table td {
-    padding: 8px;
-    font-size: 14px;
-    word-break: keep-all;
-    vertical-align: middle;
-    text-align: left; // ✅ 모바일에서도 읽기 쉽게
-  }
-
-  .st_table th {
-    width: 100px; // ✅ th는 고정폭
-    font-weight: bold;
-    white-space: nowrap;
-  }
-
-  .st_table td {
-    width: auto; // ✅ td는 남은 공간
-  }
-
-  .st_table th.th-bag {
-    vertical-align: top !important;
-  }
-
-  .st_reser {
-    width: 150px;
-    height: 50px;
-    line-height: 25px;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 390px) {
-  .st_wrap {
-    margin: 50px auto;
-    padding: 0 16px;
-  }
-
-  .st_table {
-    width: 90%;
-    font-size: 15px;
-    th,
-    td {
-      padding: 6px;
-    }
-  }
-  .yy_title1 .title_txt1 h1 {
-    font-size: 30px;
-    font-family: "omyu_pretty";
-    text-align: center;
-  }
-  .st_reser {
-    width: 150px;
-    height: 50px;
-    line-height: 25px;
-    font-size: 16px;
-    padding: 12px 24px;
-    margin-top: 20px;
-  }
 }
 </style>
