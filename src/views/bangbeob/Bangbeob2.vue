@@ -730,8 +730,8 @@ import Tab from "../../components/Tab.vue";
             width: 100%;
             padding: 6px;
             border-radius: 20px;
-            padding-top: 1%;
-            padding-bottom: 2%;
+            padding-top: 3%;
+            padding-bottom: 4%;
             ul {
               display: flex;
               justify-content: space-between;
@@ -835,8 +835,8 @@ import Tab from "../../components/Tab.vue";
               padding-left: 1em; /* 또는 margin-left: 1em; */
             }
             li {
-              line-height: 22px;
-              font-size: 15px;
+              line-height: 30px;
+              font-size: 17.5px;
             }
           }
         }
@@ -860,6 +860,7 @@ import Tab from "../../components/Tab.vue";
               .bb_stron1 {
                 display: inline;
                 font-weight: bold;
+                color: #a42626;
               }
             }
           }
@@ -893,7 +894,7 @@ import Tab from "../../components/Tab.vue";
           .bb_notice2 {
             li {
               line-height: 22px;
-              font-size: 15px;
+              font-size: 17.5px;
               padding-left: 3%;
               .bb_Strong2 {
                 font-weight: bold;
@@ -932,21 +933,25 @@ import Tab from "../../components/Tab.vue";
     .bb_container4Bg {
       background-color: #ffffff;
       .bb_inner {
-        background-color: #e9e9e9;
+        background-color: rgba(42, 170, 226, 0.06);
         border-radius: 15px;
         padding-left: 2%;
         .bb_notice {
+          color: #5a5a5a;
           padding-top: 2%;
           padding-bottom: 1%;
           h3 {
             font-size: 22px;
-            padding-bottom: 5px;
+            padding-bottom: 12px;
+            color: #000;
           }
           p {
             padding-bottom: 20px;
+            font-size: 17.5px;
           }
           li {
-            padding-bottom: 5px;
+            padding-bottom: 15px;
+            font-size: 17.5px;
           }
           ._bbTum {
             padding-top: 10px;

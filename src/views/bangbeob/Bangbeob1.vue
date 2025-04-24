@@ -196,7 +196,7 @@
                   </div>
                 </div>
               </div>
-              <button class="bb_pickupBtn">픽업장소 위치안내</button>
+              <button class="bb_pickupBtn1">픽업장소 위치안내</button>
             </div>
           </div>
           <!-- 카드2 -->
@@ -320,7 +320,7 @@
                   </div>
                 </div>
               </div>
-              <button class="bb_pickupBtn bb_addPlusSome">
+              <button class="bb_pickupBtn">
                 픽업장소 위치안내
               </button>
             </div>
@@ -371,7 +371,7 @@
                   <h3>숙소인 경우</h3>
                 </div>
                 <!-- 카드1 아이콘 -->
-                <div class="bb_card1Icon">
+                <div class="bb_card1Icon ">
                   <img src="/images/yr/page1/1p_icon6.png" alt="비행기" />
                 </div>
               </div>
@@ -384,12 +384,12 @@
                 <div class="bb_stepNumber"><p>2</p></div>
                 <p class="bb_stepTitle bb_skyBlue">가방 전달</p>
               </div>
-              <div class="bb_cardMiddle">
+              <div class="bb_cardMiddle bb_more">
                 <div class="bb_stepNumber"><p>3</p></div>
                 <p class="bb_stepTitle">고객 직접 전달 가능</p>
               </div>
-
-              <button class="bb_pickupBtn">픽업장소 위치안내</button>
+<!-- 
+              <button class="bb_pickupBtn">픽업장소 위치안내</button> -->
             </div>
           </div>
           <div class="bb_card">
@@ -725,6 +725,9 @@
               }
             }
           }
+          .bb_more{
+            margin-bottom: 30px;
+          }
           // 카드중간
           .bb_cardMiddle {
             padding-top: 70px;
@@ -749,6 +752,7 @@
               margin-left: 12px;
             }
           }
+
           // 카드 오른쪽
           .bb_card1Right {
             padding-left: 40px;
@@ -778,9 +782,8 @@
                 padding-top: 53px;
                 .bb_stepTitle {
                   font-size: 23px;
-                  color: $main-color;
-                  font-weight: bold;
                   color: #00b3eb;
+                  font-weight: bold;
                 }
                 .bb_stepContent {
                   font-size: 15px;
@@ -810,18 +813,21 @@
           .bb_plusSome {
             margin-bottom: 90px;
           }
-          .bb_removeSome {
-            display: none;
+
+          .bb_pickupBtn.bb_removeSome{
+            background-color: #fff !important;
+            color: #fff;
+            cursor: none;
           }
-          .bb_addPlusSome {
-            margin-left: 230px !important;
+          .bb_pickupBtn.bb_addPlusSome button{
+            margin-left: 150px !important;
           }
-          .bb_pickupBtn {
+          .bb_pickupBtn1{
             position: relative;
             background-color: $main-color;
             color: $notice-1stcolor;
             border-radius: 13px;
-            padding: 5px 12px 5px 12px;
+            padding: 5px 12px 6px 12px;
             font-size: 15px;
             font-weight: bold;
             height: 10%;
@@ -829,7 +835,22 @@
             cursor: pointer;
             margin-top: 370px;
             margin-bottom: 20px;
-            margin-left: 190px;
+            margin-left: 193px;
+          }
+          .bb_pickupBtn {
+            position: relative;
+            background-color: $main-color;
+            color: $notice-1stcolor;
+            border-radius: 13px;
+            padding: 5px 12px 6px 12px;
+            font-size: 15px;
+            font-weight: bold;
+            height: 10%;
+            border: none;
+            cursor: pointer;
+            margin-top: 370px;
+            margin-bottom: 20px;
+            margin-left: 235px;
           }
         }
       }
@@ -869,8 +890,8 @@
         .bb_noteTop {
           .bb_notice1 {
             li {
-              line-height: 22px;
-              font-size: 15px;
+              line-height: 30px;
+              font-size: 17.5px;
             }
           }
         }
@@ -891,6 +912,8 @@
             li {
               line-height: 22px;
               font-size: 15px;
+              color: #a42626;
+              font-weight: bold;
             }
           }
         }
@@ -923,21 +946,25 @@
     .bb_container4Bg {
       background-color: #ffffff;
       .bb_inner {
-        background-color: #e9e9e9;
+        background-color: rgba(42, 170, 226, 0.06);
         border-radius: 15px;
         padding-left: 2%;
         .bb_notice {
+          color: #5a5a5a;
           padding-top: 2%;
           padding-bottom: 1%;
           h3 {
             font-size: 22px;
-            padding-bottom: 5px;
+            padding-bottom: 12px;
+            color: #000;
           }
           p {
             padding-bottom: 20px;
+            font-size: 17.5px;
           }
           li {
-            padding-bottom: 5px;
+            padding-bottom: 15px;
+            font-size: 17.5px;
           }
           ._bbTum {
             padding-top: 10px;
@@ -956,6 +983,7 @@
     margin: auto !important;
     width: 90% !important;
   }
+  
   // 컨테이너1
   .bb_span {
     font-size: 15px !important;
@@ -986,6 +1014,11 @@
   .bb_title_txt2 p {
     font-size: 18px !important;
   }
+.bb_pickupBtn1{
+  margin-left: 50px !important;
+  margin-top: 259px !important;
+  margin-right: 10px !important;
+}
 
   // 카드안
   .bb_card {

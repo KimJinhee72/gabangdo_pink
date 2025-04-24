@@ -3,7 +3,7 @@
     <div class="bb_title1">
       <!-- 제목 -->
       <div class="bb_title_txt1">
-        <h1>짐보관 이용절차</h1>
+        <h1>가방도 한눈에</h1>
       </div>
     </div>
 
@@ -152,8 +152,10 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
     align-items: center; /* 세로 중앙 정렬 */
     justify-content: center; /* 가로 중앙 정렬 */
     padding-bottom: 50px;
+
     .bb_title_txt1 h1 {
-      font-size: 30px;
+      font-size: 40px;
+      font-family: $font-ownglyph;
     }
   }
 
