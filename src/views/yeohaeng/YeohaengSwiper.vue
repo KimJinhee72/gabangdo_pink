@@ -19,49 +19,49 @@
     class="mySwiper">
     <swiper-slide
       ><h4>군위시장투어</h4>
-      <a href="#"
-        ><img
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_5_1"
+      target="_blank"  ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_02.jpg"
           alt="군위전통시장투어" /></a
     ></swiper-slide>
     <swiper-slide
-      ><h4>현풍투어</h4>
-      <a href="#"
-        ><img
+      ><h4>현풍도깨비시장투어</h4>
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_5_1"
+      target="_blank"  ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_03.jpg"
           alt="현풍전통시장투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>사시사철투어</h4>
-      <a href="#"
-        ><img
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_4"
+      target="_blank"  ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_04.jpg"
           alt="사시사철투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>낙동강투어</h4>
-      <a href="#"
-        ><img
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_3"
+      target="_blank"  ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_05.jpg"
           alt="낙동강투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>군위군돋보기투어</h4>
-      <a href="#"
-        ><img
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_2"
+      target="_blank"  ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_06.jpg"
           alt="군위군돋보기투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>팔공산투어</h4>
-      <a href="#"
-        ><img
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_1"
+      target="_blank"  ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_07.jpg"
           alt="팔공산투어" /></a
     ></swiper-slide>
     <swiper-slide
       ><h4>야경투어</h4>
-      <a href="#"
+      <a href="https://www.daegucitytour.com/bbs/page.php?hid=tour_6"
         ><img
           src="/images/geen/1/KakaoTalk_20250410_194237551_01.jpg"
           alt="야경투어" /></a

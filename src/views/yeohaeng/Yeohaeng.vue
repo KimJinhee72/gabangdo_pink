@@ -18,7 +18,7 @@
           </div>
           <!-- 순환버스 이미지 -->
           <div class="yh_content-box">
-            <a href="#">
+            <a href="https://www.daegucitytour.com/bbs/page.php?hid=guide_1" target="_blank">
               <img v-if="imgSrc" :src="imgSrc" alt="순환버스지도" />
             </a>
           </div>
