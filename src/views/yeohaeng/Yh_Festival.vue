@@ -83,7 +83,9 @@
               <div class="right">
                 <div
                   class="right-thumb"
-                  :style="{ backgroundImage: `url(${festival.image})` }"></div>
+                  :style="{ backgroundImage: `url(${festival.image})` }"
+                  :aria-label="festival.alt"
+                  role="img"></div>
               </div>
             </div>
           </div>
@@ -115,7 +117,6 @@
           aria-label="Next slide"></div>
       </div>
     </div>
- 
   </div>
 </template>
 
@@ -139,6 +140,7 @@ const festivalData = {
       date: "2025.5.10.(토) ~ 5.11.(일)",
       location: "국채보상로",
       image: "/images/geen/power_poster.jpg",
+      alt: "파워풀 대구페스티벌이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000070",
     },
     {
@@ -147,6 +149,7 @@ const festivalData = {
       date: "2025.5.8.(목) ~ 5.11.(일)",
       location: "약령시 일원",
       image: "/images/geen/yak.jpg",
+      alt: "대구약령시 한방문화축제이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000130",
     },
     {
@@ -154,6 +157,7 @@ const festivalData = {
       date: "2025.5.10.(토) ~ 5.11.(일)",
       location: "국채보상운동기념공원",
       image: "/images/geen/kukchae.jpg",
+      alt: "대구 생활문화제이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000040",
     },
     {
@@ -162,6 +166,7 @@ const festivalData = {
       date: "2025.5.10.(토)",
       location: "코오롱야외음악당",
       image: "/images/geen/music.jpg",
+      alt: "대구TOP밴드 경연대회이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000041",
     },
     {
@@ -170,6 +175,7 @@ const festivalData = {
       date: "2025.5.15.(목) ~ 5.17.(토)",
       location: "동성로 일원",
       image: "/images/geen/busking.jpeg",
+      alt: "동성로 청년버스킹이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000065",
     },
     {
@@ -177,6 +183,7 @@ const festivalData = {
       date: "2025.5.9.(금) ~ 5.11.(일)",
       location: "동성로 일대",
       image: "/images/geen/dong.jpg",
+      alt: "동성로 축제이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000069",
     },
     {
@@ -184,6 +191,7 @@ const festivalData = {
       date: "2025.5.16.(금) ~ 5.18.(일)",
       location: "이곡장미공원 일대",
       image: "/images/geen/rose.jpg",
+      alt: "장미꽃이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000067",
     },
     {
@@ -191,6 +199,7 @@ const festivalData = {
       date: "2025.5.10.(토)~11.(일), 2025.5.31.(토)~6.1.(일)",
       location: "강정보 디아크 /  국립대구과학관 일원",
       image: "/images/geen/ai.jpg",
+      alt: "YES!키즈존이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000172",
     },
     {
@@ -198,6 +207,7 @@ const festivalData = {
       date: "2025.5.11.(일)",
       location: "대구문화예술회관 팔공홀",
       image: "/images/geen/palgong.jpg",
+      alt: "대구무용제이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_000173",
     },
     {
@@ -205,15 +215,17 @@ const festivalData = {
       date: "2025.4 ~",
       location: "대구간송미술관",
       image: "/images/geen/gansong.jpg",
+      alt: "대구간송미술관 기획전이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.001&searchFESTV_ID=FESTV_0000175",
     },
   ],
   "CDF018.002": [
     {
-      title: "대구국제오페라축제 축제 1",
+      title: "대구국제오페라축제",
       date: "2025.9.26.(금) ~ 11.8.(토)",
       location: "대구오페라하우스",
       image: "/images/geen/opera.jpg",
+      alt: "대구국제오페라축제이미지",
       href: "https://fantasiafesta.or.kr/Festival-October?searchFESTV_MONTH_DCD=CDF018.002",
     },
     {
@@ -221,6 +233,7 @@ const festivalData = {
       date: "2025.9.26.(금) ~ 11.8.(토)",
       location: "2025.9~11월",
       image: "/images/geen/orchestra.jpg",
+      alt: "월드오케스트라페스티벌이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000095",
     },
     {
@@ -228,6 +241,7 @@ const festivalData = {
       date: "2025.9.",
       location: "김광석거리 일대",
       image: "/images/geen/folk.jpg",
+      alt: "대구포크페스티벌이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000090",
     },
     {
@@ -235,6 +249,7 @@ const festivalData = {
       date: "2025.9.26.(금) ~ 9.27.(토)",
       location: "엑스코",
       image: "/images/geen/content.jpg",
+      alt: "대구콘텐츠페어이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000094",
     },
     {
@@ -242,6 +257,7 @@ const festivalData = {
       date: "2025.9 ~ 10월",
       location: "대명공연거리",
       image: "/images/geen/hilling.jpg",
+      alt: "대구국제힐링공연예술제이미지",
       href: "https://fantasiafesta.or.kr/festival.do?searchFESTV_MONTH_DCD=CDF018.002&searchFESTV_ID=FESTV_000092",
     },
   ],
@@ -285,7 +301,7 @@ const initSwiper = () => {
     nextButton.addEventListener("click", () => swiperInstance.slideNext());
     prevButton.addEventListener("click", () => swiperInstance.slidePrev());
   }
-  
+
   const nextButton2 = document.querySelector(".swiper-button-next2");
   const prevButton2 = document.querySelector(".swiper-button-prev2");
 
@@ -333,7 +349,7 @@ watch(activeTab, () => {
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   .title_txt1 h1 {
-    font-family: 'omyu_pretty';
+    font-family: "omyu_pretty";
     font-size: 40px;
   }
 }

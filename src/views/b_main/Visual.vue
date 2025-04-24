@@ -9,11 +9,11 @@
       <!-- 오른쪽 -->
       <div class="mavisimg">
         <!-- <img src="/images/ma/ma_visual/mavisual.gif" alt="ma-viusal" /> -->
-        <img src="/images/gh/ma_visual/mavisual.gif" alt="ma-viusal" />
+        <img src="/images/gh/ma_visual/mavisual.gif" alt="메인비쥬얼" />
         <!-- 오디오 음악재생 -->
-        <audio autoplay controls class="mavisaudio" loop>
+        <audio autoplay controls class="mavisaudio" loop alt="음악재생">
           <!-- <source src="/music.mp3" /> -->
-          <source src="/images/gh/music.mp3" />
+          <source src="/images/gh/music.mp3" alt="음악재생" />
         </audio>
       </div>
     </div>
