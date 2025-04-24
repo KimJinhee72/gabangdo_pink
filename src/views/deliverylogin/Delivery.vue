@@ -358,7 +358,7 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
   .bb_log {
     padding: 6% 8% 1% 8% !important;
   }
-  .bb_logLetterP{
+  .bb_logLetterP {
     font-size: 13px !important;
   }
   .bb_logLetterP {
@@ -367,33 +367,33 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
   .bb_logTime1 {
     margin-bottom: 55px;
   }
-  .bb_kakao-banner{
+  .bb_kakao-banner {
     padding: 2% 10% !important;
   }
 }
 
 @media screen and (max-width: 390px) {
-  .bb_tracking-container{
+  .bb_tracking-container {
     width: 100%;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
   }
   .bb_progress-letter {
     padding: 2% 6% 3% 6% !important;
   }
-  .bb_logLetterP{
+  .bb_logLetterP {
     font-size: 11px !important;
   }
-  .bb_plus{
+  .bb_plus {
     margin-bottom: 50px !important;
   }
   .bb_kakao-banner {
-    p{
+    p {
       font-size: 15px !important;
     }
-    span{
+    span {
       font-size: 15px !important;
     }
-    img{
+    img {
       margin-right: 8px !important;
     }
   }

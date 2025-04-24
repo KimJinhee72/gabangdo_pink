@@ -44,7 +44,7 @@
           </nav>
           <!--  가방조회/로그인: 오른쪽 영역-->
           <nav class="hd_extra">
-            <router-link to="/login">가방조회</router-link> |
+            <router-link to="/delivery">가방조회</router-link> |
             <div class="hd_myPage">
               <router-link to="/login" v-if="!isLoggedIn">로그인</router-link>
               <div class="hd_afterlogindropPage" v-else>
