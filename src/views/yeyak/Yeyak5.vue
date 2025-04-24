@@ -145,7 +145,10 @@ const paymentNames = {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   font-family: $font-family;
+  height: 100vh;
 }
 .yy_title1 {
   display: flex;
@@ -156,7 +159,8 @@ const paymentNames = {
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
   .title_txt1 h1 {
-    font-size: 35px;
+    font-size: 40px;
+    font-family: "omyu_pretty";
   }
 }
 .st_check {
@@ -250,7 +254,8 @@ const paymentNames = {
   }
 
   .yy_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
     text-align: center;
   }
 
@@ -313,8 +318,10 @@ const paymentNames = {
       padding: 6px;
     }
   }
-  .title_txt1 h1 {
-    font-size: 25px;
+  .yy_title1 .title_txt1 h1 {
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
   .st_reser {
     width: 150px;

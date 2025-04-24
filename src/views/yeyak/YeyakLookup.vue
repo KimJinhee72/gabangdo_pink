@@ -144,8 +144,21 @@ $base-width: 350px;
   justify-content: center;
   text-align: center;
   font-family: $font-family;
+  height: 100vh;
 }
-
+.yy_title1 {
+  display: flex;
+  gap: 10px;
+  line-height: 40px;
+  flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  padding-bottom: 10px;
+  .title_txt1 h1 {
+    font-size: 40px;
+    font-family: "omyu_pretty";
+  }
+}
 .st_lookup {
   display: flex;
   flex-direction: column;
@@ -289,7 +302,8 @@ span {
   }
 
   .yy_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
     text-align: center;
   }
 
@@ -323,7 +337,9 @@ span {
   }
 
   .yy_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
   .st_name,
   .st_look {

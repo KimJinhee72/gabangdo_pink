@@ -285,6 +285,8 @@ $base-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   font-family: $font-family;
 }
 
@@ -297,7 +299,8 @@ $base-width: 350px;
   justify-content: center; /* 가로 중앙 정렬 */
   padding-bottom: 10px;
   .title_txt1 h1 {
-    font-size: 35px;
+    font-size: 40px;
+    font-family: "omyu_pretty";
   }
 }
 .st_top {
@@ -662,7 +665,9 @@ button {
 
 @media (max-width: 768px) {
   .yy_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
   .st_top {
@@ -740,7 +745,9 @@ button {
 
 @media (max-width: 390px) {
   .yy_title1 .title_txt1 h1 {
-    font-size: 25px;
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
   .st_section-title {
