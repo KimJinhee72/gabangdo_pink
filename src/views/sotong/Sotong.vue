@@ -261,7 +261,7 @@ const nextPage = () => {
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   .title_txt1 h1 {
     font-size: 40px;
     font-family: "omyu_pretty";
@@ -358,21 +358,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media screen and (max-width: 768px) {
-  .st_wrap {
-    width: 100%;
-    max-width: 700px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: $font-family;
-  }
-
   .st_title1 .title_txt1 h1 {
     font-size: 30px;
     font-family: "omyu_pretty";
@@ -418,15 +403,11 @@ button:disabled {
 }
 
 @media screen and (max-width: 390px) {
-  .st_wrap {
-    width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 10px;
+  .st_title1 .title_txt1 h1 {
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
-
   .st_notice-container {
     display: flex;
     justify-content: center;

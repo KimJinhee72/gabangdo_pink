@@ -319,7 +319,7 @@ const closeModal = () => {
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   .title_txt1 h1 {
     font-size: 40px;
     font-family: "omyu_pretty";
@@ -467,7 +467,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: $sub-color;
+  background-color: #029d2b;
   color: #fff;
 }
 .form-buttons {
@@ -516,23 +516,14 @@ button {
   }
 }
 @media (max-width: 768px) {
-  .st_wrap {
-    width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 24px;
-  }
-
-  .title_txt1 h1 {
+  .st_title1 .title_txt1 h1 {
     font-size: 30px;
     font-family: "omyu_pretty";
     text-align: center;
   }
 
   .st_reviewbanner img {
-    width: 100%;
+    width: 90%;
     height: auto;
   }
 
@@ -596,21 +587,20 @@ button {
 }
 
 @media (max-width: 390px) {
-  .st_wrap {
-    width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 16px;
+  .st_title1 .title_txt1 h1 {
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
-
   .st_card-container {
     width: 100%;
     gap: 25px;
     justify-content: center;
   }
-
+  .st_reviewbanner img {
+    width: 90%;
+    height: auto;
+  }
   .st_card {
     width: 45%;
     height: 260px;
@@ -619,12 +609,6 @@ button {
   .st_card .st_img-product img {
     width: 100%;
     height: 100%;
-  }
-
-  .title_txt1 h1 {
-    font-size: 30px;
-    font-family: "omyu_pretty";
-    text-align: center;
   }
 
   .write-btn {

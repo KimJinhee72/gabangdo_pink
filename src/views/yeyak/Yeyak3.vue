@@ -130,11 +130,12 @@ onMounted(() => {
       <div class="title_txt1"><h1>사전예약</h1></div>
     </div>
 
-    <div class="st_top">
+    <div class="st_line">
       <p class="st_section-title">예약자 정보</p>
+      <p class="sub-title">고객님의 정보를 입력해주세요.</p>
       <div class="st_user">
         <div class="tooltip-container">
-          <input type="text" placeholder="이름" v-model="name" />
+          <input type="text" placeholder="이름을 입력해주세요." v-model="name" />
           <div v-if="toastTarget === 'name'" class="tooltip-bottom">
             {{ toastMessage }}
           </div>
@@ -154,13 +155,14 @@ onMounted(() => {
               :value="formattedPhone"
               @input="formattedPhone = $event.target.value"
               maxlength="13"
-              placeholder="숫자만 입력" />
+              placeholder="010을 제외한 번호를 입력해주세요." />
           </div>
         </div>
       </div>
 
       <div class="st_time">
         <p class="st_section-title">이용 날짜 및 시간</p>
+        <p class="sub-title">날짜와 시간을 선택해주세요.</p>
         <div class="st_datetime">
           <div class="tooltip-container">
             <input type="date" v-model="selectedDate" :min="today" />
@@ -190,6 +192,7 @@ onMounted(() => {
         </div>
 
         <p class="st_section-title">출발 장소</p>
+        <p class="sub-title">출발장소를 선택해주세요.</p>
         <div class="tooltip-container">
           <div class="st_start">
             <button
@@ -207,6 +210,7 @@ onMounted(() => {
         </div>
 
         <p class="st_section-title">도착 장소</p>
+        <p class="sub-title">도착장소를 선택해주세요.</p>
         <div class="tooltip-container">
           <div class="st_stop">
             <button
@@ -224,6 +228,7 @@ onMounted(() => {
         </div>
 
         <p class="st_section-title">여행가방 종류 및 수량</p>
+        <p class="sub-title">가방의 크기와 수량을 선택해주세요.</p>
         <div class="tooltip-container">
           <div class="st_price">
             <div class="st_size" v-for="(item, index) in sizes" :key="index">
@@ -256,10 +261,10 @@ onMounted(() => {
             {{ toastMessage }}
           </div>
         </div>
+    <button @click="submitReservation" class="st_reser">예약하기</button>
       </div>
     </div>
 
-    <button @click="submitReservation" class="st_reser">예약하기</button>
 
     <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal">
@@ -292,6 +297,7 @@ $base-width: 350px;
   text-align: center;
   font-family: $font-family;
 }
+
 .yy_title1 {
   display: flex;
   gap: 10px;
@@ -299,13 +305,14 @@ $base-width: 350px;
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   .title_txt1 h1 {
     font-size: 40px;
     font-family: "omyu_pretty";
   }
 }
-.st_top {
+
+.st_line{
   width: 100%;
   padding: 20px;
   border: 1px solid #007bff;
@@ -316,13 +323,18 @@ $base-width: 350px;
   align-items: center;
 }
 
+
 .st_section-title {
   font-weight: bold;
-  font-size: 1.1rem;
-  margin: 15px auto;
+  font-size: 1.3rem;
   text-align: center;
+  margin-top: 20px;
 }
-
+.sub-title{
+color: #707070;
+margin-top: 5px;
+margin-bottom: 10px;
+}
 button:disabled {
   background-color: #ccc !important;
   color: #777 !important;
@@ -337,16 +349,20 @@ label {
   max-width: $base-width;
   height: 44px;
   padding: 10px;
-  margin: 8px auto;
-  border: 1px solid #b5b5b5;
+   border: 1px solid #b5b5b5;
   border-radius: 10px;
   box-sizing: border-box;
+  margin: 10px auto;
 }
 input[type="text"],
 input[type="tel"],
 input[type="date"] {
   height: 44px;
 }
+input[type="date"]{
+    text-align: center;
+  }
+
 
 select {
   height: 40px; // 선택창은 조금 작게
@@ -361,10 +377,10 @@ button {
   gap: 8px;
   width: 100%;
   max-width: $base-width; // 부모 요소의 너비를 $base-width로 제한
-  margin: 10px auto;
 
   select {
     width: 80px; // 010 선택 부분은 고정 너비
+    text-align: center;
     height: 44px;
     border-radius: 10px;
     padding: 6px;
@@ -391,7 +407,6 @@ button {
 .st_size {
   width: 100%;
   max-width: $base-width;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -444,7 +459,6 @@ button {
   gap: 10px;
   width: 100%;
   max-width: $base-width;
-  margin: 0 auto;
 
   .st_select-time {
     display: flex;
@@ -463,10 +477,11 @@ button {
     }
   }
 }
-.st_pri {
+.st_pri{
   font-size: 15px;
-  margin: 5px 0;
+
   color: #ff0000;
+
 }
 
 .tooltip-container {
@@ -485,7 +500,6 @@ button {
   justify-content: space-between;
   gap: 10px;
   width: $base-width;
-  margin: 10px auto;
 }
 
 .st_place {
@@ -512,8 +526,7 @@ button {
   background-color: #fff;
   border: 1px solid #b5b5b5;
   border-radius: 10px;
-  margin: 10px 0;
-}
+  }
 
 .st_text {
   text-align: left;
@@ -521,7 +534,7 @@ button {
 
 .st_label {
   font-size: 20px;
-  margin-bottom: 10px;
+  
 }
 
 .st_tag {
@@ -540,7 +553,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 5px;
+ 
 }
 
 .st_counter button {
@@ -561,6 +574,9 @@ button {
 .st_counter button:active {
   background-color: $point-color;
 }
+.st_size,
+.st_total{
+  margin: 10px auto;}
 
 .st_total {
   width: 100%;
@@ -569,7 +585,7 @@ button {
   border: 1px solid #b5b5b5;
   border-radius: 10px;
   padding: 15px;
-  margin: 15px auto;
+  
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
@@ -588,6 +604,7 @@ button {
   border-radius: 30px;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
   border: none;
   transition: background 0.3s;
 }
@@ -681,7 +698,7 @@ button {
     text-align: center;
   }
 
-  .st_top {
+  .st_line {
     padding: 15px;
     width: 90%;
   }
@@ -689,7 +706,36 @@ button {
   .st_label {
     font-size: 18px;
   }
+  .st_phone-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 90%;
+  margin: 10px auto;
 
+  select {
+    width: 80px; // 010 선택 부분은 고정 너비
+    text-align: center;
+    height: 44px;
+    border-radius: 10px;
+    padding: 6px;
+    border: 1px solid #b5b5b5;
+  }
+
+  input {
+    flex: 1;
+    width: calc($base-width - 90px); // 80px (select의 너비)만큼 차감
+    height: 44px;
+    border-radius: 10px;
+    padding: 6px 10px;
+    border: 1px solid #b5b5b5;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
   .st_select-time {
     flex-direction: row;
     justify-content: center;

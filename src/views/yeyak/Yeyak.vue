@@ -101,57 +101,58 @@ const toggleDetails = (index) => {
     <div class="yy_title1">
       <div class="title_txt1"><h1>예약하기</h1></div>
     </div>
+    <div class="st_line">
+      <div class="st_img">
+        <img src="/images/cr/st_reservation01.jpg" alt="사전예약" />
+        <img src="/images/cr/st_reservation02.jpg" alt="일반예약" />
+      </div>
 
-    <div class="st_img">
-      <img src="/images/cr/st_reservation01.jpg" alt="사전예약" />
-      <img src="/images/cr/st_reservation02.jpg" alt="일반예약" />
-    </div>
-
-    <div class="st_toggle">
-      <div
-        v-for="(item, index) in dataUsageList"
-        :key="index"
-        class="st_togglemenu"
-        :style="{ backgroundColor: item.color }">
-        <div class="st_toggleheader" @click="toggleDetails(index)">
-          <span class="st_toggletitle">{{ item.title }}</span>
-          <span class="st_togglebtn">
-            <img
-              :src="item.isOpen ? '/images/cr/up.png' : '/images/cr/down.png'"
-              alt="toggle" />
-          </span>
-        </div>
-
-        <transition name="fade-slide">
-          <div v-if="item.isOpen" class="st_details">
-            <div class="yy_purpose" v-html="item.purpose"></div>
+      <div class="st_toggle">
+        <div
+          v-for="(item, index) in dataUsageList"
+          :key="index"
+          class="st_togglemenu"
+          :style="{ backgroundColor: item.color }">
+          <div class="st_toggleheader" @click="toggleDetails(index)">
+            <span class="st_toggletitle">{{ item.title }}</span>
+            <span class="st_togglebtn">
+              <img
+                :src="item.isOpen ? '/images/cr/up.png' : '/images/cr/down.png'"
+                alt="toggle" />
+            </span>
           </div>
-        </transition>
 
-        <transition name="fade-bubble">
-          <div
-            v-if="toastTargetIndex === index && toastMessage"
-            class="toast-bubble">
-            {{ toastMessage }}
+          <transition name="fade-slide">
+            <div v-if="item.isOpen" class="st_details">
+              <div class="yy_purpose" v-html="item.purpose"></div>
+            </div>
+          </transition>
+
+          <transition name="fade-bubble">
+            <div
+              v-if="toastTargetIndex === index && toastMessage"
+              class="toast-bubble">
+              {{ toastMessage }}
+            </div>
+          </transition>
+
+          <div class="st_checkbox">
+            <label class="checkbox-label">
+              <input type="checkbox" v-model="item.isChecked" />
+              <span class="label-text">{{ item.dataItems }}</span>
+            </label>
           </div>
-        </transition>
-
-        <div class="st_checkbox">
-          <label class="checkbox-label">
-            <input type="checkbox" v-model="item.isChecked" />
-            <span class="label-text">{{ item.dataItems }}</span>
-          </label>
         </div>
       </div>
-    </div>
 
-    <div class="st_button">
-      <button class="st_reser" @click="goToReservation('yeyak2')">
-        사전예약
-      </button>
-      <button class="st_reser" @click="goToReservation('yeyak3')">
-        당일예약
-      </button>
+      <div class="st_button">
+        <button class="st_reser" @click="goToReservation('yeyak2')">
+          사전예약
+        </button>
+        <button class="st_reser" @click="goToReservation('yeyak3')">
+          당일예약
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -182,12 +183,24 @@ const toggleDetails = (index) => {
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   .title_txt1 h1 {
     font-size: 40px;
     font-family: "omyu_pretty";
   }
 }
+
+.st_line {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #007bff;
+  box-shadow: $box-shadow;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .st_img {
   display: flex;
   justify-content: center;
@@ -209,10 +222,11 @@ const toggleDetails = (index) => {
 }
 
 .st_togglemenu {
+  margin-top: 16px;
   margin-bottom: 16px; // 살짝만 여유 있게
   border-radius: 12px;
   padding: 3px 10px; // 줄여서 슬림하게
-  width: 90%;
+  width: 95%;
   max-width: 700px;
 }
 
@@ -299,7 +313,7 @@ const toggleDetails = (index) => {
   width: 150px;
   height: 50px;
   line-height: 25px;
-  margin: 20px auto;
+  margin: 20px 20px;
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
@@ -308,6 +322,7 @@ const toggleDetails = (index) => {
   border-radius: 30px;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
   border: none;
   transition: background 0.3s;
 }
@@ -355,12 +370,10 @@ const toggleDetails = (index) => {
   transform: scale(0.95);
 }
 @media (max-width: 768px) {
-  .st_wrap {
+  .st_line {
+    padding: 15px;
     width: 90%;
-    margin: 50px auto;
-    justify-content: center;
   }
-
   .yy_title1 .title_txt1 h1 {
     font-size: 30px;
     font-family: "omyu_pretty";
@@ -401,9 +414,11 @@ const toggleDetails = (index) => {
     margin-bottom: 10px;
   }
   .st_img img {
-    width: 75%;
+    width: 100%;
+    max-width: 280px;
     height: auto;
   }
+
   .st_button {
     display: flex;
     justify-content: center;
@@ -412,12 +427,6 @@ const toggleDetails = (index) => {
 }
 
 @media (max-width: 390px) {
-  .st_wrap {
-    width: 90%;
-    margin: 30px auto;
-    justify-content: center;
-  }
-
   .yy_title1 .title_txt1 h1 {
     font-size: 30px;
     font-family: "omyu_pretty";

@@ -59,17 +59,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="wrap">
-    <div class="total">
-      <div class="payment-page">
+  <div class="st_wrap">
         <div class="yy_title1">
           <div class="title_txt1">
             <h1>예약확인</h1>
           </div>
         </div>
+    <div class="st_line">
+      <div class="payment-page">
         <div class="payment-info-box" v-if="selectedReservation">
           <div class="info-row">
-            <span class="label">예약번호</span>
+            <span class="label">예약조회</span>
             <span class="value">{{
               selectedReservation.reservationNumber
             }}</span>
@@ -117,18 +117,37 @@ onMounted(() => {
 @use "@/assets/Main.scss" as *;
 @use "@/assets/_Variables.scss" as *;
 
-.wrap {
+.st_wrap {
   width: 100%;
   max-width: 700px;
-  margin: 100px auto;
-  font-family: "Pretendard", sans-serif;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: $font-family;
 }
-.total {
-  width: 90%;
+
+.yy_title1 {
+  display: flex;
+  gap: 10px;
+  line-height: 40px;
+  flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  padding-bottom: 30px;
+  .title_txt1 h1 {
+    font-size: 40px;
+    font-family: "omyu_pretty";
+  }
+}
+
+.st_line{
+  width: 100%;
   padding: 20px;
   border: 1px solid #007bff;
   box-shadow: $box-shadow;
@@ -136,37 +155,25 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-.yy_title1 {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  .title_txt1 h1 {
-    font-size: 40px;
-    font-family: "omyu_pretty";
-  }
 }
 
+
 .payment-page {
-  width: 90%;
-  padding: 20px;
+  width: 100%;
   color: #333;
   justify-content: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .payment-info-box {
+  width: 80%;
   border: 1px solid #dcdcdc;
   border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 30px;
-  background-color: #f8f9fa;
-
+   background-color: #f8f9fa;
+   padding: 20px;
+   margin: 10px auto;
   .info-row {
     display: flex;
     justify-content: space-between;
@@ -194,6 +201,7 @@ onMounted(() => {
   border-radius: 30px;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
   border: none;
   transition: background 0.3s;
 }
@@ -201,4 +209,59 @@ onMounted(() => {
 .st_reser:hover {
   background-color: $hover;
 }
+@media (max-width: 768px) {
+  .yy_title1 .title_txt1 h1 {
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
+  }
+  .st_line {
+    padding: 15px;
+    width: 90%;
+  }
+  .payment-info-box {
+    width: 100%;
+    .info-row {
+      align-items: flex-start;
+      gap: 4px;
+      .label,
+      .value {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .st_reser {
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 12px 24px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 390px) {
+  .yy_title1 .title_txt1 h1 {
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
+  }
+
+  .info-row {
+    .label,
+    .value {
+      font-size: 13px;
+    }
+  }
+  .st_reser {
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 12px 24px;
+    margin-top: 20px;
+  }
+}
+
 </style>
