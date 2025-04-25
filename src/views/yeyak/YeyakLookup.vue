@@ -1,13 +1,11 @@
 <script setup>
-import { ref, nextTick, computed } from "vue";
+import { ref, nextTick } from "vue";
 import { useRouter } from "vue-router";
 
 const name = ref("");
 const reservationNumber = ref("");
-
 const telPrefix = ref("010");
-const middlePhone = ref("");
-const lastPhone = ref("");
+const middlePhone = ref(""); // 8자리 입력
 
 const toastMessage = ref("");
 const toastTargetIndex = ref(null);
@@ -23,21 +21,12 @@ const showToast = (message, index) => {
   }, 3000);
 };
 
-const moveFocus = (event, nextRef) => {
-  if (event.target.value.length >= event.target.maxLength) {
-    nextTick(() => {
-      nextRef?.focus();
-    });
-  }
-};
-
 const handleLookup = () => {
-  console.log("조회하기 클릭됨");
   if (!name.value) {
     showToast("이름을 입력해주세요.", 0);
     return;
   }
-  if (middlePhone.value.length !== 4 || lastPhone.value.length !== 4) {
+  if (middlePhone.value.length !== 8) {
     showToast("연락처를 정확히 입력해주세요.", 1);
     return;
   }
@@ -46,8 +35,10 @@ const handleLookup = () => {
     return;
   }
 
-  const fullPhone = `${telPrefix.value}-${middlePhone.value}-${lastPhone.value}`;
+  const fullPhone = `${telPrefix.value}-${middlePhone.value}`;
   console.log("최종 전화번호:", fullPhone);
+
+  router.push("/yeyaklookup2");
 };
 </script>
 
@@ -58,42 +49,40 @@ const handleLookup = () => {
         <h1>예약조회</h1>
       </div>
     </div>
-    <div class="st_lookup">
-      <div class="tooltip-container">
-        <input class="st_name" v-model="name" type="text" placeholder="이름" />
-        <transition name="fade">
-          <div v-if="toastTargetIndex === 0" class="tooltip-bottom">
-            {{ toastMessage }}
-          </div>
-        </transition>
-      </div>
 
-      <div class="tooltip-container st_phone-wrapper">
-        <div class="st_phone-group">
-          <select v-model="telPrefix" class="st_phone-select">
-            <option value="010">010</option>
-            <option value="011">011</option>
-            <option value="016">016</option>
-            <option value="017">017</option>
-            <option value="018">018</option>
-            <option value="019">019</option>
-          </select>
-          <span>-</span>
+    <div class="st_line">
+      <!-- 이름 입력 -->
+      <div class="container">
+        <div class="tooltip-container">
           <input
-            v-model="middlePhone"
-            maxlength="4"
-            class="st_phone-input"
-            placeholder="1234"
-            ref="middlePhoneRef"
-            @input="moveFocus($event, lastPhoneRef)" />
-          <span>-</span>
-          <input
+            class="st_name"
+            v-model="name"
             type="text"
-            v-model="lastPhone"
-            maxlength="4"
-            class="st_phone-input"
-            placeholder="5678"
-            ref="lastPhoneRef" />
+            placeholder="이름을 입력해주세요." />
+          <transition name="fade">
+            <div v-if="toastTargetIndex === 0" class="tooltip-bottom">
+              {{ toastMessage }}
+            </div>
+          </transition>
+        </div>
+
+        <!-- 연락처 입력 -->
+        <div class="tooltip-container st_phone-wrapper">
+          <div class="st_phone-group">
+            <select v-model="telPrefix" class="st_phone-select">
+              <option value="010">010</option>
+              <option value="011">011</option>
+              <option value="016">016</option>
+              <option value="017">017</option>
+              <option value="018">018</option>
+              <option value="019">019</option>
+            </select>
+            <input
+              v-model="middlePhone"
+              maxlength="8"
+              class="st_phone-single"
+              placeholder="010을 제외한 번호를 입력해주세요." />
+          </div>
           <transition name="fade">
             <div v-if="toastTargetIndex === 1" class="tooltip-bottom">
               {{ toastMessage }}
@@ -101,12 +90,13 @@ const handleLookup = () => {
           </transition>
         </div>
 
+        <!-- 예약번호 입력 -->
         <div class="tooltip-container">
           <input
             class="st_look"
             v-model="reservationNumber"
             type="text"
-            placeholder="예약번호" />
+            placeholder="예약번호를 입력해주세요." />
           <transition name="fade">
             <div v-if="toastTargetIndex === 2" class="tooltip-bottom">
               {{ toastMessage }}
@@ -114,14 +104,9 @@ const handleLookup = () => {
           </transition>
         </div>
       </div>
+      <!-- 조회 버튼 -->
+      <button class="st_reser" @click="handleLookup">조회하기</button>
     </div>
-    <!-- router-link로 변경, 클릭 시 예약조회2 페이지로 이동 -->
-    <router-link
-      :to="'/yeyaklookup2'"
-      class="st_reser"
-      @click.native="handleLookup">
-      조회하기
-    </router-link>
   </div>
 </template>
 
@@ -146,6 +131,7 @@ $base-width: 350px;
   font-family: $font-family;
   height: 100vh;
 }
+
 .yy_title1 {
   display: flex;
   gap: 10px;
@@ -153,38 +139,41 @@ $base-width: 350px;
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   .title_txt1 h1 {
     font-size: 40px;
     font-family: "omyu_pretty";
   }
 }
-.st_lookup {
+
+.st_line {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #007bff;
+  box-shadow: $box-shadow;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 700px;
-  border: 1px solid #007bff;
-  box-shadow: $box-shadow;
-  border-radius: 30px;
-  padding: 30px 0;
-  margin: 0 auto;
 }
 
+.container {
+  width: 90%;
+  max-width: 380px;
+  margin: 10px auto;
+}
 .tooltip-container {
   width: 100%;
   max-width: 350px;
-  margin: 12px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .st_name,
 .st_look {
   width: 100%;
-  max-width: 350px;
   height: 44px;
   padding: 10px;
   margin: 8px auto;
@@ -196,43 +185,49 @@ $base-width: 350px;
 input,
 select {
   width: 100%;
-  max-width: 350px; // base-width가 350px일 경우
   height: 44px;
   padding: 10px;
-  margin: 8px auto;
+  margin: 5px auto;
   border: 1px solid #b5b5b5;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
-span {
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .st_phone-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
 .st_phone-group {
   display: flex;
-  width: 100%;
-  max-width: 350px;
-  margin: 8px auto;
+  align-items: center;
   gap: 8px;
-}
-.st_phone-select {
-  width: 80px; // 고정
-}
+  width: 100%;
+  margin: 10px auto;
 
-.st_phone-input {
-  flex-grow: 1;
-}
+  select {
+    width: 80px; // 010 선택 부분은 고정 너비
+    text-align: center;
+    height: 44px;
+    border-radius: 10px;
+    padding: 6px;
+    border: 1px solid #b5b5b5;
+  }
 
+  input {
+    flex: 1;
+    width: calc($base-width - 90px); // 80px (select의 너비)만큼 차감
+    height: 44px;
+    border-radius: 10px;
+    padding: 6px 10px;
+    border: 1px solid #b5b5b5;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
 .st_reser {
   width: 150px;
   height: 50px;
@@ -241,18 +236,19 @@ span {
   display: inline-block;
   padding: 12px 24px;
   background-color: $main-color;
-  color: rgb(255, 255, 255);
+  color: white;
   font-size: 16px;
   border-radius: 30px;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
   border: none;
   transition: background 0.3s;
 }
+
 .st_reser:hover {
   background-color: $hover;
 }
-
 .tooltip-bottom {
   position: absolute;
   top: 100%;
@@ -275,8 +271,6 @@ span {
   position: absolute;
   top: -6px;
   left: 20px;
-  width: 0;
-  height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid #ff4d4f;
@@ -293,110 +287,64 @@ span {
     transform: translateY(0px);
   }
 }
-@media screen and (max-width: 768px) {
-  .st_wrap {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+@media (max-width: 768px) {
   .yy_title1 .title_txt1 h1 {
     font-size: 30px;
     font-family: "omyu_pretty";
     text-align: center;
   }
 
-  .st_lookup {
-    border-radius: 16px;
+  .st_line {
+    padding: 15px;
     width: 90%;
   }
-
   .tooltip-container {
-    width: 100%;
+    max-width: 100%;
   }
 
-  .tooltip-bottom {
-    font-size: 13px;
-    padding: 6px 10px;
-    left: 4px;
-  }
   .st_reser {
-    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
     padding: 12px 24px;
     margin-top: 20px;
   }
-}
 
-@media screen and (max-width: 390px) {
-  .st_wrap {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .yy_title1 .title_txt1 h1 {
-    font-size: 30px;
-    font-family: "omyu_pretty";
-    text-align: center;
-  }
   .st_name,
   .st_look {
-    width: 80%; /* 100%에서 80%로 변경 */
-    max-width: 280px; /* 350px의 80%로 설정 */
-    height: 44px;
-    padding: 10px;
-    margin: 8px auto;
-    border: 1px solid #b5b5b5;
-    border-radius: 10px;
-    box-sizing: border-box;
+    font-size: 14px;
+    height: 42px;
   }
 
   input,
   select {
-    width: 80%; /* 100%에서 80%로 변경 */
-    max-width: 280px; /* 350px의 80%로 설정 */
-    height: 44px;
-    padding: 10px;
-    margin: 8px auto;
-    border: 1px solid #b5b5b5;
-    border-radius: 10px;
-    box-sizing: border-box;
+    font-size: 14px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 390px) {
+  .yy_title1 .title_txt1 h1 {
+    font-size: 30px;
+    font-family: "omyu_pretty";
+    text-align: center;
   }
 
-  .st_phone-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .st_phone-group {
-    display: flex;
-    width: 80%; /* 100%에서 80%로 변경 */
-    max-width: 280px; /* 350px의 80%로 설정 */
-    margin: 8px auto;
-    gap: 8px;
-  }
-
-  .st_phone-select {
-    width: 64px; /* 80px의 80%로 변경 */
-  }
-
-  .st_phone-input {
-    flex-grow: 1;
-  }
   .tooltip-bottom {
     font-size: 12px;
-    padding: 5px 8px;
-    left: 2px;
+    padding: 4px 10px;
+    margin-top: 4px;
   }
 
   .tooltip-bottom::before {
-    left: 14px;
+    left: 16px;
   }
   .st_reser {
-    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    line-height: 25px;
+    font-size: 16px;
     padding: 12px 24px;
     margin-top: 20px;
   }
