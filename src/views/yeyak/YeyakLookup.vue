@@ -144,7 +144,6 @@ $base-width: 350px;
   justify-content: center;
   text-align: center;
   font-family: $font-family;
-  height: 100vh;
 }
 .yy_title1 {
   display: flex;
