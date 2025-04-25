@@ -36,6 +36,12 @@
             </div>
             <!-- 아이콘2_글 -->
             <span class="bb_span">사진촬영/업로드</span>
+            <button class="bb_kakao-btn">
+              <img
+                src="/public/images/yr/loginpage/loginKT.png"
+                alt="카카오 아이콘" />
+              <span>가방도</span>
+            </button>
           </div>
           <!-- 화살표 -->
           <div class="arrow">
@@ -71,7 +77,7 @@
           <div class="bb_processIcon1">
             <!-- 아이콘1_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/images/yr/page2/2p_icon1.png" alt="icon1" />
+              <img src="/images/yr/page1/1p_icon1.png" alt="icon1" />
             </div>
             <!-- 아이콘1_글 -->
             <span class="bb_spanPlus">1. 예약/결제</span>
@@ -84,7 +90,7 @@
           <div class="bb_processIcon1">
             <!-- 아이콘2_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/images/yr/page2/2p_icon2.png" alt="icon2" />
+              <img src="/images/yr/page1/1p_icon2.png" alt="icon2" />
             </div>
             <!-- 아이콘2_글 -->
             <span class="bb_spanPlus">2. 사진촬영/업로드</span>
@@ -97,7 +103,7 @@
           <div class="bb_processIcon1">
             <!-- 아이콘3_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/images/yr/page2/2p_icon3.png" alt="icon3" />
+              <img src="/images/yr/page1/1p_icon3.png" alt="icon3" />
             </div>
             <!-- 아이콘3_글 -->
             <span class="bb_spanPlus">3. 픽업/배송</span>
@@ -110,7 +116,7 @@
           <div class="bb_processIcon1">
             <!-- 아이콘4_이미지 -->
             <div class="bb_processIcon1_img">
-              <img src="/images/yr/page2/2p_icon4.png" alt="icon4" />
+              <img src="/images/yr/page1/1p_icon4.png" alt="icon4" />
             </div>
             <!-- 아이콘4_글 -->
             <span class="bb_spanPlus">4. 짐찾기</span>
@@ -320,9 +326,7 @@
                   </div>
                 </div>
               </div>
-              <button class="bb_pickupBtn">
-                픽업장소 위치안내
-              </button>
+              <button class="bb_pickupBtn">픽업장소 위치안내</button>
             </div>
           </div>
         </div>
@@ -371,7 +375,7 @@
                   <h3>숙소인 경우</h3>
                 </div>
                 <!-- 카드1 아이콘 -->
-                <div class="bb_card1Icon ">
+                <div class="bb_card1Icon">
                   <img src="/images/yr/page1/1p_icon6.png" alt="비행기" />
                 </div>
               </div>
@@ -388,7 +392,7 @@
                 <div class="bb_stepNumber"><p>3</p></div>
                 <p class="bb_stepTitle">고객 직접 전달 가능</p>
               </div>
-<!-- 
+              <!-- 
               <button class="bb_pickupBtn">픽업장소 위치안내</button> -->
             </div>
           </div>
@@ -539,7 +543,6 @@
   font-family: $font-family;
   // 이너
   .bb_inner {
-
     position: relative;
     max-width: 1300px;
     margin: 0 auto;
@@ -565,7 +568,6 @@
           font-family: $font-ownglyph;
         }
       }
-      // 이용절차
       // 이용절차
       .bb_orderProcess {
         position: relative;
@@ -647,9 +649,12 @@
         cursor: pointer;
         font-family: $font-ownglyph;
       }
-      .bb_reservation_btn :hover{
+      .bb_reservation_btn :hover {
         background-color: #00b3eb;
       }
+    }
+    .bb_kakao-btn{
+      display: none;
     }
   }
   .bb_container2 {
@@ -725,7 +730,7 @@
               }
             }
           }
-          .bb_more{
+          .bb_more {
             margin-bottom: 30px;
           }
           // 카드중간
@@ -814,15 +819,15 @@
             margin-bottom: 90px;
           }
 
-          .bb_pickupBtn.bb_removeSome{
+          .bb_pickupBtn.bb_removeSome {
             background-color: #fff !important;
             color: #fff;
             cursor: none;
           }
-          .bb_pickupBtn.bb_addPlusSome button{
+          .bb_pickupBtn.bb_addPlusSome button {
             margin-left: 150px !important;
           }
-          .bb_pickupBtn1{
+          .bb_pickupBtn1 {
             position: relative;
             background-color: $main-color;
             color: $notice-1stcolor;
@@ -983,7 +988,7 @@
     margin: auto !important;
     width: 90% !important;
   }
-  
+
   // 컨테이너1
   .bb_span {
     font-size: 15px !important;
@@ -1000,6 +1005,37 @@
   .bb_reservation_btn button {
     font-size: 17px !important;
   }
+  // 카카오톡 작은 버튼
+//   .bb_kakao-btn {
+//     display: block !important;
+//   width: 80px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-color: #e0e0e0;
+//   border: none;
+//   border-radius: 50px;
+//   padding: 1%;
+//   font-weight: bold;
+//   cursor: pointer;
+//   font-size: 14px;
+//   color: black;
+//   padding:2px;
+
+//   span {
+//     font-size: 13px;
+//     padding-right: 10px;
+//     line-height: normal;
+//     padding-bottom: 20px;
+//   }
+
+//   img {
+//     width: 23px;
+//     height: 23px;
+//     margin-right: 5px;
+//     margin-top: 2px;
+//   }
+// }
 
   // 컨테이너2
   .bb_luggageImgNotice {
@@ -1014,11 +1050,11 @@
   .bb_title_txt2 p {
     font-size: 18px !important;
   }
-.bb_pickupBtn1{
-  margin-left: 50px !important;
-  margin-top: 259px !important;
-  margin-right: 10px !important;
-}
+  .bb_pickupBtn1 {
+    margin-left: 50px !important;
+    margin-top: 259px !important;
+    margin-right: 10px !important;
+  }
 
   // 카드안
   .bb_card {

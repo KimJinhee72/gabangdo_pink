@@ -129,7 +129,7 @@ import Tab from "../../components/Tab.vue";
           <!-- 제목 스타일 -->
           <!-- 제목 -->
           <div class="bb_title_txt2">
-            <h1>짐보관 이용안내</h1>
+            <h1>짐보관 요금안내</h1>
             <p>사이즈별 가격책정</p>
           </div>
         </div>
