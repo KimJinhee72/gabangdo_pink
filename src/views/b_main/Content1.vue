@@ -12,8 +12,8 @@
             <h5>21인치이하/55cm이하/10kg미만</h5>
           </div>
           <!-- 아이콘 -->
-          <div class="masize_icon">
-            <img src="/images/gh/ma_content1/s_size.png" alt="S사이즈" />
+          <div class="masize_icon ma_bag1">
+            <img src="/images/geen/sbag.png" alt="S사이즈" />
             <!-- <img src="/images/ma/ma_content1/s_size.png" alt="S사이즈" /> -->
           </div>
           <!-- 당일예약시 -->
@@ -25,7 +25,6 @@
           <div class="masize_beforecash">
             <h5>사전예약시 10,000원</h5>
           </div>
-          
         </div>
         <!-- m사이즈 -->
         <div class="masize">
@@ -36,9 +35,9 @@
             <h5>25인치이하/65cm이하/20kg미만</h5>
           </div>
           <!-- 아이콘 -->
-          <div class="masize_icon">
+          <div class="masize_icon ma_bag2">
             <!-- <img src="/images/ma/ma_content1/m_size.png" alt="m사이즈" /> -->
-            <img src="/images/gh/ma_content1/m_size.png" alt="m사이즈" />
+            <img src="/images/geen/mbag1.png" alt="m사이즈" />
           </div>
           <!-- 당일예약시 -->
           <div class="masize_aftercash">
@@ -59,9 +58,9 @@
             <h5>26인치이상/66cm이상/30kg미만</h5>
           </div>
           <!-- 아이콘 -->
-          <div class="masize_icon">
+          <div class="masize_icon ma_bag3">
             <!-- <img src="/images/ma/ma_content1/l-size.png" alt="l사이즈" /> -->
-            <img src="/images/gh/ma_content1/l-size.png" alt="l사이즈" />
+            <img src="/images/geen/lbag.png" alt="l사이즈" />
           </div>
           <!-- 당일예약시 -->
           <div class="masize_aftercash">
@@ -84,12 +83,8 @@
           <!-- 아이콘 -->
           <div class="masize_icon">
             <!-- <img src="/images/ma/ma_content1/size.png" alt="?사이즈" /> -->
-            <img src="/images/gh/ma_content1/size.png" alt="?사이즈" />
-          </div>
-          <!-- 사전예약시 -->
-          <div class="masize_beforecash">
-            <h5></h5>
-          </div>
+            <img src="/images/geen/exbag.png" alt="?사이즈" />
+          </div>        
           <!-- 카카오톡 문의 -->
           <div class="masize_aftercash">
             <h2 class="ma_lastH2">카카오톡 문의</h2>

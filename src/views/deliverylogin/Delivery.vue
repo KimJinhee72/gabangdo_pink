@@ -51,40 +51,43 @@
 
     <!-- 하단 시간표시 -->
     <div class="bb_log">
-      <!-- 동글뱅이 -->
-      <div class="bb_loglist">
-        <!-- 첫번째 -->
-        <div class="bb_logCircle"></div>
-        <div class="bb_logLineTray">
-          <div class="bb_logLine"></div>
+      <!-- 왼쪽 -->
+      <div class="bb_logleft">
+        <!-- 동글뱅이 -->
+        <div class="bb_loglist">
+          <!-- 첫번째 -->
+          <div class="bb_logCircle"></div>
+          <div class="bb_logLineTray">
+            <div class="bb_logLine"></div>
+          </div>
+          <!-- 두번째 -->
+          <div class="bb_logCircle"></div>
+          <div class="bb_logLineTray">
+            <div class="bb_logLine"></div>
+          </div>
+          <!-- 세번째 -->
+          <div class="bb_logCircle bb_logCircleMore"></div>
+          <div class="bb_logLineTray">
+            <div class="bb_logLine bb_logLinegray"></div>
+          </div>
+          <!-- 네번째 -->
+          <div class="bb_logCircle bb_logCirclegray"></div>
+          <div class="bb_logLineTray"></div>
         </div>
-        <!-- 두번째 -->
-        <div class="bb_logCircle"></div>
-        <div class="bb_logLineTray">
-          <div class="bb_logLine"></div>
+        <!-- 동글뱅이 옆글씨 -->
+        <div class="bb_logLetter">
+          <div class="bb_logLetterP">예약완료</div>
+          <div class="bb_logLetterP">직원만남</div>
+          <div class="bb_logLetterP bb_plus">짐전달 완료</div>
+          <div class="bb_logLetterP">수령 완료</div>
         </div>
-        <!-- 세번째 -->
-        <div class="bb_logCircle bb_logCircleMore"></div>
-        <div class="bb_logLineTray">
-          <div class="bb_logLine bb_logLinegray"></div>
-        </div>
-        <!-- 네번째 -->
-        <div class="bb_logCircle bb_logCirclegray"></div>
-        <div class="bb_logLineTray"></div>
       </div>
-      <!-- 동글뱅이 옆글씨 -->
-      <div class="bb_logLetter">
-        <div class="bb_logLetterP">예약완료</div>
-        <div class="bb_logLetterP">직원만남</div>
-        <div class="bb_logLetterP bb_plus">짐전달 완료</div>
-        <div class="bb_logLetterP">수령 완료</div>
-      </div>
-
       <!-- 시간표시 -->
       <div class="bb_logTime">
         <div class="bb_logTime1">{{ currentTime }}</div>
         <div class="bb_logTime1">{{ timeOneHourAgo }}</div>
         <div class="bb_logTime1">{{ timeOneDayAgo }}</div>
+        <div class="bb_logTime1"></div>
       </div>
     </div>
   </div>
@@ -167,7 +170,7 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
       display: flex;
       text-align: center;
       justify-content: center;
-      padding: 4% 15% 1% 15%;
+      padding: 4% 10% 1% 10%;
       .bb_step {
         display: flex;
         align-items: center;
@@ -224,20 +227,25 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
     }
     .bb_progress-letter {
       display: flex;
-      padding: 0 13%;
+      text-align: center;
       padding-bottom: 4%;
-      .bb_more {
-        padding-right: 19%;
-      }
-      .bb_moremore {
-        padding-right: 19%;
+      font-size: 14px;
+      div{
+        flex: 1;
       }
     }
   }
   // 하단 시간표시
   .bb_log {
     display: flex;
-    padding: 8% 15% 1% 15%;
+    justify-content: space-between;
+    padding: 8% 10% 1% 10%;
+    .bb_logleft{
+      display: flex;
+      justify-content: space-between;
+      width: 20%;
+      
+    }
     .bb_loglist {
       width: 10%;
       display: flex;
@@ -254,8 +262,8 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
   }
 
   .bb_logCircle {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     background-color: $sub-color;
     border-radius: 50%;
   }
@@ -283,16 +291,23 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
     background-color: $sub-color;
   }
   // 동글뱅이 옆글씨
+  .bb_logLetter {
+    display: flex;
+    flex-direction: column;
+  }
   .bb_logLetterP {
-    margin-bottom: 50px;
+    width: 74px;
+    flex: 1;
   }
 }
 
 // 시간표시
 .bb_logTime {
-  padding-left: 50%;
+  display: flex;
+  flex-direction: column;
   .bb_logTime1 {
-    margin-bottom: 50px;
+    flex: 1;
+    width: 101px;
     font-size: 13px;
     color: #9c9c9c;
   }
@@ -341,66 +356,16 @@ const timeOneDayAgo = ref(formatDate(oneDayAgo));
   }
 }
 
-@media screen and (max-width: 768px) {
-  .bb_progress-present {
-    padding: 4% 8% 0% 8% !important;
+@media screen and (max-width: 940px) {
+  .bb_logleft{
+    width: 30% !important;
   }
-  .bb_progress-letter {
-    padding: 2% 6% 3% 6% !important;
-  }
-  .bb_more {
-    padding-right: 20% !important;
-  }
-  .bb_moremore {
-    padding-right: 22% !important;
-  }
-  .bb_progress-letter {
-    font-size: 13px !important;
-  }
-  .bb_log {
-    padding: 6% 8% 1% 8% !important;
-  }
-  .bb_logLetterP {
-    font-size: 13px !important;
-  }
-  .bb_logLetterP {
-    margin-bottom: 55px !important;
-  }
-  .bb_logTime1 {
-    margin-bottom: 55px;
-  }
-  .bb_kakao-banner {
-    padding: 2% 10% !important;
-  }
+
 }
 
-@media screen and (max-width: 390px) {
-  .bb_tracking-container {
-    width: 100%;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-  }
-  .bb_progress-letter {
-    padding: 2% 6% 3% 6% !important;
-  }
-  .bb_logLetterP {
-    font-size: 11px !important;
-  }
-  .bb_plus {
-    margin-bottom: 50px !important;
-  }
-  .bb_kakao-banner {
-    p {
-      font-size: 15px !important;
-    }
-    span {
-      font-size: 15px !important;
-    }
-    img {
-      margin-right: 8px !important;
-    }
-  }
-  .bb_tracking-container {
-    margin-bottom: 10px !important;
-  }
+@media screen and (max-width: 520px) {
+  .bb_logleft{
+    width: 40% !important;
+}
 }
 </style>

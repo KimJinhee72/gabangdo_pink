@@ -6,7 +6,7 @@
         <div class="hd_wideMenu">
           <!-- 로고 :좌영역 -->
           <router-link to="/" class="hd_logo">
-            <img src="/images/txtlogo.png" alt="로고" />
+            <img src="/images/logo_new.png" alt="로고" />
           </router-link>
           <!-- 메인탭메뉴(방법도/요금도/예약도/소통도/여행도) :중간영역 -->
           <nav v-if="!isMobile" class="hd_menu">
@@ -43,19 +43,15 @@
             </ul>
           </nav>
           <!--  가방조회/로그인: 오른쪽 영역-->
-          <nav class="hd_extra">
-            <router-link to="/delivery">가방조회</router-link><span>|</span>
-            <div class="hd_myPage">
-              <router-link to="/login" v-if="!isLoggedIn">로그인</router-link>
-              <div class="hd_afterlogindropPage" v-else>
-                <span class="user-name">{{ userName }}</span>
-                <div class="hd_afterlogindropPage_content">
-                  <router-link to="/yeyak4">마이페이지</router-link>
-                  <a @click="logout">로그아웃</a>
-                </div>
-              </div>
-            </div>
-          </nav>
+          <!-- 가방/로그인 아이콘 -->
+          <div class="hd_mobileRight">
+            <router-link to="/delivery" class="hd_bag">
+              <img src="/images/bagfind_icon.png" alt="가방조회이미지" />
+            </router-link>
+            <router-link to="/login" class="hd_man">
+              <img src="/images/gh/man1_icon.png" alt="로그인이미지" />
+            </router-link>
+          </div>
         </div>
 
         <!--1230px 및 모바일 메뉴 -->
@@ -68,7 +64,7 @@
             </a>
             <!-- 로고 -->
             <router-link to="/" class="hd_logo">
-              <img src="/images/txtlogo.png" alt="로고" />
+              <img src="/images/logo_new.png" alt="로고" />
             </router-link>
             <!-- 가방/로그인 아이콘 -->
             <div class="hd_mobileRight">
@@ -101,9 +97,11 @@
                     </a>
                     <ul v-if="openedMobileMenu === index" class="subMenu show">
                       <li v-for="(sub, idx) in item.sub" :key="idx">
-                        <router-link :to="sub.to" @click="handleMenuClick(item)">{{
-                          sub.label
-                        }}</router-link>
+                        <router-link
+                          :to="sub.to"
+                          @click="handleMenuClick(item)"
+                          >{{ sub.label }}</router-link
+                        >
                       </li>
                     </ul>
                   </div>
@@ -259,10 +257,19 @@ onUnmounted(() => {
   transform: translateX(-50%);
   width: 100%;
   height: 75px;
-  padding-top: 13px;
   z-index: 999999;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  a,
+  .router-link-active,
+  .router-link-exact-active {
+    color: black !important;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: black; // hover 시에도 동일하게 유지
+  }
 }
 header .inner {
   max-width: 1300px;
@@ -274,9 +281,10 @@ header .inner {
 }
 .hd_wideMenu {
   width: 100%;
-  height: 65px;
+  height: 7cap;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 body.modal-open {
   position: fixed;
@@ -285,9 +293,11 @@ body.modal-open {
 }
 // 로고
 .hd_logo {
-  width: 130px;
+  width: 110px;
+
   img {
-    width: 120px;
+    margin: 8px auto;
+    width: 100px;
   }
 }
 .hd_mobileMenu {
@@ -297,7 +307,7 @@ body.modal-open {
 
 // 메뉴
 .hd_menu {
-  width: 700px;
+  width: 500px;
   margin-top: 7px;
   display: flex;
   justify-content: space-evenly;
@@ -306,6 +316,7 @@ body.modal-open {
     display: flex;
     width: 100%;
     height: 100%;
+    margin-top: -10px;
     li {
       position: relative;
       flex: 1;
@@ -323,9 +334,8 @@ body.modal-open {
       }
 
       a:hover {
-        color: #fff;
+        color: #279bf4 !important;
         font-weight: bold;
-        background-color: $main-color;
       }
       .subMenu {
         width: 100%;
@@ -357,6 +367,9 @@ body.modal-open {
     }
   }
 }
+.hd_bag img {
+  width: 37px !important;
+}
 .hd_menu1 {
   pointer-events: none;
   position: fixed;
@@ -377,7 +390,7 @@ body.modal-open {
   transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
   background-color: #fff;
-  background-color: rgba($main-color, 0.9);
+  background-color: #279bf4;
   &.show {
     text-align: left;
     color: #fff;
@@ -435,27 +448,20 @@ body.modal-open {
 }
 // delivery/login icon
 .hd_extra {
-  width: 11%;
-  height: 58px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100% !important;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
-  gap: 5px;
-  color: $main-color;
-  a {
-    padding: 10px 5px;
-    margin-bottom: 5px;
-  }
-  span{
-    margin-bottom: 5px;
-  }
+  z-index: 9;
   img {
-    width: 40px;
     font-weight: 600;
-    filter: invert(31%) sepia(97%) saturate(400%) hue-rotate(169deg)
-      brightness(95%) contrast(96%);
   }
 }
+
 .hd_extra > div > a {
   display: flex;
   justify-content: center;
@@ -510,32 +516,26 @@ body.modal-open {
   z-index: 9;
   img {
     font-weight: 600;
+    max-width: none !important;
   }
 }
 .hd_hambar,
 .hd_hambar > img {
-  width: 30px;
-  filter: invert(31%) sepia(97%) saturate(800%) hue-rotate(169deg)
-    brightness(60%) contrast(96%);
-}
-.hd_bag img {
-  filter: invert(31%) sepia(97%) saturate(400%) hue-rotate(169deg)
-    brightness(105%) contrast(96%);
+  width: 36px;
 }
 .hd_man,
 .hd_man img {
-  width: 32px;
-  height: 33px;
+  width: 29px !important;
+  height: 30px !important;
+  margin-bottom: 5px;
   font-weight: bold;
-  filter: invert(31%) sepia(97%) saturate(800%) hue-rotate(169deg)
-    brightness(60%) contrast(96%);
 }
 .hd_mobileRight {
-  width: 10%;
+  width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 .hd_subMenubg {
   position: fixed;

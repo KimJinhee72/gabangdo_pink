@@ -20,9 +20,8 @@
         <div class="yg_rightInfocaution">
           <a href="#">추가요금 발생지역 > </a>
           <p>
-            <img
-              src="/images/geen/caution_icon.png"
-              alt="주의표시" />수하물 개당요금
+            <img src="/images/geen/caution_icon.png" alt="주의표시" />수하물
+            개당요금
           </p>
         </div>
       </div>
@@ -35,7 +34,7 @@
         <div class="yg_refundProcess">
           <ul>
             <li class="yg_refunddLi1">
-              <img src="/images/geen/1/announce.png" alt="알림이미지" />
+              <img src="/images/geen/caution.png" alt="알림이미지" />
             </li>
             <li class="yg_refunddLi2">
               <a>환불신청</a><span> > </span> <a>환불여부확인</a>
@@ -134,7 +133,7 @@ onUnmounted(() => {
   flex-direction: column;
   padding-bottom: 10px;
   .title_txt1 h1 {
-    font-family: 'omyu_pretty';
+    font-family: "omyu_pretty";
     font-size: 40px;
   }
 }
@@ -143,7 +142,8 @@ onUnmounted(() => {
   background-color: transparent !important;
 }
 ::v-deep(.masize, .masize1) {
-  border: 1px solid $main-color !important;
+  border: 1px solid #f1f1f1 !important;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 // 요금 안내 후 알림사항
 // 알림 왼쪽(할인)
@@ -227,13 +227,13 @@ onUnmounted(() => {
         display: block;
         text-align: center;
         border-radius: 30px;
-        border: 2px solid $sub-color;
+        border: 1px solid #cecdcd !important;        
       }
       span {
         width: 150px;
-        font-size: 30px;
+        font-size: 25px;
         text-align: center;
-        color: $sub-color;
+        color: #cecdcd;
       }
     }
   }
@@ -262,12 +262,14 @@ onUnmounted(() => {
   }
 }
 .yg_accoutNrefundexplain {
-  width: 100%;
+  width: 90%;
   height: 70%;
-  margin-bottom: 50px;
-  background-color: rgba($sub-color, 0.04);
+  margin: 0px auto 50px;
+
+  border-radius: 30px;
+  border: 2px solid #cecece;
   p {
-    padding: 50px 130px !important;
+    padding: 50px 100px !important;
     font-size: 18px;
     line-height: 40px;
     color: #5a5a5a;

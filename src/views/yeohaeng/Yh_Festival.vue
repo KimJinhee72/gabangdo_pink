@@ -675,7 +675,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
 #main-swiper .slide-wrap {
   width: 100%;
   height: 560px;
-  max-width: 700px;
+  max-width: 900px;
   display: flex;
 }
 .slide-wrap .left {
@@ -754,18 +754,19 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   border-bottom-right-radius: 20px;
 }
 .slide-wrap .right .right-thumb {
-  width: 403px;
+  width: 560px;
   height: 560px;
   background-size: cover;
   background-repeat: no-repeat;
   border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px; 
+  
 }
 
 .slide-wrap .right .player {
   position: absolute;
-  top: 0;
-  max-width: 403px;
+  top: 0;  
+  max-width: 560px;
   height: 100%;
   overflow: hidden;
   border-top-right-radius: 20px;
@@ -776,7 +777,7 @@ header.main.fix .hd-gnb .hd-menu > li:after {
   opacity: 1;
 }
 .yt-player {
-  width: 403px;
+  width: 560px;
 }
 
 /* main-slide */

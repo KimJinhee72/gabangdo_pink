@@ -318,11 +318,13 @@ strong {
       width: 36px;
     }
   }
+  .hd_hambar img{
+    margin-left: 20px;
+  }
   .hd_man,
   .hd_man img {
     width: calc(34px - 5px) !important;
     height: calc(34px - 5px) !important;
-    margin-right: 20px;
     margin-bottom: 3px;
   }
   // delivery/login icon
@@ -424,7 +426,7 @@ strong {
   .hd_logo {
     width: 120px !important;
     text-align: center;
-    margin-right: 10px;
+    margin-left: 15px;
     img {
       width: 120px;
     }
@@ -434,9 +436,6 @@ strong {
     width: calc(34px - 5px) !important;
     height: calc(34px - 6px) !important;
     margin-right: 20px;
-  }
-  .hd_bag img {
-    margin-top: 3px;
   }
   .hd_hambar a {
     width: 35px;

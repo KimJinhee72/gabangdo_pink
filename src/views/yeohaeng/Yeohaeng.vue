@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
 }  
 .yh_content-box {
   width: 100%;
-  max-width: 700px;
+  max-width: 900px;
   margin: 40px auto 0;
   border-radius: 12px;
 }

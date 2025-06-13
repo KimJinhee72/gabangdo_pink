@@ -127,7 +127,7 @@ h4 {
   align-items: center;
   a {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     height: 100%;
     @media (max-width: 630px) {
       width: 100%;
@@ -154,7 +154,7 @@ h4 {
 }
 ::v-deep(.swiper-button-prev) {
   color: #ee2b2b;
-  left: var(--swiper-navigation-sides-offset, 230px);
+  left: var(--swiper-navigation-sides-offset, 180px);
 }
 
 ::v-deep(.swiper-button-prev::after) {
@@ -162,7 +162,7 @@ h4 {
 }
 ::v-deep(.swiper-button-next) {
   color: #ee2b2b;
-  right: var(--swiper-navigation-sides-offset, 230px);
+  right: var(--swiper-navigation-sides-offset, 190px);
 }
 ::v-deep(.swiper-button-next::after) {
   font-size: 25px;

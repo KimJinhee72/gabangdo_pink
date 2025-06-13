@@ -1,23 +1,27 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/Home.vue";
-import Bangbeob1 from "../views/bangbeob/Bangbeob1.vue";
-import Bangbeob2 from "../views/bangbeob/Bangbeob2.vue";
+import Bangbeob1 from "@/views/bangbeob/Bangbeob1.vue";
+import Bangbeob2 from "@/views/bangbeob/Bangbeob2.vue";
 import Yeyak from "@/views/yeyak/Yeyak.vue";
-import Yeyak2 from "../views/yeyak/Yeyak2.vue";
-import Yeyak3 from "../views/yeyak/Yeyak3.vue";
-import Yeyak4 from "../views/yeyak/Yeyak4.vue";
-import Yeyak5 from "../views/yeyak/Yeyak5.vue";
-import YeyakLookup from "../views/yeyak/YeyakLookup.vue";
-import YeyakLookup2 from "../views/yeyak/YeyakLookup2.vue";
+import Yeyak2 from "@/views/yeyak/Yeyak2.vue";
+import Yeyak3 from "@/views/yeyak/Yeyak3.vue";
+import Yeyak4 from "@/views/yeyak/Yeyak4.vue";
+import Yeyak5 from "@/views/yeyak/Yeyak5.vue";
+import YeyakLookup from "@/views/yeyak/YeyakLookup.vue";
+import YeyakLookup2 from "@/views/yeyak/YeyakLookup2.vue";
 import Yogeum from "@/views/yogeum/Yogeum.vue";
 import Sotong from "@/views/sotong/Sotong.vue";
-import Sotong2 from "../views/sotong/Sotong2.vue";
-import Yeohaeng from "../views/yeohaeng/Yeohaeng.vue";
-import Yh_Festival from "../views/yeohaeng/Yh_Festival.vue";
-import Delivery from "../views/deliverylogin/Delivery.vue";
-import Login from "../views/deliverylogin/Login.vue";
-import Signup from "../views/deliverylogin/Signup.vue";
-import findPassword from "../views/deliverylogin/findPassword.vue";
+import Sotong2 from "@/views/sotong/Sotong2.vue";
+import Yeohaeng from "@/views/yeohaeng/Yeohaeng.vue";
+import Yh_Festival from "@/views/yeohaeng/Yh_Festival.vue";
+import Delivery from "@/views/deliverylogin/Delivery.vue";
+import Login from "@/views/deliverylogin/Login.vue";
+import Signup from "@/views/deliverylogin/Signup.vue";
+import findPassword from "@/views/deliverylogin/findPassword.vue";
+
+// 기사페이지
+import WorkerHome from "@/pages/worker/WorkerHome.vue";
+import DDashboard from "@/pages/worker/DDashboard.vue"
 const routes = [
   { path: "/", component: Home },
   { path: "/bangbeob1", component: Bangbeob1 },
@@ -38,10 +42,40 @@ const routes = [
   { path: "/login", component: Login },
   { path: "/signup", component: Signup },
   { path: "/findpassword", component: findPassword },
+  // 404일때 연결페이이지
   {
     path: "/:pathMatch(.*)*",
     name: "ErrorPage",
     component: () => import("../views/ErrorPage.vue"),
+    meta: { hideLayout: true }, // 헤더와 풋터부분은 404페이지에서 없앰 이것만으로 되지 않아 App.vue로 가서 || route.meta.hideLayout 더 넣어 줌
+  },
+  // 기사페이지
+  {
+    path: "/worker",
+    component: WorkerHome,
+    redirect: "/worker/ddashboard", //경로 접근시 자동 리다이렉트
+    children: [
+      {
+        path: "ddashboard",
+        component: DDashboard,
+      },
+      // {
+      //   path: "assigned-jobs",
+      //   component: AssingnedJobs,
+      // },
+      // {
+      //   path: "assing",
+      //   component: Assing,
+      // },
+      // {
+      //   path: "job-history",
+      //   component: Jobhistory,
+      // },
+      // {
+      //   path: "profile",
+      //   component: Profile,
+      // },
+    ],
   },
 ];
 

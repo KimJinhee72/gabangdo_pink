@@ -5,7 +5,7 @@
       <h1>4</h1>
       <div class="bb_errorPic">
         <img
-          src="/public/images/yr/loginpage/404Character.png"
+          src="/images/yr/loginpage/404Character.png"
           alt="용달눈물" />
       </div>
       <h1>4</h1>
@@ -68,7 +68,6 @@ router.go(-1);
       img {
         width: 110px;
         height: 110px;
-        margin-left: 40px;
         margin-right: 40px;
       }
     }
@@ -95,7 +94,7 @@ router.go(-1);
   }
   .bb_buttonPage {
     display: flex;
-    width: 20%;
+    width: 230px;
     gap: 7%;
     margin-bottom: 130px;
     button {

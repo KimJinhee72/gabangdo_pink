@@ -68,76 +68,77 @@
             </div>
           </nav>
         </div>
-        
-        <div class="hd_menu1" :class="{ show: shortMenu , leave:isLeaving  }" 
-        v-show="shortMenu" @mouseleave="handleMouseLeave"  @mouseenter="clearLeave">
+
+        <div
+          class="hd_menu1"
+          :class="{ show: shortMenu, leave: isLeaving }"
+          v-show="shortMenu"
+          @mouseleave="handleMouseLeave"
+          @mouseenter="clearLeave">
           <span @click.prevent="closeMobileMenu" role="button">X</span>
           <ul>
             <li v-for="(item, index) in menuItems" :key="index">
-            <!-- submenu가 없는 경우 바로 링크 -->
+              <!-- submenu가 없는 경우 바로 링크 -->
               <router-link v-if="!item.sub" :to="item.to"
                 ><span>{{ item.label }}</span></router-link
               >
               <div v-else>
                 <a href="#" @click.prevent="toggleMobileSub(index)">
-          {{ item.label }}
-        </a>
-              <ul
-              v-if="openedMobileMenu === index"
-              class="subMenu show"
-                :class="{ show: openedMenu === index }">
-                <li v-for="(sub, idx) in item.sub" :key="idx">
-                  <router-link :to="sub.to">{{ sub.label }}</router-link>
-                </li>
-        </ul>
-      </div>
+                  {{ item.label }}
+                </a>
+                <ul
+                  v-if="openedMobileMenu === index"
+                  class="subMenu show"
+                  :class="{ show: openedMenu === index }">
+                  <li v-for="(sub, idx) in item.sub" :key="idx">
+                    <router-link :to="sub.to">{{ sub.label }}</router-link>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
-      
-      
-        </div>
       </div>
-
+    </div>
   </header>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch ,onBeforeUnmount } from "vue";
+import { ref, onMounted, onUnmounted, watch, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/auth";
 import { storeToRefs } from "pinia";
 
 // 모바일 여부 체크용
-const isLeaving = ref(false)         // 트랜지션 상태
-const leaveTimeout = ref(null) 
+const isLeaving = ref(false); // 트랜지션 상태
+const leaveTimeout = ref(null);
 const isMobile = ref(window.innerWidth < 896);
 //
 // 마우스를 메뉴 밖으로 벗어났을 때
 function handleMouseLeave() {
-  isLeaving.value = true
+  isLeaving.value = true;
   leaveTimeout.value = setTimeout(() => {
-    shortMenu.value = false
-    isLeaving.value = false
-  }, 300) // CSS 전환 시간과 동일하게 맞춤
+    shortMenu.value = false;
+    isLeaving.value = false;
+  }, 300); // CSS 전환 시간과 동일하게 맞춤
 }
 function closeMobileMenu() {
-  isLeaving.value = true
+  isLeaving.value = true;
   setTimeout(() => {
-    shortMenu.value = false
-    isLeaving.value = false
-  }, 300)
+    shortMenu.value = false;
+    isLeaving.value = false;
+  }, 300);
 }
 // 마우스가 다시 들어왔을 때
 function clearLeave() {
-  clearTimeout(leaveTimeout.value)
-  isLeaving.value = false
+  clearTimeout(leaveTimeout.value);
+  isLeaving.value = false;
 }
 
 // 컴포넌트 해제 전에 타이머 제거
 onBeforeUnmount(() => {
-  clearTimeout(leaveTimeout.value)
-})
+  clearTimeout(leaveTimeout.value);
+});
 const router = useRouter();
 const authStore = useAuthStore();
 const { isLoggedIn, userName } = storeToRefs(authStore);
@@ -197,14 +198,14 @@ const shortMenu = ref(false);
 watch(shortMenu, (val) => {
   document.body.style.overflow = val ? "hidden" : "auto";
   if (!val) {
-    openedMobileMenu.value = null
+    openedMobileMenu.value = null;
   }
 });
 watch(shortMenu, (val) => {
-  document.body.classList.toggle("modal-open", val)
-})
+  document.body.classList.toggle("modal-open", val);
+});
 function toggleShortMenu() {
-  shortMenu.value = !shortMenu.value
+  shortMenu.value = !shortMenu.value;
 }
 // 창 크기 변경 시 모바일 여부 확인 + 창이 커지면 메뉴 닫기
 const updateScreenSize = () => {
@@ -297,18 +298,9 @@ body.modal-open {
         display: inline-block;
         padding: 10px 15px;
         transition: all 0.3s ease;
-        border-radius: 5px;
         font-weight: normal;
       }
-
-      a:hover {
-        color: #fff;
-        font-weight: bold;
-        background-color: $main-color;
-      }
-      .mainMenu {
-        border: 1px solid $main-color;
-      }
+      
       .subMenu {
         width: 100%;
         height: 100px;
@@ -318,10 +310,8 @@ body.modal-open {
         position: absolute;
         top: 56px;
         left: 0;
-        background-color: #fff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 10;
-        padding: 10px 0;
+        border: none !important;
         li {
           height: 25px;
           a {
@@ -330,8 +320,12 @@ body.modal-open {
             justify-content: center;
             width: 100%;
             height: 40px;
-            padding: 0;
-            padding-top: 0;
+            border: none !important;
+          }
+          a:hover {
+            font-weight: bold;
+            color: $main-color; // 호버 시 색상
+            border: none !important; // 배경색 제거
           }
         }
       }
@@ -340,6 +334,11 @@ body.modal-open {
       }
     }
   }
+}
+.hd_menu1 .subMenu {
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 .hd_menu1 {
   pointer-events: none;
@@ -351,12 +350,10 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  border-radius: 10px;
   transition: all 0.3s ease;
   color: #fff;
   z-index: 9;
-  background-color: #fff;
-  background-color: rgba($main-color, 0.9);
+  border: none !important;
   &.show {
     text-align: left;
     color: #fff;
@@ -375,21 +372,18 @@ body.modal-open {
   }
   li {
     width: 100%;
+    border: none !important;
     a {
       display: block;
       width: 100% !important;
       line-height: 40px;
-      padding: 18px 10px;
       color: #fff;
       text-align: center;
-      box-sizing: border-box;
-      border-radius: 10px;
-      border: 2.5px solid #0066b333;
+      border: none !important;
     }
     a:hover {
-      border: 2.5px solid $sub-color;
       font-weight: bold;
-      border-radius: 10px;
+      border: none !important;
     }
   }
   .subMenu {
@@ -398,7 +392,6 @@ body.modal-open {
         line-height: 50px;
         text-align: right;
         font-size: 18px;
-        padding: 5px;
       }
     }
   }

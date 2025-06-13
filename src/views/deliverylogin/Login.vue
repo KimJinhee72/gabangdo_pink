@@ -2,19 +2,22 @@
   <!-- 로그인 페이지 틀 -->
   <div class="bb_login-container">
     <div class="bb_logoimg">
-      <img src="/images/yr/loginpage/logory.png" alt="" />
+      <img src="/images/logo_new.png" alt="" />
     </div>
     <p class="bb_login-sub">여행의 시작은 가방도와 함께</p>
 
     <form class="bb_login-form">
-      <input type="text" placeholder="아이디를 입력해주세요" />
+      <input
+        class="bb_loginguser"
+        type="text"
+        placeholder="아이디" />
 
       <div class="password-input">
         <input
           id="password"
           :type="showPassword ? 'text' : 'password'"
           v-model="formData.password"
-          placeholder="비밀번호를 입력하세요"
+          placeholder="비밀번호"
           required />
         <button @click="togglePassword" type="button" class="toggle-password">
           <img
@@ -107,7 +110,7 @@ const handleLogin = () => {
 <style lang="scss" scoped>
 @use "/src/assets/_Variables.scss" as *;
 .bb_login-container {
-  width: 320px;
+  width: 400px;
   margin: 110px auto;
   padding-bottom: 100px;
   text-align: center;
@@ -118,6 +121,7 @@ const handleLogin = () => {
 
     img {
       width: 30%;
+      margin: 0 auto;
     }
   }
 
@@ -132,11 +136,13 @@ const handleLogin = () => {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     input {
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 5px;
+    }
+    .bb_loginguser {
+      background: url(/images/geen/man_1.png) 20% 50% no-repeat;
     }
 
     button {
@@ -149,95 +155,98 @@ const handleLogin = () => {
       font-weight: bold;
     }
     .toggle-password {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-
-  .eye-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    opacity: 0.3;
-  }
-}
-    .password-input {
-      position: relative;
-      width: 100%;
-    }
-
-    .password-input input {
-      width: 100%;
-      padding-right: 80px; /* 버튼이 겹치지 않도록 오른쪽 여유 */
-      height: 40px;
-      box-sizing: border-box;
-    }
-
-    .password-input .toggle-password {
       position: absolute;
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
       border: none;
+      padding: 0;
       cursor: pointer;
-      color: #aeaeae;
-      font-size: 14px;
-      padding: 4px 8px;
-    }
-  }
 
-  .bb_login-links {
-    margin-top: 5%;
-    font-size: 13px;
-    color: #333;
-
-    a {
-      text-decoration: none;
-      color: inherit;
-
-      &:hover {
-        text-decoration: underline;
+      .eye-icon {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        opacity: 0.3;
       }
     }
   }
+  .password-input {
+    position: relative;
+    width: 100%;
+  }
 
-  .bb_sns-login {
-    display: flex;
-    align-items: center;
-    gap: 10px; // 선과 텍스트 사이 간격
-    margin: 12% 0 8% 0;
+  .password-input input {
+    width: 100%;
+    padding-right: 10px; /* 버튼이 겹치지 않도록 오른쪽 여유 */
+    height: 40px;
+    box-sizing: border-box;
+    background: url(/images/geen/key_icon.png) 20% 50% no-repeat;
+  }
 
-    .bb_grayline {
-      flex: 1;
-      height: 1px;
-      background-color: #ccc; // 연한 회색
-    }
+  .password-input .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aeaeae;
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}
 
-    p {
-      white-space: nowrap; // 텍스트 줄바꿈 방지
-      color: $main-color;
-      font-size: 14px;
-      font-weight: bold;
+.bb_login-links {
+  margin-top: 5%;
+  font-size: 13px;
+  color: #333;
+  display: flex;
+  justify-content: space-evenly;
+  a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
-  .bb_sns-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20%;
+}
 
-    a {
-      width: 13%;
-      height: 13%;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+.bb_sns-login {
+  display: flex;
+  align-items: center;
+  gap: 10px; // 선과 텍스트 사이 간격
+  margin: 12% 0 8% 0;
+
+  .bb_grayline {
+    flex: 1;
+    height: 1px;
+    background-color: #ccc; // 연한 회색
+  }
+
+  p {
+    white-space: nowrap; // 텍스트 줄바꿈 방지
+    color: $main-color;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+.bb_sns-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+
+  a {
+    width: 13%;
+    height: 13%;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }
